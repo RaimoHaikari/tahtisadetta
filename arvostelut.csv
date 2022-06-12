@@ -1,4 +1,105 @@
-id,nimi,wiki,imdb,kavi,img,nodeJS,ensiIlta,
-1,Elämää kuoleman jälkeen,Q86914911,tt10385556,kavi.elonet_elokuva_1603238,elamaaKuolemanJalkeen.jpg,,6.3.2020,
-2,Emma.,Q65091224,tt9214832,kavi.elonet_elokuva_1613316,emma.jpg,,6.3.2020,
-3,Bombshell,Q58814589,tt6394270,kavi.elonet_elokuva_1612336,bombshell.jpg,,7.2.2020,
+criticID,googleID,stars,link,publisher,name
+pekkaEronen,1,4,Aamulehti 6.3.2020,Aamulehti,Pekka Eronen
+päiviValotie,1,3,Turun Sanomat 6.3.2020,Turun Sanomat,Päivi Valotie
+kristerUggedal,1,3,Hufvudstadsbladet 6.3.2020,Hufvudstadsbladet,Krister Uggeldahl
+riittaLehtimäki,1,4,Eeva 3/2020,Eeva,Riitta Lehtimäki
+jussiHuhtala,1,3,https://www.episodi.fi/elokuvat/elamaa-kuoleman-jalkeen/,Episodi,Jussi Huhtala
+anttiSelkokari,1,4,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/klaus-haron-hienovireinen-ja-kaunis-elamaa-kuoleman-jalkeen-elokuva-yltaa-tekijansa-parhaimmistoon/,Kulttuuritoimitus.fi,Antti Selkokari
+hannuBjörkbacka,1,3,Keskipohjanmaa 7.3.2020,Keskipohjanmaa,Hannu Björkbacka
+kaisuTervonen,1,3,Suomen Kuvalehti 10/2020,Suomen Kuvalehti,Kaisu Tervonen
+nikoIkonen,1,3,Episodi 2/2021,Episodi,Niko Ikonen
+hannuLiekso,1,3,Episodi 2/2021,Episodi,Hannu Liekso
+jesseRaatikainen,1,3,Episodi 2/2021,Episodi,Jesse Raatikainen
+jouniVikman,1,3,Episodi 2/2021,Episodi,Jouni Vikman
+janneKaakko,2,4,Aamulehti 6.3.2020,Aamulehti,Janne Kaakko
+päiviValotie,2,3,Turun Sanomat 6.3.2020,Turun Sanomat,Päivi Valotie
+jouniVikman,2,3,https://www.episodi.fi/elokuvat/emma/,Episodi,Jouni Vikman
+nikoIkonen,2,3,Episodi 4/2020,Episodi,Niko Ikonen
+hannuLiekso,2,3,Episodi 4/2020,Episodi,Hannu Liekso
+jouniVikman,2,3,Episodi 4/2020,Episodi,Jouni Vikman
+leenaVirtanen,3,3,Helsingin Sanomat 7.2.2020,Helsingin Sanomat,Leena Virtanen
+pekkaEronen,3,2,Aamulehti 7.2.2020,Aamulehti,Pekka Eronen
+päiviValotie,3,3,Turun Sanomat 7.2.2020,Turun Sanomat,Päivi Valotie
+jussiVirratvuori,3,3,Etelä-Suomen Sanomat 7.2.2020,Etelä-Suomen Sanomat,Jussi Virratvuori
+saraEH,3,3,Hufvudstadsbladet 7.2.2020,Hufvudstadsbladet,Sara Ehnholm Hielm
+jesseRaatikainen,3,4,https://www.episodi.fi/elokuvat/bombshell-hiljaisuuden-rikkojat/,Episodi,Jesse Raatikainen
+kaarinaLehtisalo,3,3,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/bombshell-kertaa-fox-kanavan-vuoden-2016-ahdisteluskandaalin-vaiheet-roger-ailesin-roolissa-john-lithgow/,Kulttuuritoimitus.fi,Kaarina Lehtisalo
+marttaKaukonen,3,4,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/mita-fox-uutiskanavalla-tapahtui-vuosi-ennen-metoota,Me Naiset,Martta Kaukonen
+nikoikonen,3,3,Episodi 1/2020,Episodi,Niko Ikonen
+martaBalaga,3,3,Episodi 2/2020,Episodi,Marta Balaga
+hannuLiekso,3,3,Episodi 2/2020,Episodi,Hannu Liekso
+mariaLättilä,3,3,Episodi 2/2020,Episodi,Maria Lättilä
+jouniVikman,3,4,Episodi 2/2020,Episodi,Jouni Vikman
+juhoTyppo,4,2,Helsingin Sanomat 7.2.2020,Helsingin Sanomat,Juho Typpö
+kariSalminen,4,2,Turun Sanomat 7.2.2020,Turun Sanomat,Kari Salminen
+martinaMolisMelberg,4,3,Hufvudstadsbladet 7.2.2020,Hufvudstadsbladet,Martina Moliis-Mellberg
+jouniVikman,4,3,https://www.episodi.fi/elokuvat/birds-of-prey/,Episodi,Jouni Vikman
+riikkaOksanen,4,3.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/supersankariviihdetta-vahaisilla-supervoimilla-ja-rikollisilla-sankareilla-arvostelussa-birds-of-prey/,Kulttuuritoimitus.fi,Riikka Oksanen
+helinäLaajalahti,4,3.5,https://muropaketti.com/elokuvat/arvostelu-birds-of-prey-on-ravakka-supersankarielokuva-jossa-on-kaikuja-tank-girlista-deadpoolista-ja-john-wickista/,Muropaketti,Helinä Laajalahti
+martaBalaga,4,2,Episodi 4/2020,Episodi,Marta Balaga
+nikoIkonen,4,3,Episodi 4/2020,Episodi,Niko Ikonen
+hannuLiekso,4,2,Episodi 4/2020,Episodi,Hannu Liekso
+mariaLättilä,4,3,Episodi 4/2020,Episodi,Maria Lättilä
+avola,5,4,Helsingin Sanomat 7.2.2020,Helsingin Sanomat,Pertti Avola
+hwRehnstöm,5,4,Turun Sanomat 7.2.2020,Turun Sanomat,Henri Waltter Rehnström
+jarnoLindemark,5,4,Etelä-Suomen Sanomat 7.2.2020,Etelä-Suomen Sanomat,Jarno Lindemark
+kristerUggedal,5,2,Hufvudstadsbladet 7.2.2020,Hufvudstadsbladet,Krister Uggeldahl
+martaBalaga,5,4,https://www.episodi.fi/elokuvat/a-hidden-life/,Episodi,Marta Balaga
+anttiSelkokari,5,3.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/a-hidden-life-tositarina-hitleria-uhmanneesta-maanviljelijasta-yltaa-terrence-malickin-parhaimmistoon/,Kulttuuritoimitus.fi,Antti Selkokari
+marttaKaukonen,5,3,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/terrence-malick-tekee-sen-taas-ohjaajan-uutuus-hidden-life,Me Naiset,Martta Kaukonen
+akiLehti,5,4.5,https://muropaketti.com/elokuvat/arvostelu-terence-malickin-mestarillinen-a-hidden-life-on-tuleva-klassikko/,Muropaketti,Aki Lehti
+kalleKinnunen,5,4,Suomen Kuvalehti 6/2020,Suomen Kuvalehti,Kalle Kinnunen
+hannuLiekso,5,3,Episodi 4/2020,Episodi,Hannu Liekso
+jussiHuhtala,5,4,Episodi 4/2020,Episodi,Jussi Huhtala
+nikoIkonen,5,4,Episodi 4/2020,Episodi,niko Ikonen
+avola,6,3,Helsingin Sanomat 13.3.2020,Helsingin Sanomat,Pertti Avola
+päiviValotie,6,3,Turun Sanomat 13.3.2020,Turun Sanomat,Päivi Valotie
+jarnoLindemark,6,2,Etelä-Suomen Sanomat 13.3.2020,Etelä-Suomen Sanomat,Jarno Lindemark
+kristerUggedal,6,3,Hufvudstadsbladet 13.3.2020,Hufvudstadsbladet,Krister Uggeldahl
+timoAlho,6,4,Kymen Sanomat 13.3.2020,Kymen Sanomat,Timo Alho
+heini lehtosalo,6,5,Eeva 3/2020,Eeva,Heini Lehtosalo
+anneVälinoro,6,3.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/kuusikymppisilla-menee-lujaa-ranskassa-la-belle-epoque-on-hilpea-aikamatka-ikaihmisten-petipuuhiin/,Kulttuuritoimitus.fi,Anne Välinoro
+martaBalaga,6,4,Episodi 4/2020,Episodi,Marta Balaga
+nikoIkonen,6,4,Episodi 4/2020,Episodi,Niko Ikonen
+hannuLiekso,6,3,Episodi 4/2020,Episodi,Hannu Liekso
+leenaVirtanen,7,3,Helsingin Sanomat 13.3.2020,Helsingin Sanomat,Leena Virtanen
+päiviValotie,7,3,Turun Sanomat 13.3.2020,Turun Sanomat,Päivi Valotie
+saraEH,7,4,Hufvudstadsbladet 13.3.2020,Hufvudstadsbladet,Sara Ehnholm Hielm
+heikkiIkonen,7,4,Hämeen Sanomat 13.3.2020,Hämeen Sanomat,Heikki Ikonen
+timoAlho,7,3,Kymen Sanomat 13.3.2020,Kymen Sanomat,Timo Alho
+heini lehtosalo,7,4,Eeva 3/2020,Eeva,Heini Lehtosalo
+jesseRaatikainen,7,4,https://www.episodi.fi/elokuvat/weathering-with-you/,Episodi,Jesse Raatikainen
+eijaNiskanen,7,4,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/weathering-with-you-on-hayao-miyazakin-manttelinperijan-makoto-shinkain-uusin-mega-animehitti/,Kulttuuritoimitus.fi,Eija Niskanen
+akiLehti,7,2,https://muropaketti.com/elokuvat/arvostelu-weathering-with-you-on-uskomattoman-kaunis-anime-elokuva-josta-tuli-likainen-olo/,Muropaketti,Aki Lehti
+nikoIkonen,7,4,Episodi 4/2020,Episodi,Niko Ikonen
+jouniVikman,7,4,Episodi 4/2020,Episodi,Jouni Vikman
+miskaRantanen,8,3,Helsingin Sanomat 13.3.2020,Helsingin Sanomat,Miska Rantanen
+pekkaEronen,8,3,Aamulehti 13.3.2020,Aamulehti,Pekka Eronen
+hwRehnstöm,8,2,Turun Sanomat 13.3.2020,Turun Sanomat,Henri Waltter Rehnström
+jussiUPellonpää,8,2,Forssan Lehti 13.3.2020,Forssan Lehti,Jussi U. Pellonpää
+heikkiIkonen,8,2,Hämeen Sanomat 13.3.2020,Hämeen Sanomat,Heikki Ikonen
+timoAlho,8,4,Kymen Sanomat 13.3.2020,Kymen Sanomat,Timo Alho
+tr,8,3,Seiska 11/2020,Seiska,T R
+hannuLiekso,8,1,https://www.episodi.fi/elokuvat/aika-jonka-sain/,Episodi,Hannu Liekso
+nikoIkonen,8,2,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/katsoimme-tuukka-ja-olga-temosen-uusimman-aika-jonka-sain,Me Naiset,Niko Ikonen
+hannuBjörkbacka,8,2,Keskipohjanmaa 13.6.2020,Keskipohjanmaa,Hannu Björkbacka
+jussiHuhtala,8,2,Episodi 2/2021,Episodi,Jussi Huhtala
+hannuLiekso,8,1,Episodi 2/2021,Episodi,Hannu Liekso
+miskaRantanen,9,4,Helsingin Sanomat 13.3.2020,Helsingin Sanomat,Miska Rantanen
+anttiSelkokari,9,4,Aamulehti 13.3.2020,Aamulehti,Antti Selkokari
+kariSalminen,9,4,Turun Sanomat 13.3.2020,Turun Sanomat,Kari Salminen
+jarnoLindemark,9,4,Etelä-Suomen Sanomat 13.3.2020,Etelä-Suomen Sanomat,Jarno Lindemark
+jussiUPellonpää,9,3,Forssan Lehti 13.3.2020,Forssan Lehti,Jussi U. Pellonpää
+saraEH,9,4,Hufvudstadsbladet 13.3.2020,Hufvudstadsbladet,Sara Ehnholm Hielm
+aa,9,3,Seiska 11/2020,Seiska,Atte Alhainen
+jussiHuhtala,9,4,https://www.episodi.fi/elokuvat/mr-jones/,Episodi,Jussi Huhtala
+eijaNiskanen,9,3.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/mr-jones-neuvostojen-maassa-elokuva-walesilaisreportterin-uskomattomasta-matkasta-1930-luvulla/,Kulttuuritoimitus.fi,Eija Niskanen
+marttaKaukonen,9,3.5,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/arvostelussa-ensi-iltadraama-mr-jones-jarkyttavat,Me Naiset,Martta Kaukonen
+iidaSimes,9,4,https://voima.fi/kulttuuriartikkeli/les-miserables/,Voima,Iida Simes
+kalleKinnunen,9,3,Suomen Kuvalehti 11/2020,Suomen Kuvalehti,Kalle Kinnunen
+martaBalaga,9,3,Episodi 4/2020,Episodi,Marta Balaga
+nikoIkonen,9,3,Episodi 4/2020,Episodi,Niko Ikonen
+jouniVikman,9,3,Episodi 4/2020,Episodi,Jouni Vikman
+hannuLiekso,9,3,Episodi 3/2020,Episodi,Hannu Liekso
+kariSalminen,10,5,Turun Sanomat 13.3.2020,Turun Sanomat,Kari Salminen
+marttaKaukonen,10,4,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/syyrialaislaakari-amani-ballour-uhmaa-maansa-ennakkoluuloja,Me Naiset,Martta Kaukonen
