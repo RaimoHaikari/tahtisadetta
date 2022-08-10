@@ -2,3 +2,7 @@ data
 node_modules
 fooBar
 import
+
+.gitignore
+package-lock.json
+package.json
