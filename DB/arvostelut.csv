@@ -16,7 +16,6 @@ päiviValotie,2,3,Turun Sanomat 6.3.2020,Turun Sanomat,Päivi Valotie
 jouniVikman,2,3,https://www.episodi.fi/elokuvat/emma/,Episodi,Jouni Vikman
 nikoIkonen,2,3,Episodi 4/2020,Episodi,Niko Ikonen
 hannuLiekso,2,3,Episodi 4/2020,Episodi,Hannu Liekso
-jouniVikman,2,3,Episodi 4/2020,Episodi,Jouni Vikman
 leenaVirtanen,3,3,Helsingin Sanomat 7.2.2020,Helsingin Sanomat,Leena Virtanen
 pekkaEronen,3,2,Aamulehti 7.2.2020,Aamulehti,Pekka Eronen
 päiviValotie,3,3,Turun Sanomat 7.2.2020,Turun Sanomat,Päivi Valotie
@@ -84,7 +83,6 @@ hannuLiekso,8,1,https://www.episodi.fi/elokuvat/aika-jonka-sain/,Episodi,Hannu L
 nikoIkonen,8,2,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/katsoimme-tuukka-ja-olga-temosen-uusimman-aika-jonka-sain,Me Naiset,Niko Ikonen
 hannuBjörkbacka,8,2,Keskipohjanmaa 13.6.2020,Keskipohjanmaa,Hannu Björkbacka
 jussiHuhtala,8,2,Episodi 2/2021,Episodi,Jussi Huhtala
-hannuLiekso,8,1,Episodi 2/2021,Episodi,Hannu Liekso
 miskaRantanen,9,4,Helsingin Sanomat 13.3.2020,Helsingin Sanomat,Miska Rantanen
 anttiSelkokari,9,4,Aamulehti 13.3.2020,Aamulehti,Antti Selkokari
 kariSalminen,9,4,Turun Sanomat 13.3.2020,Turun Sanomat,Kari Salminen
@@ -154,7 +152,6 @@ jarnoLindemark,14,2,Etelä-Suomen Sanomat 31.1.2020,Etelä-Suomen Sanomat,Jarno 
 saraEH,14,4,Hufvudstadsbladet 31.1.2020,Hufvudstadsbladet,Sara Ehnholm Hielm
 timoAlho,14,4,Etelä-Saimaa 31.1.2020,Etelä-Saimaa,Timo Alho
 heikkiIkonen,14,4,Hämeen Sanomat 31.1.2020,Hämeen Sanomat,Heikki Ikonen
-riikkaOksanen,14,4.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/marchin-sisarusten-elama-kiehtoo-edelleen-greta-gerwigin-versio-pikku-naisista-virkistaa/,Kulttuuritoimitus.fi,Riikka Oksanen
 mariaLättilä,14,4,https://www.episodi.fi/elokuvat/pikku-naisia/,Episodi,Maria Lättilä
 riikkaOksanen,14,4.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/marchin-sisarusten-elama-kiehtoo-edelleen-greta-gerwigin-versio-pikku-naisista-virkistaa/,Kulttuuritoimitus.fi,Riikka Oksanen
 marttaKaukonen,14,4,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/hurmaava-feministinen-pikku-naisia-elokuva-vuosimallia-2020,Me Naiset,Martta Kaukonen
@@ -209,7 +206,7 @@ mariaLättilä,18,4,Episodi 1/2020,Episodi,maria Lättilä
 hannuLiekso,18,3,Epidodi 2/2020,Episodi,Hannu liekso
 martaBalaga,18,4,Episodi 4/2020,Episodi,Marta Balaga
 jesseRaatikainen,18,4,Episodi 4/2020,Episodi,Jesse Raatikainen
-jouniVikman,18,4,Episodi 4/2020,Episodi,Jouni Vikman
+jussiHuhtala,18,4,Episodi 4/2020,Episodi,Jouni Vikman
 lauraHallamaa,19,2,Helsingin Sanomat 3.1.2020,Helsingin Sanomat,Laura Hallamaa
 pekkaEronen,19,2,Aamulehti 3.1.2020,Aamulehti,Pekka Eronen
 hwRehnstöm,19,2,Turun Sanomat 3.1.2020,Turun Sanomat,Henri Waltter Rehnström
@@ -221,7 +218,6 @@ anneVälinoro,19,4,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/uusi
 nikoIkonen,19,3,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/katsoimme-kohuleffa-catsin-ja-voi-pojat-ja-tytot-millainen-se,Me Naiset,Niko Ikonen
 axelÅhman,19,1,Vasabladet 4.1.2020,Vasabladet,Axel Åhman
 hannuBjörkbacka,19,3,Keskipohjanmaa 11.1.2020,Keskipohjanmaa,Hannu Björkbacka
-nikoikonen,19,3,Episodi 1/2020,Episodi,Niko Ikonen
 hannuLiekso,19,2,Episodi 1/2020,Episodi,Hannu Liekso
 jesseRaatikainen,19,2,Episodi 1/2020,Episodi,Jesse Raatikainen
 martaBalaga,19,1,Episodi 2/2020,Episodi,Marta Balaga
@@ -229,7 +225,6 @@ avola,20,3,Helsingin Sanomat 14.2.2020,Helsingin Sanomat,Pertti Avola
 hwRehnstöm,20,2,Turun Sanomat 14.2.2020,Turun Sanomat,Henri Waltter Rehnström
 jussiVirratvuori,20,5,Keskisuomalainen 14.2.2020,Keskisuomalainen,Jussi Virratvuori
 kristerUggedal,20,3,Hufvudstadsbladet 14.2.2020,Hufvudstadsbladet,Krister Uggeldahl
-jussiVirratvuori,20,5,Etelä-Suomen Sanomat 14.2.2020,Etelä-Suomen Sanomat,Jussi Virratvuori
 jussiUPellonpää,20,2,Forssan Lehti 14.2.2020,Forssan Lehti,Jussi U. Pellonpää
 jouniVikman,20,4,https://www.episodi.fi/elokuvat/the-peanut-butter-falcon/,Episodi,Jouni Vikman
 anneVälinoro,20,5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/peanut-butter-falcon-on-vuosikymmenen-paras-elokuva-ennen-kuin-vuosikymmen-on-edes-alkanut-kunnolla/,Kulttuuritoimitus.fi,Anne Välinoro
@@ -280,7 +275,6 @@ klasFransberg,25,2,Vasabladet 3.1.2020,Vasabladet,Klas Fransberg
 hannuBjörkbacka,25,3,Keskipohjanmaa 5.1.2020,Keskipohjanmaa,Hannu Björkbacka
 jussiHuhtala,25,2,Episodi 1/2020,Episodi,Jussi Huhtala
 nikoikonen,25,3,Episodi 1/2020,Episodi,Niko Ikonen
-jesseRaatikainen,25,3,Episodi 1/2020,Episodi,Jesse Raatikainen
 martaBalaga,25,3,Episodi 1/2021,Episodi,Marta Balaga
 hannuLiekso,25,2,Episodi 1/2021,Episodi,Hannu Liekso
 sannaWirratvuori,26,4,Eeva 2/2020,Eeva,Sanna Wirtavuori
@@ -342,7 +336,6 @@ akiLehti,32,2.5,https://muropaketti.com/elokuvat/arvostelu-harrison-fordin-tahdi
 jussiHuhtala,32,3,Episodi 4/2020,Episodi,Jussi Huhtala
 nikoIkonen,32,3,Episodi 4/2020,Episodi,Niko Ikonen
 hannuLiekso,32,3,Episodi 4/2020,Episodi,Hannu Liekso
-mariaLättilä,32,3,Episodi 4/2020,Episodi,Maria Lättilä
 jesseRaatikainen,32,3,Episodi 4/2020,Episodi,Jesse Raatikainen
 janneKaakko,33,3,Aamulehti 28.2.2020,Aamulehti,Janne Kaakko
 kariSalminen,33,2,Turun Sanomat 28.2.2020,Turun Sanomat,Kari Salminen
@@ -387,7 +380,6 @@ pekkaEronen,39,4,Aamulehti 10.1.2020,Aamulehti,Pekka Eronen
 kariSalminen,39,2,Turun Sanomat 10.1.2020,Turun Sanomat,Kari Salminen
 olli-mattiOinonen,39,5,Etelä-Suomen Sanomat 10.1.2020,Etelä-Suomen Sanomat,Olli-Matti Oinonen
 martinaMolisMelberg,39,2,Hufvudstadsbladet 10.1.2020,Hufvudstadsbladet,Martina Moliis-Mellberg
-sebastianGranskog,39,4,Vasabladet 10.1.2020,Vasabladet,Sebastian Granskog
 timoAlho,39,4,Kymen Sanomat 10.1.2020,Kymen Sanomat,Timo Alho
 riittaLehtimäki,39,5,Eeva 1/2020,Eeva,Riitta Lehtimäki
 jussiHuhtala,39,4,https://www.episodi.fi/elokuvat/jojo-rabbit/,Episodi,Jussi Huhtala
@@ -441,9 +433,7 @@ jussiUPellonpää,42,4,Forssan Lehti 7.8.2020,Forssan Lehti,Jussi U. Pellonpää
 heikkiIkonen,42,4,Hämeen Sanomat 10.7.2020,Hämeen Sanomat,Heikki Ikonen
 hannuBjörkbacka,42,3,Keskipohjanmaa 17.7.2020,Keskipohjanmaa,Hannu Björkbacka
 martaBalaga,42,2,Episodi 1/2021,Episodi,Marta Balaga
-nikoikonen,42,4,Episodi 1/2021,Episodi,Niko Ikonen
 hannuLiekso,42,3,Episodi 1/2021,Episodi,Hannu Liekso
-jussiHuhtala,42,4,Episodi 3/2020,Episodi,Jussi Huhtala
 sannaWirratvuori,43,4,Eeva 4/2020,Eeva,Sanna Wirtavuori
 kalleKinnunen,43,3,Suomen Kuvalehti 12/2020,Suomen Kuvalehti,Kalle Kinnunen
 nikoIkonen,43,3,Episodi 3/2020,Episodi,Niko Ikonen
@@ -467,11 +457,6 @@ kristerUggedal,45,2,Hufvudstadsbladet 17.1.2020,Hufvudstadsbladet,Krister Uggeld
 timoAlho,45,3,Kymen Sanomat 17.1.2020,Kymen Sanomat,Timo Alho
 nikoIkonen,45,2,https://www.episodi.fi/elokuvat/elaintohtori-dolittle/,Episodi,Niko Ikonen
 helinäLaajalahti,45,2,https://muropaketti.com/elokuvat/arvostelu-elaintohtori-dolittle-on-iron-man-tahti-robert-downey-jr-n-uran-turhimpia-elokuvia/,Muropaketti,Helinä Laajalahti
-avola,45,2,Helsingin Sanomat 17.1.2020,Helsingin Sanomat,Pertti Avola
-hwRehnstöm,45,1,Turun Sanomat 17.1.2020,Turun Sanomat,Henri Waltter Rehnström
-jussiVirratvuori,45,2,Etelä-Suomen Sanomat 17.1.2020,Etelä-Suomen Sanomat,Jussi Virratvuori
-jussiUPellonpää,45,2,Forssan Lehti 17.1.2020,Forssan Lehti,Jussi U. Pellonpää
-kristerUggedal,45,2,Hufvudstadsbladet 17.1.2020,Hufvudstadsbladet,Krister Uggedal
 martaBalaga,45,1,Episodi 2/2020,Episodi,Marta Balaga
 hannuLiekso,45,2,Episodi 2/2020,Episodi,Hannu liekso
 jesseRaatikainen,45,3,Episodi 2/2020,Episodi,Jesse Raatikainen
@@ -484,7 +469,6 @@ marttaKaukonen,49,1.5,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttu
 helinäLaajalahti,49,2,https://muropaketti.com/elokuvat/elokuva-arvostelut/arvostelu-johnny-deppin-tahdittama-nakemiin-professori-on-tasapaksu-ja-muovinen-draamakomedia-syopaan-kuolevasta-opettajasta/,Muropaketti,Helinä Laajalahti
 eijaNiskanen,50,5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/cinema-orion-toi-pride-viikolle-japanilaisen-gay-boy-kuvauksen-funeral-parade-of-rosesin/,Kulttuuritoimitus.fi,Eija Niskanen
 eijaNiskanen,51,3.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/pieni-punainen-luotaa-taistolaisuuden-varjoon-jaanytta-1960-70-lukujen-maolaista-liiketta-suomessa/,Kulttuuritoimitus.fi,Eija Niskanen
-nikoIkonen,52,4,https://www.episodi.fi/elokuvat/the-outpost/,Episodi,Niko Ikonen
 nikoIkonen,52,4,https://www.episodi.fi/elokuvat/the-outpost/,Episodi,Niko Ikonen
 jl,53,3,Katso 29/2020,Katso,J L
 aa,54,4,Katso 30/2020,Katso,Atte Alhainen
@@ -529,7 +513,6 @@ riikkaOksanen,59,5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/rakk
 nikoikonen,59,5,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/viisi-tahtea-ensi-iltaleffa-nuoren-naisen-muotokuva-ehka,Me Naiset,Niko Ikonen
 tuomasRantanen,59,4,https://voima.fi/kulttuuriartikkeli/nuoren-naisen-muotokuva-on-alykas-elokuva-naisten-valisesta-solidaarisuudesta-ja-taitelijan-malliaan-vangitsevasta-katseesta/,Voima,Tuomas Rantanen
 martaBalaga,59,5,Episodi 1/2020,Episodi,Marta Balaga
-jussiHuhtala,59,4,Episodi 1/2020,Episodi,Jussi Huhtala
 hannuLiekso,59,4,Episodi 1/2020,Episodi,Hannu Liekso
 mariaLättilä,59,4,Episodi 1/2020,Episodi,maria Lättilä
 jesseRaatikainen,59,4,Episodi 1/2020,Episodi,Jesse Raatikainen
@@ -596,7 +579,6 @@ hannuLiekso,66,3,https://www.episodi.fi/elokuvat/tarhapaiva/,Episodi,Hannu Lieks
 anneVälinoro,66,4,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/ma-haluun-aidin-takaisin-tiina-lymin-ohjaama-tarhapaiva-on-sahakkaa-sahlinkia/,Kulttuuritoimitus.fi,Anne Välinoro
 jouniVikman,67,4,https://www.episodi.fi/elokuvat/midway/,Episodi,Jouni Vikman
 kariSalminen,67,4,Turun Sanomat 8.11.2019,Turun Sanomat,Kari Salminen
-jouniVikman,67,4,https://www.episodi.fi/elokuvat/midway/,Episodi,Jouni Vikman
 anttiSelkokari,67,2,Aamulehti 8.11.2019,Aamulehti,Antti Selkokari
 marttaKukonen,68,3,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/millainen-leffa-syntyy-last-christmas-korvamadon-ymparille,Me Naiset,Martta Kaukonen
 niklasTirronen,68,2,https://www.episodi.fi/elokuvat/last-christmas/,Episodi,Niklas Tirkkonen
@@ -616,7 +598,6 @@ kariSalminen,70,3,Turun Sanomat 27.12.2019,Turun Sanomat,Kari Salminen
 mariaLättilä,70,3,https://www.episodi.fi/elokuvat/frozen-2/,Episodi,Maria Lättilä
 eijaNiskanen,70,2.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/frozen-2-on-muovinen-ja-tasapaksu-disney-hitin-jatkoa-mainostetaan-voimauttavaksi-tyttoseikkailuksi/,Kulttuuritoimitus.fi,Eija Niskanen
 marttaKaukonen,70,3,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/me-naiset-katsoi-frozen-2-elokuvan-elsa-ja-anna-eivat-peta,Me Naiset,Martta Kaukonen
-anniSaari,70,4,Keskipohjanmaa 11.1.2020,Keskipohjanmaa,Anni Saari
 anniSaari,70,4,Keskipohjanmaa 11.1.2020,Keskipohjanmaa,Anni Saari
 jussiHuhtala,70,4,Episodi 1/2020,Episodi,Jussi Huhtala
 nikoikonen,70,3,Episodi 1/2020,Episodi,Niko Ikonen
@@ -659,12 +640,10 @@ leenaVirtanen,77,3,Helsingin Sanomat 27.11.2019,Helsingin Sanomat,Leena Virtanen
 martaBalaga,77,5,https://www.episodi.fi/elokuvat/marriage-story/,Episodi,Marta Balaga
 anttiSelkokari,77,4,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/ironisten-ihmissuhdekomedioiden-ohjaajan-noah-baumbachin-marriage-storyssa-rakkaus-ei-riita-kaikkeen/,Kulttuuritoimitus.fi,Antti Selkokari
 marttaKaukonen,77,3.5,https://www.menaiset.fi/artikkeli/ihmiset-ja-ilmiot/kulttuuri/scarlett-johansson-ja-adam-driver-ovat-vahvoilla-kun-oscareita,Me Naiset,Martta Kaukonen
-leenaVirtanen,77,3,Helsingin Sanomat 27.11.2019,Helsingin Sanomat,Leena Virtanen
 jussiHuhtala,77,5,Episodi 1/2020,Episodi,Jussi Huhtala
 nikoIkonen,77,4,Episodi 1/2020,Episodi,Niko Ikonen
 mariaLättilä,77,4,Episodi 1/2020,Episodi,Maria Lättilä
 jesseRaatikainen,77,4,Episodi 3/2020,Episodi,Jesse Raatikainen
-martaBalaga,77,5,Episodi 2/2020,Episodi,Marta Balaga
 avola,78,3,Helsingin Sanomat 27.11.2019,Helsingin Sanomat,Pertti Avola
 mariaLättilä,78,4,https://www.episodi.fi/elokuvat/veitset-esiin-kaikki-ovat-epailtyja/,Episodi,Maria Lättilä
 kaarinaLehtisalo,78,3.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/nokkela-murhamysteeri-veitset-esiin-kaikki-ovat-epailtyja-luottaa-kovaan-tahtikaartiin/,Kulttuuritoimitus.fi,Kaarina Lehtisalo
@@ -708,7 +687,6 @@ jesseRaatikainen,83,4,Episodi 1/2020,Episodi,Jesse Raatikainen
 vpLehtonen,84,3,Helsingin Sanomat 15.11.2019,Helsingin Sanomat,Veli-Pekka Lehtonen
 päiviValotie,84,3,Turun Sanomat 15.11.2019,Turun Sanomat,Päivi Valotie
 jussiHuhtala,84,4,https://www.episodi.fi/elokuvat/jumalan-armosta/,Episodi,Jussi Huhtala
-vpLehtonen,84,3,Helsingin Sanomat 15.11.2019,Helsingin Sanomat,Veli-Pekka Lehtonen
 martaBalaga,84,2,Episodi 1/2020,Episodi,Marta Balaga
 nikoikonen,84,3,Episodi 1/2020,Episodi,Niko Ikonen
 hannuLiekso,84,3,Episodi 1/2020,Episodi,Hannu Liekso
@@ -851,3 +829,203 @@ mariaLättilä,120,4,https://www.episodi.fi/elokuvat/minari/,Episodi,Maria Lätt
 martaBalaga,120,4,Episodi 4/2021,Episodi,Marta Balaga
 eijaNiskanen,120,4.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/minari-on-sydamella-tehty-elokuva-korealaisesta-maahanmuuttajaperheesta/,kulttuuritoimitus.fi/,Eija Niskanen
 tk,120,3,Katso 19/2021,Katso,T K
+nikoIkonen ,124,1,https://www.episodi.fi/elokuvat/army-of-one/,Episodi,Niko Ikonen
+tr,124,2,Katso 16/2021,Katso,T R
+mariaLattila,127,4,https://www.episodi.fi/elokuvat/nomadland/,Episodi,maria Lättilä
+jussiHuhtala,127,4,Episodi 4/2021,Episodi,Jussi Huhtala
+nikoIkonen,127,4,Episodi 4/2021,Episodi,Niko Ikonen
+hannuLiekso,127,4,Episodi 4/2021,Episodi,Hannu Liekso
+jesseRaatikainen,127,5,Episodi 4/2021,Episodi,Jesse Raatikainen
+anttiSelkokari,127,4,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/jos-kaikki-menee-on-parasta-lahtea-tien-paalle-kertoo-oscar-elokuvien-ennakkosuosikki-nomadland/,kulttuuritoimitus.fi/,Antti Selkokari
+kaisuTervonen,127,5,Suomen Kuvalehti 12/2021,Suomen Kuvalehti,Kaisu Tervonen
+jussiHuhtala,128,4,https://www.episodi.fi/elokuvat/falling/,Episodi,Jussi Huhtala
+anttiSelkokari,128,4.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/viggo-mortensenin-esikoisohjaus-hakellyttaa-kypsyydellaan-ja-viilealla-tyylikkyydellaan-arviossa-falling/,kulttuuritoimitus.fi/,Antti Selkokari
+jesseRaatikainen,128,4,Episodi 1/2021,Episodi,Jesse Raatikainen
+nikoIkonen,128,4,Episodi 1/2021,Episodi,Niko Ikonen
+hannuLiekso,128,3,Episodi 1/2021,Episodi,Hannu Liekso
+niklasTirkkonen,128,4,Episodi 1/2021,Episodi,Niklas Tirkkonen
+martaBalaga,128,3,Episodi 2/2021,Episodi,Marta Balaga
+jouniVikman,128,3,Episodi 2/2021,Episodi,Jouni Vikman
+nikoIkonen,130,5,https://www.episodi.fi/elokuvat/tunturin-tarina/,Episodi,Niko Ikonen
+hannuLiekso,130,4,Episodi 2/2021,Episodi,Hannu Liekso
+leenaVirtanen,130,3,Helsingin Sanomat 3.12.2021,Helsingin Sanomat,Leena Virtanen
+jussiVirratvuori,130,3,Keskisuomalainen 3.12.2021,Keskisuomalainen,Jussi Virratvuori
+kristerUggedal,130,4,Hufvudstadsbladet 3.12.2021,Hufvudstadsbladet,Krister Uggedal
+aa,130,4,Katso 50/2021,Katso,A A
+niklasTirkkonen,133,3,https://www.episodi.fi/elokuvat/kuka-pelkaa-noitia/,Episodi,Niko Ikonen
+nikoIkonen,133,3,Episodi 1/2021,Episodi,Niko Ikonen
+hannuLiekso,133,3,Episodi 2/2021,Episodi,Hannu Liekso
+nikoIkonen,134,5,https://www.episodi.fi/elokuvat/cruella/,Episodi,Niko Ikonen
+eliHarju,134,3,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/perijatar-de-vil-sai-taas-yhden-elaman-valkokankaalla-cruella-elokuva-on-varsin-siivo-paaosassa-on-puvustus/,kulttuuritoimitus.fi/,Elli Harju
+iraHurskainen,134,4,Episodi 9/2021,Episodi,Ira Hurskainen
+mariaLättilä,134,3,Episodi 9/2021,Episodi,maria Lättilä
+jouniVikman,134,5,Episodi 9/2021,Episodi,Jouni Vikman
+martaBalaga,135,5,Episodi 11/2021,Episodi,Marta Balaga
+mariaLattila,135,4,https://www.episodi.fi/elokuvat/isa/,Episodi,Maria Lättilä
+jussiVirratvuori,135,5,Etelä-Suomen Sanomat 13.8.2021,Etelä-Suomen Sanomat,Jussi Virratvuori
+jussiHuhtala,135,5,Episodi 9/2021,Episodi,Jussi Huhtala
+nikoIkonen,135,4,Episodi 9/2021,Episodi,Niko Ikonen
+hannuLiekso,135,4,Episodi 9/2021,Episodi,Hannu Liekso
+mariaLättilä,135,4,Episodi 9/2021,Episodi,maria Lättilä
+jouniVikman,135,4,Episodi 9/2021,Episodi,Jouni Vikman
+jesseRaatikainen,135,5,Episodi 11/2021,Episodi,Jesse Raatikainen
+susannaKarhapaa,135,5,Episodi 8/2021,Episodi,Susanna Karhapää
+tuomasRantanen,143,5,Voima 8/2021,Voima,tuomas Rantanen
+vpLehtonen,143,4,Helsingin Sanomat 29.10.2021,Helsingin Sanomat,Veli-Pekka Lehtonen
+olliMattiOinonen,143,5,Keskisuomalainen 29.10.2021,Keskisuomalainen,Olli-Matti Oinonen
+klasFransberg,143,4,Vasabladet 29.10.2021,Vasabladet,Klas Fransberg
+paiviValotie,143,4,Turun Sanomat 29.10.2021,Turun Sanomat,Päivi Valotie
+heikkiIkonen,143,4,Hämeen Sanomat 29.10.2021,Hämeen Sanomat,Heikki Ikonen
+saraEnholmHjelm,143,5,Hufvudstadsbladet 29.10.2021,Hufvudstadsbladet,Sara Ehnholm Hielm
+jussiUPellonpaa,143,4,Forssan Lehti 30.10.2021,Forssan Lehti,Jussi U. Pellonpää
+martaBalaga,143,4,Episodi 11/2021,Episodi,Marta Balaga
+nikoIkonen,143,4,Episodi 11/2021,Episodi,Niko Ikonen
+hannuLiekso,143,4,Episodi 11/2021,Episodi,Hannu Liekso
+mariaLattila,143,3,Episodi 11/2021,Episodi,Maria Lättilä
+hannuBjorkbacka,143,5,Keskipohjanmaa 11.9.2021,Keskipohjanmaa,Hannu Björkbacka
+tr,143,4,Katso 45/2021,Katso,T R
+jariTamminen,144,4,Voima 8/2021,Voima,Jari Tamminen
+nikoIkonen,144,4,https://www.episodi.fi/elokuvat/128247/,Episodi,Niko Ikonen
+jussiHuhtala,144,3,Episodi 11/2021,Episodi,Jussi Huhtala
+hannuLiekso,144,3,Episodi 11/2021,Episodi,Hannu Liekso
+jesseRaatikainen,144,4,Episodi 11/2021,Episodi,Jesse Raatikainen
+jouniVikman,144,3,Episodi 11/2021,Episodi,Jouni Vikman
+hannuBjorkbacka,144,3,Keskipohjanmaa 25.9.2021,Keskipohjanmaa,Hannu Björkbacka
+saraEH,144,3,Hufvudstadsbladet 17.9.2021,Hufvudstadsbladet,Sara Ehnholm Hielm
+tuomasRantanen,145,5,Voima 8/2021,Voima,tuomas Rantanen
+teroKartastenpaa,145,3,Helsingin Sanomat 22.10.2021,Helsingin Sanomat,Tero Kartastenpää
+jussiVirratvuori,145,5,Keskisuomalainen 22.10.2021,Keskisuomalainen,Jussi Virratvuori
+martaBalaga,145,3,Episodi 11/2021,Episodi,Marta Balaga
+jussiHuhtala,145,4,Episodi 11/2021,Episodi,Jussi Huhtala
+nikoIkonen,145,3,Episodi 11/2021,Episodi,niko Ikonen
+hannuLiekso,145,3,Episodi 11/2021,Episodi,Hannu Liekso
+mariaLattila,145,3,Episodi 11/2021,Episodi,Maria Lättilä
+jesseRaatikainen,145,4,Episodi 11/2021,Episodi,Jesse Raatikainen
+jouniVikman,145,3,Episodi 11/2021,Episodi,jouni Vikman
+saraEH,145,4,Hufvudstadsbladet 22.10.2021,Hufvudstadsbladet,Sara Ehnholm Hielm
+tr,145,3,Katso 44/2021,Katso,T R
+mariaLattila,146,4,https://www.episodi.fi/elokuvat/candyman/,Episodi,Maria Lättilä
+juhoTyppo,146,4,Helsingin Sanomat 8.10.2021,Helsingin Sanomat,Juho Typpö
+kristerUggedal,146,2,Hufvudstadsbladet 8.10.2021,Hufvudstadsbladet,Krister Uggedal
+kariSalminen,146,4,Turun Sanomat 8.10.2021,Turun Sanomat,Kari Salminen
+heikkiIkonen,146,3,Hämeen Sanomat 8.10.2021,Hämeen Sanomat,Heikki Ikonen
+jouniVikman,147,4,https://www.episodi.fi/elokuvat/junk-head/,Episodi,Jouni Vikman
+avola,147,3,Helsingin Sanomat 8.10.2021,Helsingin Sanomat,Pertti Avola
+kariSalminen,147,3,Turun Sanomat 8.10.2021,Turun Sanomat,Kari Salminen
+jesseRaatikainen,148,3,https://www.episodi.fi/elokuvat/yo-armahtaa/,Episodi,Jesse Raatikainen
+vpLehtonen,148,2,Helsingin Sanomat 8.10.2021,Helsingin Sanomat,Veli-Pekka Lehtonen
+olliMattiOinonen,148,4,Etelä-Suomen Sanomat 8.10.2021,Etelä-Suomen Sanomat,Olli-Matti Oinonen
+kristerUggedal,148,2,Hufvudstadsbladet 8.10.2021,Hufvudstadsbladet,Krister Uggedal
+paiviValotie,148,3,Turun Sanomat 8.10.2021,Turun Sanomat,Päivi Valotie
+hannuBjorkbacka,148,4,Keskipohjanmaa 16.10.2021,Keskipohjanmaa,Hannu Björkbacka
+martaBalaga,149,3,https://www.episodi.fi/elokuvat/gagarine-kiertoradalla/,Episodi,Marta Balaga
+teroKartastenpaa,149,3,Helsingin Sanomat 8.10.2021,Helsingin Sanomat,Tero Kartastenpää
+martinaMolis,149,3,Hufvudstadsbladet 8.10.2021,Hufvudstadsbladet,Martina Moliis-Mellberg
+mariaLattila,150,3,https://www.episodi.fi/elokuvat/persian-oppitunnit/,Episodi,Maria Lättilä
+nikoIkonen,150,4,Episodi 9/2021,Episodi,Niko Ikonen
+hannuLiekso,150,3,Episodi 9/2021,Episodi,Hannu Liekso
+martaBalaga,150,2,Episodi 2/2021,Episodi,Marta Balaga
+kristerUggedal,150,3,Hufvudstadsbladet 17.9.2021,Hufvudstadsbladet,Krister Uggedal
+nikoIkonen,151,2,https://www.episodi.fi/elokuvat/pahan-naapuri/,Episodi,Niko Ikonen
+niklasTirkkonen,152,3,https://www.episodi.fi/elokuvat/escape-room-no-way-out/,Episodi,Niklas Tirkkonen
+jouniVikman,153,3,https://www.episodi.fi/elokuvat/respect/,Episodi,Jouni Vikman
+jussiHuhtala,153,3,Episodi 11/2021,Episodi,Jussi Huhtala
+nikoIkonen,153,2,Episodi 11/2021,Episodi,Niko Ikonen
+jesseRaatikainen,153,4,Episodi 11/2021,Episodi,Jesse Raatikainen
+kristerUggedal,153,3,Hufvudstadsbladet 24.9.2021,Hufvudstadsbladet,Krister Uggedal
+nikoIkonen,154,4,https://www.episodi.fi/elokuvat/the-green-knight/,Episodi,Niko Ikonen
+jussiHuhtala,155,4,https://www.episodi.fi/elokuvat/007-no-time-to-die/,Episodi,Jussi Huhtala
+juhoTyppo,155,4,Helsingin Sanomat 1.10.2021,Helsingin Sanomat,Juho Typpö
+jussiVirratvuori,155,4,Etelä-Suomen Sanomat 1.10.2021,Etelä-Suomen Sanomat,Jussi Virratvuori
+nikoIkonen,155,4,Episodi 11/2021,Episodi,Niko Ikonen
+hannuLiekso,155,4,Episodi 11/2021,Episodi,Hannu Liekso
+jesseRaatikainen,155,4,Episodi 11/2021,Episodi,Jesse Raatikainen
+jouniVikman,155,3,Episodi 11/2021,Episodi,Jouni Vikman
+hannuBjorkbacka,155,4,Keskipohjanmaa 2.10.2021,Keskipohjanmaa,Hannu Björkbacka
+kristerUggedal,155,3,Hufvudstadsbladet 30.9.2021,Hufvudstadsbladet,Krister Uggedal
+jussiHuhtala,156,4,https://www.episodi.fi/elokuvat/grandmaster/,Episodi,Jussi Huhtala
+avola,157,3,Helsingin Sanomat 29.10.2021,Helsingin Sanomat,Pertti Avola
+hwRehnstrom,157,4,Turun Sanomat 29.10.2021,Turun Sanomat,Henri Waltter Rehnström
+hwRehnstrom,158,3,Turun Sanomat 29.10.2021,Turun Sanomat,Henri Waltter Rehnström
+heikkiIkonen,158,2,Hämeen Sanomat 29.10.2021,Hämeen Sanomat,Heikki Ikonen
+jussiUPellonpaa,158,2,Forssan Lehti 29.10.2021,Forssan Lehti,Jussi U. Pellonpää
+teroKartastenpaa,158,2,Helsingin Sanomat 28.10.2021,Helsingin Sanomat,Tero Kartastenpää
+hannuBjorkbacka,158,3,Keskipohjanmaa 13.11.2021,Keskipohjanmaa,Hannu Björkbacka
+tr,158,4,Katso 44/2021,Katso,T R
+avola,159,3,Helsingin Sanomat 29.10.2021,Helsingin Sanomat,Pertti Avola
+kariSalminen,159,4,Turun Sanomat 29.10.2021,Turun Sanomat,Kari Salminen
+kristerUggedal,159,2,Hufvudstadsbladet 29.10.2021,Hufvudstadsbladet,Krister Uggedal
+nikoIkonen,159,2,Episodi 11/2021,Episodi,Niko Ikonen
+jesseRaatikainen,159,3,Episodi 11/2021,Episodi,Jesse Raatikainen
+teroKartastenpaa,160,3,Helsingin Sanomat 10.9.2021,Helsingin Sanomat,Tero Kartastenpää
+jussiVirratvuori,160,5,Keskisuomalainen 10.9.2021,Keskisuomalainen,Jussi Virratvuori
+heikkiIkonen,160,2,Hämeen Sanomat 10.9.2021,Hämeen Sanomat,Heikki Ikonen
+nikoIkonen,160,2,Episodi 8/2021,Episodi,Niko Ikonen
+hannuLiekso,160,2,Episodi 8/2021,Episodi,Hannu Liekso
+oonaKomonen,161,4,Helsingin Sanomat 10.9.2021,Helsingin Sanomat,Oona Komonen
+olliMattiOinonen,161,5,Keskisuomalainen 10.9.2021,Keskisuomalainen,Olli-Matti Oinonen
+heikkiIkonen,161,4,Hämeen Sanomat 10.9.2021,Hämeen Sanomat,Heikki Ikonen
+jussiHuhtala,161,4,Episodi 9/2021,Episodi,Jussi Huhtala
+nikoIkonen,161,4,Episodi 9/2021,Episodi,Niko Ikonen
+hannuLiekso,161,4,Episodi 9/2021,Episodi,Hannu Liekso
+kalleKinnunen,161,4,Suomen Kuvalehti 36/2021,Suomen Kuvalehti,Kaarina Lehtisalo
+martaBalaga,161,4,Episodi 11/2021,Episodi,Marta Balaga
+jesseRaatikainen,161,4,Episodi 11/2021,Episodi,Jesse Raatikainen
+hannuBjorkbacka,161,3,Keskipohjanmaa 9.10.2021,Keskipohjanmaa,Hannu Björkbacka
+kristerUggedal,161,4,Hufvudstadsbladet 10.9.2021,Hufvudstadsbladet,Krister Uggedal
+kristerUggedal,162,3,Hufvudstadsbladet 20.8.2021,Hufvudstadsbladet,Krister Uggedal
+leenaVirtanen,162,3,Helsingin Sanomat 20.8.2021,Helsingin Sanomat,Leena Virtanen
+nikoIkonen,162,2,Episodi 9/2021,Episodi,Niko Ikonen
+hannuLiekso,162,2,Episodi 9/2021,Episodi,Hannu Liekso
+jouniVikman,162,2,Episodi 9/2021,Episodi,Jouni Vikman
+avola,163,2,Helsingin Sanomat 20.8.2021,Helsingin Sanomat,Pertti Avola
+nikoIkonen,163,1,Episodi 9/2021,Episodi,niko Ikonen
+hannuLiekso,163,3,Episodi 9/2021,Episodi,Hannu Liekso
+jouniVikman,163,1,Episodi 9/2021,Episodi,Jouni Vikman
+jesseRaatikainen,164,4,https://www.episodi.fi/elokuvat/fucking-with-nobody/,Episodi,Jesse Raatikainen
+kaarinaLehtisalo,164,3.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/fucking-with-nobody-on-satiirinen-metaelokuva-joka-hairitsee-huijaa-ja-naurattaa-katsojaa/,kulttuuritoimitus.fi/,Kaarina Lehtisalo
+nikoIkonen,164,2,Episodi 1/2021,Episodi,niko Ikonen
+hannuLiekso,164,2,Episodi 1/2021,Episodi,Hannu Liekso
+hannuLiekso,165,3,https://www.episodi.fi/elokuvat/peruna/,Episodi,Hannu Liekso
+jussiVirratvuori,165,4,Etelä-Suomen Sanomat 13.8.2021,Etelä-Suomen Sanomat,Jussi Virratvuori
+jussiHuhtala,165,3,Episodi 9/2021,Episodi,Jussi Huhtala
+iraHurskainen,165,3,Episodi 9/2021,Episodi,Ira Hurskainen
+nikoIkonen,165,2,Episodi 9/2021,Episodi,Niko Ikonen
+jouniVikman,165,3,Episodi 9/2021,Episodi,Jouni Vikman
+jouniVikman,166,4,https://www.episodi.fi/elokuvat/free-guy/,Episodi,Jussi Virratvuori
+nikoIkonen,166,3,Episodi 9/2021,Episodi,Niko Ikonen
+hannuLiekso,166,3,Episodi 9/2021,Episodi,Hannu Liekso
+niklasTirkkonen,166,4,Episodi 9/2021,Episodi,Niklas Tirkkonen
+jesseRaatikainen,166,1,Episodi 11/2021,Episodi,Jesse Raatikainen
+jouniVikman,167,2,https://www.episodi.fi/elokuvat/wrong-turn/,Episodi,Jouni Vikman
+nikoIkonen,167,2,Episodi 8/2021,Episodi,Niko Ikonen
+mariaLattila,168,2,https://www.episodi.fi/elokuvat/old/,Episodi,maria Lättilä
+nikoIkonen,168,1,Episodi 9/2021,Episodi,Niko Ikonen
+hannuLiekso,168,1,Episodi 9/2021,Episodi,Hannu Liekso
+susannaKarhapaa,168,1,Episodi 8/2021,Episodi,Susanna Karhapää
+kristerUggedal,169,2,Hufvudstadsbladet 20.8.2021,Hufvudstadsbladet,Krister Uggedal
+jouniVikman,170,2,https://www.episodi.fi/elokuvat/luokkakokous-3-sinkkuristeily/,Episodi,Jouni Vikman
+jussiHuhtala,170,2,Episodi 9/2021,Episodi,Jussi Huhtala
+nikoIkonen,170,2,Episodi 9/2021,Episodi,Niko Ikonen
+hannuLiekso,170,1,Episodi 9/2021,Episodi,Hannu Liekso
+jussiHuhtala,171,2,Episodi 9/2021,Episodi,Jussi Huhtala
+nikoIkonen,171,2,Episodi 9/2021,Episodi,Niko Ikonen
+kristerUggedal,171,2,Hufvudstadsbladet 3.9.2021,Hufvudstadsbladet,Krister Uggedal
+mariaLättilä,172,2,https://www.episodi.fi/elokuvat/hitmans-wifes-bodyguard/,Episodi,maria Lättilä
+nikoIkonen,172,2,Episodi 9/2021,Episodi,Niko Ikonen
+hannuLiekso,172,2,Episodi 9/2021,Episodi,Hannu Liekso
+jouniVikman,172,3,Episodi 9/2021,Episodi,Jouni Vikman
+niklasTirkkonen,173,3,https://www.episodi.fi/elokuvat/fast-furious-9/,Episodi,Niklas Tirkkonen
+kaarinaLehtisalo,173,1.5,https://kulttuuritoimitus.fi/kritiikit/kritiikit-elokuva/fast-furious-9-ei-hammastyta-toimintakohtauksillaan-vaan-kasikirjoituksen-kehnoudella/,kulttuuritoimitus.fi/,Kaarina Lehtisalo
+jussiHuhtala,173,2,Episodi 9/2021,Episodi,Jussi Huhtala
+nikoIkonen,173,2,Episodi 9/2021,Episodi,Niko Ikonen
+hannuLiekso,173,2,Episodi 9/2021,Episodi,Hannu Liekso
+nikoIkonen,174,3,Episodi 9/2021,Episodi,Niko Ikonen
+mariaLättilä,174,3,Episodi 9/2021,Episodi,maria Lättilä
+martinaMolis,174,3,Hufvudstadsbladet 17.9.2021,Hufvudstadsbladet,Martina Molis-Mellberg
+iraHurskainen,175,2,Episodi 9/2021,Episodi,Ira Hurskainen
+nikoIkonen,175,4,Episodi 9/2021,Episodi,Niko Ikonen
+jouniVikman,175,4,Episodi 9/2021,Episodi,Jouni Vikman
+kristerUggedal,175,4,Hufvudstadsbladet 3.9.2021,Hufvudstadsbladet,Krister Uggedal
+martaBalaga,175,3,Episodi 8/2021,Episodi,Marta Balaga
+susannaKarhapaa,175,3,Episodi 8/2021,Episodi,Susanna Karhapää
