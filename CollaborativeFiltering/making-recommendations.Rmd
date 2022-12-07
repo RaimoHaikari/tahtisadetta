@@ -222,13 +222,205 @@ Tällöin kuitenkin saattaa jäädä pimentoon sellaisia, elokuvia jotka juuri t
 
 Parempi vaihtoehto on käyttää aineistoa laajasti ja laskea elokuville painotetut ennusteet siitä kuinka suositusten saaja arvioisi ne.
 
-<table>
-<tr>
-<td>Eggs</td>
-<td>Ham</td>
-</tr>
-<tr>
-<td>Basil</td>
-<td>Tomato</td>
-</tr>
-</table>
+Huomioidaan kaikki elokuvaan kohdistuneet arvostelut arvostelijan *similarity-arvon* mukaisella painotuksena. 
+
+Käytetään apuna Toby Segaranin kirjassa käyttämää esimerkkiä.
+
+Aineistossa on laskettu kuudelle käyttäjälle *similarity-arvot*. Näiden perusteella lasketaan arviot kolmelle elokuvalle:
+
+- The Night Listener
+- Lady in the Water
+- Just My Luck
+
+Laskenta etenee siten, että:
+
+1. Kunkin arvostelijan antama arvosana kerrotaan arvostelijan *Similarity-arvolla*
+2. Lasketaan yhteen kunkin elokuvan *Similarity-arvolla* kerrotut arvosanat
+3. Lasketaan yhteen kunkin elokuvan laskuissa mukana olleet *Similarity-arvot*
+4. Jaetaan arvosanojen summa painokertoiminen summalla.
+
+Esim. Rose oli arvioinut The Night Listener elokuvan kolmosen arvoiseksi. Rosen ja Tobyn *Similarity-arvo* on 0.99, joten Roselta kertyy elokuvalle 2.97 pistettä. Yhteensä elokuva sai 12.89 pistettä. Kun kaikkien osallistunteiden kriitikkojen *Similarity-arvot* lasketaan yhteen, saadaan Sim.Sum arvoksi 3.84. Ja kun arvosanojen summa jaetaan painojen summalla, saadaan tulokseksi 3.35
+
+
+
+![Creating recommendations for Toby](https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/Misc/creatingRecommendationsForToby-opti.svg)
+
+Kun saatiin tämä alta. Voidaan keskittyä toimenpiteen suorittavan funktion kirjoittamiseen.
+
+```{r}
+
+getRecommendations <- function(prefs, person, similarity) {
+  
+  # extract the items recommendee has already reviewed
+  personsReviews <- prefs[which(prefs[[personIdCol]] == person), itemIdCol] %>% 
+    unlist(use.names = FALSE)
+  
+  # get recommenders similarity socres
+  others <- getSimilarityScores(prefs, person , similarity)
+
+  # add reviews to the similarity table
+  others <- others %>% left_join(prefs, by=personIdCol) 
+  
+  # remove items recommendee has already reviewed and ignore scores of zero or lower
+  conditionA <- !others[[itemIdCol]] %in% personsReviews
+  conditionB <- others$Similarity > 0
+
+  others <- others[which(conditionA & conditionB),]
+  
+  # calculate similarity * grade
+  others$simXGrade <- others[[valueIdCol]] * others$Similarity
+
+  # for each movie calculate sums of Similarity and similatiry * grade
+  # then ESTIMATED GRADE IS CALCULTED BY DIVISION..
+  others %>% 
+    group_by_at(itemIdCol) %>%
+    summarise(Total = sum(simXGrade), Sim.Sum = sum(Similarity)) %>%
+    mutate(Estimate = Total / Sim.Sum, .keep = "unused") %>%
+    arrange(desc(.[[itemIdCol]]))
+
+}
+
+```
+
+Nyt voidaan kokeilla mitä algoritmit suosittelevat käyttäjälle:
+
+```{r}
+getRecommendations(reviews, 'Toby', euclidean)
+```
+
+## Matching Products
+
+Tähän saakka olemme etsineet samalaisia käyttäjiä. 
+
+Mutta yhtä lailla voidaan tutkia elokuvien välistä samankaltaisuutta.
+
+Eikä tämä ole edes vaikeaa, kun kaukaa viisaina olemme tallettaneet käyttämämme sarakenimet muuttujiin.
+
+Riittää kun vaihdamme henkilöihin ja tuotteisiin viitanneiden muuttujien arvot keskenään.
+
+```{r}
+# Column that is used to identify persons
+personIdCol <- "Movie"
+# Column that is used to identify items
+itemIdCol <- "Person"
+```
+
+Nyt voimme tutkia mitkä elokuva aineiston mukaan muistuttavat esim. elokuvaa *Superman Returns*.
+
+```{r}
+#topMatches(reviews, 'Superman Returns',5, euclidean)
+topMatches(reviews, 'Superman Returns',5, pearson)
+```
+
+## Item-Based Filtering
+
+Aineiston kasvaessa on tapana käyttää menetelmää, jossa lasketaan käytettävissä olevan materiaalin avulla valmiiksi tuotteiden väliset samankaltaisuus arviot.
+
+Kun sitten käyttäjälle halutaan antaa suosituksia:
+
+- katsotaan mistä hän oli pitänyt
+- selvitetään valmiiksi lasketun aineiston perusteella mitkä elokuvat puolestaan muistuttavat näitä
+- lasketaan näiden elokuvien *painotetut arviot*
+
+### Building the Item Comparison set
+
+Kirjoitetaan funktio, joka laskee elokuvien väliset *Similarity arvot*.
+
+Huom! Koska ollaan laskemassa elokuvien välisiä korrelaatioita, muuttujan intuition vastaisesti personIdCol sisältö viittaa suoritushetkellä sarakkeeseen, johon on talletettu tuotteiden nimet. Lähemmin tarkasteltuna, emme siis olleetkaan aivan niin viisaita kuin luulimme olevamme muuttujia nimetessämme.
+
+Toinen huomioinarvoinen seikka on, että nyt haluamme tallettaa myös suositusten saajan nimen topMatches -funktion palauttamaan data.frameen!
+
+```{r}
+calculateSimilarItems <- function(prefs, n = 10, similarity = pearson) {
+  
+  # Get the list of movies!
+  items <- unique(prefs[[personIdCol]])
+  
+  # For each item, calculate similarity values with other items
+  # - Now we also wan't to include name of the target in topMatches
+  itemSimList <-  apply(
+    as.data.frame(items), 
+    1, 
+    function(x) topMatches(prefs, x[1],similarity = euclidean, 
+    includeOriginal = TRUE)
+  )
+
+  # Previous phase results list of data.frames
+  # convert that data srructure to single Data.Frame
+  do.call("rbind", itemSimList)
+
+}
+```
+
+Kuten aiemmin jo todettiin, laskettaessa elokuvien välisiä *Similarity-arvoja*:
+
+- personIdCol muuttujan pitää viitata sarakkeeseen johon on tallennettu elokuvien nimet
+- itemIdCol muuttujan pitää viitata sarakkeeseen, johon on tallennettu henkilöiden nimet.
+
+Kun tämä ehto toteutuu, voidaan laskea elokuvien välinen vertailutaulukko.
+
+```{r}
+# Column that is used to identify persons
+personIdCol <- "Movie"
+# Column that is used to identify items
+itemIdCol <- "Person"
+
+
+itemsim <- calculateSimilarItems(reviews)
+```
+
+### Getting Recommendations
+
+Kun objektien keskinäinen samankaltaisuus on määritetty, voidaan sitä käyttää yksittäiselle käyttäjälle tarjotuissa suosituksissa.
+
+Viimeisenä funktiona
+
+
+```{r}
+
+getRecommendedItems <- function(prefs, itemMatch, user) {
+  
+  # Extract the movies user has seen, keep movie and grade
+  userRatings <- prefs[which(prefs[[personIdCol]] == user), c(itemIdCol, valueIdCol)]
+  # get vector of movie names
+  moviesUserHasRated <- userRatings[[itemIdCol]] %>% unlist(use.names = FALSE)
+  
+  
+  # From the similarity data.frame select movies that:
+  # - user has reviewed
+  # - with each of those records, keep the ones where "the movie in compare" 
+  #   is new to user...
+  conditionA <- itemMatch[[itemIdCol]] %in% moviesUserHasRated
+  conditionB <- !itemMatch$Target %in% moviesUserHasRated
+  
+  scores <- itemMatch[which(conditionA & conditionB),] %>% arrange(.[[itemIdCol]])
+  
+  # combine user ratings with similarity data
+  userRatings <- userRatings %>% left_join(scores, by = "Movie") 
+
+  userRatings$Score <- userRatings[[valueIdCol]] * userRatings$Similarity
+  
+  userRatings %>%
+    group_by(Target) %>%
+    summarise(Estimate = sum(Score) / sum(Similarity)) %>%
+    arrange(desc(Estimate))
+}
+```
+
+Palautetaan sarakeasetukset tilaan, jossa:
+
+- personIdCol viittaa henkilötiedot sisältävään sarakkeeseen
+- itemIdCol viittaa arvosteltavat objektit sisältävään sarakkeeseen
+
+Ja haetaan valmiiksi lasketun, elokuvien samankaltaisuutta arvioivan aineiston avulla suositukset käyttäjälle *Toby*
+
+```{r}
+# Column that is used to identify persons
+personIdCol <- "Person"
+# Column that is used to identify items
+itemIdCol <- "Movie"
+
+fooBar <- getRecommendedItems(reviews, itemsim, 'Toby')
+```
+
+

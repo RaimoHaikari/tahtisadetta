@@ -370,6 +370,9 @@ välinen samankaltaisuus</a></li>
 <li><a href="#ranking-the-critics" id="toc-ranking-the-critics">Ranking
 the Critics</a></li>
 <li><a href="#recommending-items" id="toc-recommending-items">Recommending Items</a></li>
+<li><a href="#matching-products" id="toc-matching-products">Matching
+Products</a></li>
+<li><a href="#item-based-filtering" id="toc-item-based-filtering">Item-Based Filtering</a></li>
 </ul></li>
 </ul>
 </div>
@@ -576,24 +579,213 @@ joku yksittäinen elokuva voi nousta liian korkeaan arvoon, tilanteessa
 jossa yksi on sattunut pitämään, mutta juuri kukaan muu ei.</p>
 <p>Parempi vaihtoehto on käyttää aineistoa laajasti ja laskea elokuville
 painotetut ennusteet siitä kuinka suositusten saaja arvioisi ne.</p>
-<table>
-<tr>
-<td>
-Eggs
-</td>
-<td>
-Ham
-</td>
-</tr>
-<tr>
-<td>
-Basil
-</td>
-<td>
-Tomato
-</td>
-</tr>
-</table>
+<p>Huomioidaan kaikki elokuvaan kohdistuneet arvostelut arvostelijan
+<em>similarity-arvon</em> mukaisella painotuksena.</p>
+<p>Käytetään apuna Toby Segaranin kirjassa käyttämää esimerkkiä.</p>
+<p>Aineistossa on laskettu kuudelle käyttäjälle
+<em>similarity-arvot</em>. Näiden perusteella lasketaan arviot kolmelle
+elokuvalle:</p>
+<ul>
+<li>The Night Listener</li>
+<li>Lady in the Water</li>
+<li>Just My Luck</li>
+</ul>
+<p>Laskenta etenee siten, että:</p>
+<ol style="list-style-type: decimal">
+<li>Kunkin arvostelijan antama arvosana kerrotaan arvostelijan
+<em>Similarity-arvolla</em></li>
+<li>Lasketaan yhteen kunkin elokuvan <em>Similarity-arvolla</em>
+kerrotut arvosanat</li>
+<li>Lasketaan yhteen kunkin elokuvan laskuissa mukana olleet
+<em>Similarity-arvot</em></li>
+<li>Jaetaan arvosanojen summa painokertoiminen summalla.</li>
+</ol>
+<p>Esim. Rose oli arvioinut The Night Listener elokuvan kolmosen
+arvoiseksi. Rosen ja Tobyn <em>Similarity-arvo</em> on 0.99, joten
+Roselta kertyy elokuvalle 2.97 pistettä. Yhteensä elokuva sai 12.89
+pistettä. Kun kaikkien osallistunteiden kriitikkojen
+<em>Similarity-arvot</em> lasketaan yhteen, saadaan Sim.Sum arvoksi
+3.84. Ja kun arvosanojen summa jaetaan painojen summalla, saadaan
+tulokseksi 3.35</p>
+<div class="figure">
+<img src="data:image/svg+xml;base64,PCEtLSBDcmVhdGVkIHdpdGggSW5rc2NhcGUgKGh0dHA6Ly93d3cuaW5rc2NhcGUub3JnLykgLS0+Cjxzdmcgd2lkdGg9IjE3Ni4yMm1tIiBoZWlnaHQ9IjYwLjYxNm1tIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNzYuMjIgNjAuNjE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIuNzY4OCAtNS42MDMxKSI+CiAgPHJlY3QgeD0iMi43Njg4IiB5PSI1LjYwMzEiIHdpZHRoPSIxNzYuMjIiIGhlaWdodD0iNjAuNjE2IiBmaWxsPSIjZmZmIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMS42Ii8+CiAgPGcgZm9udC1mYW1pbHk9IidCb2RvbmkgTVQnIiBmb250LXNpemU9IjQuOTM4OXB4IiBsZXR0ZXItc3BhY2luZz0iLjAxMDU4M3B4IiBzdHJva2Utd2lkdGg9Ii4yNjQ1OCIgd29yZC1zcGFjaW5nPSIwcHgiPgogICA8dGV4dCB4PSI1LjY4OTY1MzkiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjEyLjgzMzY3MSI+Q3JpdGljPC90c3Bhbj48dHNwYW4geD0iNS42ODk2NTM5IiB5PSIxOS4wMDcyODIiPlJvc2U8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjI1LjE4MDg5NSI+U2V5bW91cjwvdHNwYW4+PHRzcGFuIHg9IjUuNjg5NjUzOSIgeT0iMzEuMzU0NTA3Ij5QdWlnPC90c3Bhbj48dHNwYW4geD0iNS42ODk2NTM5IiB5PSIzNy41MjgxMjIiPkxhU2FsbGU8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjQzLjcwMTczMyI+TWF0dGhld3M8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjQ5Ljg3NTM0NyI+VG90YWw8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjU2LjA0ODk1OCI+U2ltLlN1bTwvdHNwYW4+PHRzcGFuIHg9IjUuNjg5NjUzOSIgeT0iNjIuMjIyNTcyIj5Ub3RhbC9TaW0uU3VtPC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjM1LjY3ODY1OCIgeT0iMTIuODMzNjcxIiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjM1LjY3ODY1OCIgeT0iMTIuODMzNjcxIj5TaW1pbGFyaXR5PC90c3Bhbj48dHNwYW4geD0iMzUuNjc4NjU4IiB5PSIxOS4wMDcyODIiPjAuOTk8L3RzcGFuPjx0c3BhbiB4PSIzNS42Nzg2NTgiIHk9IjI1LjE4MDg5NSI+MC4zODwvdHNwYW4+PHRzcGFuIHg9IjM1LjY3ODY1OCIgeT0iMzEuMzU0NTA3Ij4wLjg5PC90c3Bhbj48dHNwYW4geD0iMzUuNjc4NjU4IiB5PSIzNy41MjgxMjIiPjAuOTI8L3RzcGFuPjx0c3BhbiB4PSIzNS42Nzg2NTgiIHk9IjQzLjcwMTczMyI+MC42NjwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSI1OS43ODY0MTkiIHk9IjEyLjc5NTA4NyIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSI1OS43ODY0MTkiIHk9IjEyLjc5NTA4NyI+TmlnaHQuLi48L3RzcGFuPjx0c3BhbiB4PSI1OS43ODY0MTkiIHk9IjE4Ljk2ODY5OSI+My4wPC90c3Bhbj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSIyNS4xNDIzMTEiPjMuMDwvdHNwYW4+PHRzcGFuIHg9IjU5Ljc4NjQxOSIgeT0iMzEuMzE1OTI0Ij40LjU8L3RzcGFuPjx0c3BhbiB4PSI1OS43ODY0MTkiIHk9IjM3LjQ4OTUzNiI+My4wPC90c3Bhbj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSI0My42NjMxNTEiPjMuMDwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSI3OS45MDA4MSIgeT0iMTIuODMzNjcxIiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSIxMi44MzM2NzEiPlMueE5pZ2h0PC90c3Bhbj48dHNwYW4geD0iNzkuOTAwODEiIHk9IjE5LjAwNzI4MiI+Mi45NzwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSIyNS4xODA4OTUiPjEuMTQ8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iMzEuMzU0NTA3Ij40LjAyPC90c3Bhbj48dHNwYW4geD0iNzkuOTAwODEiIHk9IjM3LjUyODEyMiI+Mi43NzwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSI0My43MDE3MzMiPjEuOTk8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iNDkuODc1MzQ3Ij4xMi44OTwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSI1Ni4wNDg5NTgiPjMuODQ8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iNjIuMjIyNTcyIj4zLjM1PC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjEwMi42ODAwMiIgeT0iMTIuNzk1MDg3IiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjEwMi42ODAwMiIgeT0iMTIuNzk1MDg3Ij5MYWR5Li4uPC90c3Bhbj48dHNwYW4geD0iMTAyLjY4MDAyIiB5PSIxOC45Njg2OTkiPjIuNTwvdHNwYW4+PHRzcGFuIHg9IjEwMi42ODAwMiIgeT0iMjUuMTQyMzExIj4zLjA8L3RzcGFuPjx0c3BhbiB4PSIxMDIuNjgwMDIiIHk9IjMxLjMxNTkyNCIvPjx0c3BhbiB4PSIxMDIuNjgwMDIiIHk9IjM3LjQ4OTUzNiI+My4wPC90c3Bhbj48dHNwYW4geD0iMTAyLjY4MDAyIiB5PSI0My42NjMxNTEiPjMuMDwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSIxMjAuMTcxMTEiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjEyLjgzMzY3MSI+Uy54TGFkeTwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iMTkuMDA3MjgyIj4yLjQ4PC90c3Bhbj48dHNwYW4geD0iMTIwLjE3MTExIiB5PSIyNS4xODA4OTUiPjEuMTQ8L3RzcGFuPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjMxLjM1NDUwNyIvPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjM3LjUyODEyMiI+Mi43NzwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iNDMuNzAxNzMzIj4xLjk5PC90c3Bhbj48dHNwYW4geD0iMTIwLjE3MTExIiB5PSI0OS44NzUzNDciPjguMzg8L3RzcGFuPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjU2LjA0ODk1OCI+Mi45NTwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iNjIuMjIyNTcyIj4yLjgzPC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjE0MC4xMTc2MSIgeT0iMTIuNzk1MDg3IiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjE0MC4xMTc2MSIgeT0iMTIuNzk1MDg3Ij5MdWNrLi4uPC90c3Bhbj48dHNwYW4geD0iMTQwLjExNzYxIiB5PSIxOC45Njg2OTkiPjMuMDwvdHNwYW4+PHRzcGFuIHg9IjE0MC4xMTc2MSIgeT0iMjUuMTQyMzExIj4xLjU8L3RzcGFuPjx0c3BhbiB4PSIxNDAuMTE3NjEiIHk9IjMxLjMxNTkyNCI+My4wPC90c3Bhbj48dHNwYW4geD0iMTQwLjExNzYxIiB5PSIzNy40ODk1MzYiPjIuMDwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSIxNTguNzAyMTUiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjEyLjgzMzY3MSI+Uy54THVjazwvdHNwYW4+PHRzcGFuIHg9IjE1OC43MDIxNSIgeT0iMTkuMDA3MjgyIj4yLjk3PC90c3Bhbj48dHNwYW4geD0iMTU4LjcwMjE1IiB5PSIyNS4xODA4OTUiPjAuNTc8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjMxLjM1NDUwNyI+Mi42ODwvdHNwYW4+PHRzcGFuIHg9IjE1OC43MDIxNSIgeT0iMzcuNTI4MTIyIj4xLjg1PC90c3Bhbj48dHNwYW4geD0iMTU4LjcwMjE1IiB5PSI0My43MDE3MzMiLz48dHNwYW4geD0iMTU4LjcwMjE1IiB5PSI0OS44NzUzNDciPjguMDc8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjU2LjA0ODk1OCI+My4xODwvdHNwYW4+PHRzcGFuIHg9IjE1OC43MDIxNSIgeT0iNjIuMjIyNTcyIj4yLjUzPC90c3Bhbj48L3RleHQ+CiAgPC9nPgogIDxyZWN0IHg9IjMuODkyNCIgeT0iNy43MTk4IiB3aWR0aD0iMTczLjk3IiBoZWlnaHQ9IjciIGZpbGw9IiNiM2IzYjMiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTptdWx0aXBseSIvPgogIDxyZWN0IHg9IjMuODkyNCIgeT0iNTcuNDYxIiB3aWR0aD0iMTczLjk3IiBoZWlnaHQ9Ii41IiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMS42IiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6bXVsdGlwbHkiLz4KIDwvZz4KPC9zdmc+Cg==" alt />
+<p class="caption">Creating recommendations for Toby</p>
+</div>
+<p>Kun saatiin tämä alta. Voidaan keskittyä toimenpiteen suorittavan
+funktion kirjoittamiseen.</p>
+<pre class="r"><code>getRecommendations &lt;- function(prefs, person, similarity) {
+  
+  # extract the items recommendee has already reviewed
+  personsReviews &lt;- prefs[which(prefs[[personIdCol]] == person), itemIdCol] %&gt;% 
+    unlist(use.names = FALSE)
+  
+  # get recommenders similarity socres
+  others &lt;- getSimilarityScores(prefs, person , similarity)
+
+  # add reviews to the similarity table
+  others &lt;- others %&gt;% left_join(prefs, by=personIdCol) 
+  
+  # remove items recommendee has already reviewed and ignore scores of zero or lower
+  conditionA &lt;- !others[[itemIdCol]] %in% personsReviews
+  conditionB &lt;- others$Similarity &gt; 0
+
+  others &lt;- others[which(conditionA &amp; conditionB),]
+  
+  # calculate similarity * grade
+  others$simXGrade &lt;- others[[valueIdCol]] * others$Similarity
+
+  # for each movie calculate sums of Similarity and similatiry * grade
+  # then ESTIMATED GRADE IS CALCULTED BY DIVISION..
+  others %&gt;% 
+    group_by_at(itemIdCol) %&gt;%
+    summarise(Total = sum(simXGrade), Sim.Sum = sum(Similarity)) %&gt;%
+    mutate(Estimate = Total / Sim.Sum, .keep = &quot;unused&quot;) %&gt;%
+    arrange(desc(.[[itemIdCol]]))
+
+}</code></pre>
+<p>Nyt voidaan kokeilla mitä algoritmit suosittelevat käyttäjälle:</p>
+<pre class="r"><code>getRecommendations(reviews, &#39;Toby&#39;, euclidean)</code></pre>
+<pre><code>## # A tibble: 3 × 2
+##   Movie              Estimate
+##   &lt;chr&gt;                 &lt;dbl&gt;
+## 1 The Night Listener     3.50
+## 2 Lady in the Water      2.76
+## 3 Just My Luck           2.46</code></pre>
+</div>
+<div id="matching-products" class="section level2">
+<h2>Matching Products</h2>
+<p>Tähän saakka olemme etsineet samalaisia käyttäjiä.</p>
+<p>Mutta yhtä lailla voidaan tutkia elokuvien välistä
+samankaltaisuutta.</p>
+<p>Eikä tämä ole edes vaikeaa, kun kaukaa viisaina olemme tallettaneet
+käyttämämme sarakenimet muuttujiin.</p>
+<p>Riittää kun vaihdamme henkilöihin ja tuotteisiin viitanneiden
+muuttujien arvot keskenään.</p>
+<pre class="r"><code># Column that is used to identify persons
+personIdCol &lt;- &quot;Movie&quot;
+# Column that is used to identify items
+itemIdCol &lt;- &quot;Person&quot;</code></pre>
+<p>Nyt voimme tutkia mitkä elokuva aineiston mukaan muistuttavat esim.
+elokuvaa <em>Superman Returns</em>.</p>
+<pre class="r"><code>#topMatches(reviews, &#39;Superman Returns&#39;,5, euclidean)
+topMatches(reviews, &#39;Superman Returns&#39;,5, pearson)</code></pre>
+<pre><code>## # A tibble: 5 × 2
+##   Movie              Similarity
+##   &lt;chr&gt;                   &lt;dbl&gt;
+## 1 You, Me and Dupree      0.658
+## 2 Lady in the Water       0.488
+## 3 Snakes on a Plane       0.112
+## 4 The Night Listener     -0.180
+## 5 Just My Luck           -0.423</code></pre>
+</div>
+<div id="item-based-filtering" class="section level2">
+<h2>Item-Based Filtering</h2>
+<p>Aineiston kasvaessa on tapana käyttää menetelmää, jossa lasketaan
+käytettävissä olevan materiaalin avulla valmiiksi tuotteiden väliset
+samankaltaisuus arviot.</p>
+<p>Kun sitten käyttäjälle halutaan antaa suosituksia:</p>
+<ul>
+<li>katsotaan mistä hän oli pitänyt</li>
+<li>selvitetään valmiiksi lasketun aineiston perusteella mitkä elokuvat
+puolestaan muistuttavat näitä</li>
+<li>lasketaan näiden elokuvien <em>painotetut arviot</em></li>
+</ul>
+<div id="building-the-item-comparison-set" class="section level3">
+<h3>Building the Item Comparison set</h3>
+<p>Kirjoitetaan funktio, joka laskee elokuvien väliset <em>Similarity
+arvot</em>.</p>
+<p>Huom! Koska ollaan laskemassa elokuvien välisiä korrelaatioita,
+muuttujan intuition vastaisesti personIdCol sisältö viittaa
+suoritushetkellä sarakkeeseen, johon on talletettu tuotteiden nimet.
+Lähemmin tarkasteltuna, emme siis olleetkaan aivan niin viisaita kuin
+luulimme olevamme muuttujia nimetessämme.</p>
+<p>Toinen huomioinarvoinen seikka on, että nyt haluamme tallettaa myös
+suositusten saajan nimen topMatches -funktion palauttamaan
+data.frameen!</p>
+<pre class="r"><code>calculateSimilarItems &lt;- function(prefs, n = 10, similarity = pearson) {
+  
+  # Get the list of movies!
+  items &lt;- unique(prefs[[personIdCol]])
+  
+  # For each item, calculate similarity values with other items
+  # - Now we also wan&#39;t to include name of the target in topMatches
+  itemSimList &lt;-  apply(
+    as.data.frame(items), 
+    1, 
+    function(x) topMatches(prefs, x[1],similarity = euclidean, 
+    includeOriginal = TRUE)
+  )
+
+  # Previous phase results list of data.frames
+  # convert that data srructure to single Data.Frame
+  do.call(&quot;rbind&quot;, itemSimList)
+
+}</code></pre>
+<p>Kuten aiemmin jo todettiin, laskettaessa elokuvien välisiä
+<em>Similarity-arvoja</em>:</p>
+<ul>
+<li>personIdCol muuttujan pitää viitata sarakkeeseen johon on
+tallennettu elokuvien nimet</li>
+<li>itemIdCol muuttujan pitää viitata sarakkeeseen, johon on tallennettu
+henkilöiden nimet.</li>
+</ul>
+<p>Kun tämä ehto toteutuu, voidaan laskea elokuvien välinen
+vertailutaulukko.</p>
+<pre class="r"><code># Column that is used to identify persons
+personIdCol &lt;- &quot;Movie&quot;
+# Column that is used to identify items
+itemIdCol &lt;- &quot;Person&quot;
+
+
+itemsim &lt;- calculateSimilarItems(reviews)</code></pre>
+</div>
+<div id="getting-recommendations" class="section level3">
+<h3>Getting Recommendations</h3>
+<p>Kun objektien keskinäinen samankaltaisuus on määritetty, voidaan sitä
+käyttää yksittäiselle käyttäjälle tarjotuissa suosituksissa.</p>
+<p>Viimeisenä funktiona</p>
+<pre class="r"><code>getRecommendedItems &lt;- function(prefs, itemMatch, user) {
+  
+  # Extract the movies user has seen, keep movie and grade
+  userRatings &lt;- prefs[which(prefs[[personIdCol]] == user), c(itemIdCol, valueIdCol)]
+  # get vector of movie names
+  moviesUserHasRated &lt;- userRatings[[itemIdCol]] %&gt;% unlist(use.names = FALSE)
+  
+  
+  # From the similarity data.frame select movies that:
+  # - user has reviewed
+  # - with each of those records, keep the ones where &quot;the movie in compare&quot; 
+  #   is new to user...
+  conditionA &lt;- itemMatch[[itemIdCol]] %in% moviesUserHasRated
+  conditionB &lt;- !itemMatch$Target %in% moviesUserHasRated
+  
+  scores &lt;- itemMatch[which(conditionA &amp; conditionB),] %&gt;% arrange(.[[itemIdCol]])
+  
+  # combine user ratings with similarity data
+  userRatings &lt;- userRatings %&gt;% left_join(scores, by = &quot;Movie&quot;) 
+
+  userRatings$Score &lt;- userRatings[[valueIdCol]] * userRatings$Similarity
+  
+  userRatings %&gt;%
+    group_by(Target) %&gt;%
+    summarise(Estimate = sum(Score) / sum(Similarity)) %&gt;%
+    arrange(desc(Estimate))
+}</code></pre>
+<p>Palautetaan sarakeasetukset tilaan, jossa:</p>
+<ul>
+<li>personIdCol viittaa henkilötiedot sisältävään sarakkeeseen</li>
+<li>itemIdCol viittaa arvosteltavat objektit sisältävään
+sarakkeeseen</li>
+</ul>
+<p>Ja haetaan valmiiksi lasketun, elokuvien samankaltaisuutta arvioivan
+aineiston avulla suositukset käyttäjälle <em>Toby</em></p>
+<pre class="r"><code># Column that is used to identify persons
+personIdCol &lt;- &quot;Person&quot;
+# Column that is used to identify items
+itemIdCol &lt;- &quot;Movie&quot;
+
+fooBar &lt;- getRecommendedItems(reviews, itemsim, &#39;Toby&#39;)</code></pre>
+</div>
 </div>
 </div>
 
