@@ -1,0 +1,277 @@
+---
+title: "Making Recommendations"
+author: "Raimo Haikari"
+date: "2022-12-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Making Recommendations
+
+Asetetaan muuttujien arvot.
+
+```{r}
+on_kaggle <- 0
+
+# Column that is used to identify persons
+personIdCol <- "Person"
+# Column that is used to identify items
+itemIdCol <- "Movie"
+# Column that stores the grades
+valueIdCol <- "Grade"
+# Column that stores calculated similarity value
+similarityCol <- "Similarity"
+
+if (on_kaggle == 0){
+  path <- "./"
+} else {
+  path <- "../input/tmdb-movie-metadata/"
+}
+```
+
+Määritetään apufunktiot:
+
+```{r}
+# Calculate Euclidean Distance Score
+euclidean <- function(a,b) 1 / (1 + sqrt(sum((a-b)^2)))
+# euclidean <- function(a,b) 1 / (1 + sum((a-b)^2))
+
+# Calculate Pearson Correlation Score
+pearson <- function(a,b) cor(a, b, method = 'pearson')
+
+
+calculateSimilarityScore <- function(prefs, person1, person2, similarityFunction){
+
+  # Extract items that persons have reviewed and make sure items are in the same order
+  p1Reviews <- prefs[which(prefs[[personIdCol]] == person1),] %>% arrange(.[[itemIdCol]])
+  p2Reviews <- prefs[which(prefs[[personIdCol]] == person2),] %>% arrange(.[[itemIdCol]])
+  
+  # Items that both have reviews
+  sharedItems <- intersect(p1Reviews[,itemIdCol], p2Reviews[,itemIdCol]) %>%
+      unlist(use.names = FALSE)
+  
+  if(length(sharedItems) == 0) 
+    return(0)
+  
+  # Extract the grades of items both have graded
+  p1Grades <- p1Reviews[which(p1Reviews[[itemIdCol]] %in% sharedItems), valueIdCol] %>%
+      unlist(use.names = FALSE)
+  
+  p2Grades <- p2Reviews[which(p2Reviews[[itemIdCol]] %in% sharedItems), valueIdCol] %>%
+      unlist(use.names = FALSE)
+  
+  return(similarityFunction(p1Grades, p2Grades))
+  
+}
+
+# calculate similarity scores using the selected similarity function
+getSimilarityScores <- function(prefs, person, similarity) {
+  
+  others <- prefs[which(prefs[[personIdCol]] != person), personIdCol] %>% 
+    distinct() 
+  
+  similarity <- apply(
+    others[,1], 
+    1, 
+    function(x) calculateSimilarityScore(prefs, person, x, similarity)
+  )
+  
+  #others %>%
+  #  mutate(Similarity = similarity) %>%
+  #  arrange(desc(Similarity))
+  
+  others[similarityCol] = similarity
+  
+  others %>%
+    arrange(desc(.[[similarityCol]]))
+
+}
+
+# Returns the best matches for person from the prefs dctionary
+topMatches <- function(prefs, person, n = 5, similarity = pearson, includeOriginal = FALSE) {
+  
+  others <- getSimilarityScores(prefs, person , similarity)
+  
+  others %>% 
+    top_n(n, wt = Similarity)
+  
+  if(includeOriginal == TRUE) {
+    others <- others %>% mutate(Original = person)
+  }
+  
+  others
+  
+}
+
+
+getRecommendations <- function(prefs, person, similarity) {
+  
+  # extract the items recommendee has already reviewed
+  personsReviews <- prefs[which(prefs[[personIdCol]] == person), itemIdCol] %>% unlist(use.names = FALSE)
+  
+  # get recommenders similarity socres
+  others <- getSimilarityScores(prefs, person , similarity)
+
+  # add reviews to the similarity table
+  others <- others %>% left_join(prefs, by=personIdCol) 
+  
+  # remove items recommendee has already reviewed and ignore scores of zero or lower
+  conditionA <- !others[[itemIdCol]] %in% personsReviews
+  conditionB <- others$Similarity > 0
+
+  others <- others[which(conditionA & conditionB),]
+  
+  # calculate similarity * grade
+  others$simXGrade <- others[[valueIdCol]] * others$Similarity
+
+  # for each movie calculate sums of Similarity and similatiry * grade
+  # then ESTIMATED GRADE IS CALCULTED BY DIVISION..
+  others %>% 
+    group_by_at(itemIdCol) %>%
+    summarise(Total = sum(simXGrade), Sim.Sum = sum(Similarity)) %>%
+    mutate(Estimate = Total / Sim.Sum, .keep = "unused") %>%
+    arrange(desc(.[[itemIdCol]]))
+
+}
+
+
+calculateSimilarItems <- function(prefs, n = 10) {
+  
+  items <- unique(prefs[[personIdCol]])
+  
+  itemSimList <-  apply(
+    as.data.frame(items), 
+    1, 
+    function(x) topMatches(prefs, x[1],similarity = euclidean, includeOriginal = TRUE)
+  )
+
+  do.call("rbind", itemSimList)
+}
+
+```
+
+
+Ladataan tarvittavat paketit.
+
+```{r}
+library(tidyverse)
+```
+
+Luetaan käytettävä aineisto.
+
+```{r}
+reviews <- read_csv(str_c(path, "recommendations.csv"), na="NA")
+
+```
+### Euclidean Distance Score
+
+```{r}
+p1 = 'Lisa Rose'
+p2 = 'Gene Seymour'
+
+print(calculateSimilarityScore(reviews, p1, p2, euclidean))
+```
+
+### Pearson Correlation Score
+
+```{r}
+print(calculateSimilarityScore(reviews, p1, p2, pearson))
+```
+# Ranking the Critics
+
+
+
+```{r}
+
+topMatches(reviews, 'Toby')
+```
+
+### Recommending items
+
+
+```{r}
+print(getRecommendations(reviews, 'Toby', pearson))
+```
+
+### Matching products
+
+Elokuvia suositellessa aineistoa on tarkasteltu näkökulmasta jossa aineisto
+koostuu henkilöiden elokuville antamista arvosanoista.
+
+Aineiston käsittelyssä viittauksen sarakkeiden nimiin on tallennettu muuttujiiin.
+
+Esim. henkilöiden nimet löytyävä sarakkeesta "Person".
+- koodin alkuvaiheessa esitellään muuttuja personIdCol, jonka arvoksi talletetaan arvo Person
+- koodia ajettaessa operoidaan koko ajan muuttujan personIdCol arvolla
+
+Myös arvoidut objektit sisältävän sarakkeen nimi on tallennettu omaan muuttujaansa.
+
+Jos näiden muuttujien sisällöt vaihdetaan päittäin voimme arvoida kuinka paljon elokuvat muistuttavat toisiaan.
+
+```{r}
+# Column that is used to identify persons
+personIdCol <- "Movie"
+# Column that is used to identify items
+itemIdCol <- "Person"
+
+topMatches(reviews, 'Snakes on a Plane',5, euclidean)
+topMatches(reviews, 'Lady in the Water',5, pearson)
+```
+
+## Item-Based Filtering
+
+### Building the Item Comparison set
+
+```{r}
+
+# Column that is used to identify persons
+personIdCol <- "Movie"
+# Column that is used to identify items
+itemIdCol <- "Person"
+
+itemsim <- calculateSimilarItems(reviews)
+```
+
+Kun objektien keskinäinen samankaltaisuus on määritetty, voidaan sitä käyttää yksittäiselle käyttäjälle tarjotuissa suosituksissa.
+
+Palautetaan sarakeasetukset tilaan, jossa:
+
+- personIdCol viittaa henkilötiedot sisältävään sarakkeeseen
+- itemIdCol viittaa arvosteltavat objektit sisältävään sarakkeeseen
+
+```{r}
+
+# Column that is used to identify persons
+personIdCol <- "Person"
+# Column that is used to identify items
+itemIdCol <- "Movie"
+
+getRecommendedItems <- function(prefs, itemMatch, user) {
+  
+  userRatings <- prefs[which(prefs[[personIdCol]] == user), c(itemIdCol, valueIdCol)]
+  moviesUserHasRated <- userRatings[[itemIdCol]] %>% unlist(use.names = FALSE)
+  
+  
+  # From the similarity matrix select movies:
+  # - user have reviewed
+  # - with each of those similarity no new ones
+  conditionA <- itemMatch$Movie %in% moviesUserHasRated
+  conditionB <- !itemMatch$Original %in% moviesUserHasRated
+  
+  scores <- itemMatch[which(conditionA & conditionB),] %>% arrange(.[[itemIdCol]])
+  
+  userRatings <- userRatings %>% left_join(scores, by = "Movie") 
+  userRatings$Score <- userRatings[[valueIdCol]] * userRatings$Similarity
+  
+  userRatings %>%
+    group_by(Original) %>%
+    summarise(Estimate = sum(Score) / sum(Similarity)) %>%
+    arrange(desc(Estimate))
+}
+
+print(getRecommendedItems(reviews, itemsim, 'Toby'))
+```
+

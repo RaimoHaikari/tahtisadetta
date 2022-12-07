@@ -1,0 +1,178 @@
+---
+title: "Reviews Summary"
+author: "Raimo Haikari"
+date: "2022-11-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+@todo:
+- varmista, että olennaiset sarakkeet eivät sisällä puuttuvia arvoja!
+
+## Arvostelut raportti
+
+Ladataan käytettävät paketit:
+
+```{r}
+library(tidyverse)
+```
+
+Määritetään graafien tulostuksessa käytettäviä vakioita:
+
+#4F424c, #B9B6B0, #FEC418, #815BA4
+
+```{r}
+fillColor = '#815BA4'
+strokeColor = '#FEC418'
+```
+
+
+Luetaan tiedostot:
+
+```{r}
+reviews <- read_csv(str_c("../DB/", "arvostelut.csv"), na="NA")
+movies <- read_csv(str_c("../DB/", "elokuvat.csv"), na="NA")
+```
+
+### Aineiston oikeellisuuden tarkastelu
+
+Varmistetaan, että samaa kriitikkoa ei ole vahingossa tallennettu useammalla nimellä.
+
+- yhtä criticID arvoa saa vastata ainoastaan yksi name arvo
+- yhtä nimeä vastaa korkeintaan yksi criticID arvo
+
+Periaatteessa kaimoja voi olla - ja heidät olemassa olonsa tiedetään tässä vaihessa, joten heidät tunnistaa virheellisten tupla-arvojen joukosta.
+
+
+```{r}
+distinctValues <- reviews %>% 
+  distinct(criticID, name, .keep_all = TRUE) %>%
+  select(criticID, name)
+
+distinctIds <- distinctValues %>%
+  group_by(criticID) %>%                  # Group it by "criticID"
+  summarise(Hits = n_distinct(name)) %>%  # Now summarise with unique elements per group
+  filter(Hits > 1)                        # Only dublicates are included
+
+distinctNames <- distinctValues %>%
+  group_by(name) %>%                    
+  summarise(Hits = n_distinct(criticID)) %>%  
+  filter(Hits > 1)
+
+```
+
+Päällekkäisiä id-tunnuksia löytyi: 
+
+```{r}
+nrow(distinctIds)
+```
+Päällekkäisiä nimiä löytyi:
+
+```{r}
+nrow(distinctNames)
+```
+Tsekataan myös, esiintyykö sama arvostelu useampaan kertaan:
+
+```{r}
+duplicateReviews <- reviews %>%
+  group_by(criticID, googleID) %>%
+  mutate(num_dups = n(), dup_id = row_number()) %>%
+  ungroup() %>%
+  filter(num_dups > 1)
+```
+
+Päällekkäisiä arvosteluja löytyi:
+
+```{r}
+nrow(duplicateReviews)/2
+```
+
+### Aineiston muokkaus
+
+Lisätään elokuvat listaavaan taulukkoon tietoa, kuinka monta arvostelua kustakin elokuvasta löytyy:
+Selvitetään sisältääkö elokuvalista elokuvia, joista ei ole tallennettu yhtään arvostelua.
+
+Mikäli tällaisia elokuvia löytyy, poistetaan ne taulukosta.
+
+```{r}
+numOfRevs <- apply(movies[,c('id')], 1, function(x) {length(which(reviews$googleID == x))})
+
+movies <- movies %>% mutate(nOfReviews = numOfRevs)
+
+# movies <- movies %>% filter(numOfRevs > 0)
+```
+
+Lisätään arvostelut sisältävään taulukkoon elokuvan nimi.
+
+Tehdään samalla myös aputaulukko, johon on elokuvittain kerätty:
+- arvostelujen lukumäärä
+- arvosanojen keskiarvo
+- arvosanojen mediaani
+
+```{r}
+namedReviews <- reviews %>%
+  left_join(movies %>% filter(numOfRevs > 0), c("googleID" = "id")) %>%
+  select(-link, -wiki, -imdb, -kavi, -img, -nodeJS, -nOfReviews)
+
+reviewsSummary <- namedReviews %>%
+  group_by(googleID) %>%
+  summarise(ka = mean(stars), med = median(stars), n = n()) 
+
+```
+
+### Aineiston graafinen tarkastelu
+
+#### Kerättyjen arvostelujen määrä
+
+Tulostetaan histogrammi kuinka monta arvostelua elokuvista on tiedossa:
+
+```{r}
+movies %>%
+  ggplot(aes(x = nOfReviews)) +
+  stat_bin(binwidth = 1, fill=fillColor, color = strokeColor, alpha = 0.9) +
+  ylim(range(movies$nOfReviews)) +
+  stat_bin(binwidth=1, geom="text", aes(label=after_stat(count)), vjust=-1) +
+  labs(x="Kerättyjen arvostelujen määrä", y="Elokuvien määrä")
+```
+
+
+Tulostetaan lista elokuvista, joista on tiedossa eniten arvosteluja.
+
+Lisätään kuvioon myös kunkin elokuvan saamien tähtien mediaaniarvo.
+
+
+```{r}
+reviewsSummary %>%
+  top_n(10, wt = n) %>%
+  left_join(movies, c("googleID" = "id")) %>%
+  ggplot(aes(x=reorder(nimi, n), y= n)) +
+  geom_bar(stat = 'identity', fill = fillColor) +
+  coord_flip() +
+  labs(x="", y = "Arvostelujen määrä") +
+  geom_text(aes(label=n), hjust=-0.5, size=3) +
+  geom_text(aes(label=med), y=1, size=3, col="yellow")
+  
+```
+
+#### Arvosanojen mediaani
+
+Tulostetaan saatujen tähtien mediaanin jakaumaa kuvaava histogrammi.
+
+Rajataan aineistoa sen verran, että otetaan mukaan vain ne elokuvat joista on käytettävissä vähintään kolme arvostelua:
+
+```{r}
+# Kaikkein useimmin esiintyvän mediaaniarvosanan esiintymiskertojen määrä
+yMax <- max(reviewsSummary %>% group_by(med) %>% summarise(n = n()) %>% select(n))
+
+reviewsSummary %>%
+  filter(n > 2) %>%
+  ggplot(aes(med)) +
+  stat_bin(binwidth = 0.5, fill=fillColor, color = strokeColor, alpha = 0.9) +
+  ylim(c(0,yMax)) +
+  stat_bin(binwidth=0.5, geom="text", aes(label=after_stat(count)), vjust=-1) +
+  labs(x="Tähtiä keskimäärin", y="Elokuvien määrä")
+```
+

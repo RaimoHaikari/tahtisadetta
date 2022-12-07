@@ -1,0 +1,234 @@
+---
+title: "Making Recommendations"
+author: "Raimo Haikari"
+date: "2022-12-02"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Making Recommendations
+
+## Preface
+
+Kauan aikaa sitten ostin Toby Segaranin kirjoittaman kirjan Programming Collective Intelligence.
+
+Kirjassa esittellään kollektiivisen älykkyyden käyttökohteita ja -menetelmiä.
+
+Aiheissa ei mennä kovin syvälle, vaan tarkoitus on antaa lukijalle yleiskuva, jonka avulla aihealueisiin voi syvällisemmin paneutua - mikäli kiinnostusta riittää.
+
+Kirjassa käydään läpi kymmenkunta sovellusaluetta, esimerkkeinä voidaan mainita luokkittelu, optimointi, päätöspuut.
+
+Joka alueesta rakennetaan malli python kielellä 
+
+Tämä opas pohjautuu suositteluja (Making Recommendations) koskevaan kappaleeseen.
+
+Nyt ei kuitenkaan operoidan pythonilla, vaan parhaani mukaan olen toteuttanut toiminnallisuuden R-kielellä.
+
+Muutamaan vuoteen en ole ollut tekemissä R:n kanssa, joten koodini ei edusta tyylikkäintä saati tehokkainta tapaa kirjoittaa R:ää. Juurikin tästä syystä, tämä projekti on tarjonnut mukavan tavan virkistää muistia niin R:n kuin suosittelujärjestelmien kannalta.
+
+Varoituksen sana! 
+
+Koodit ovat joiltain osin turhankin mutkikkaita, koska työn edetessä olen pyrkinyt hyödyntämään 
+aiemmin tuotettua koodia pienten muokkausten avulla. Tämä sinänsä on järkevää, mutta hankalaa hahmottamisen kannalta, kun lukija saa nähtäväkseen lopullisen tuloksen - ja koodin muodostumisen evoluutio jää pimentoon. 
+
+Onneksi tämä on aika pieni opas, joten yleiskuvan muodostaminen pitäisi kuitenkin olla kohtuullisen saavutettavissa.
+
+*Maininta siitä, että tässä oppaassa käsitellään elokuvia, joten käytettävät termit heijastelevat aihealuetta. Mutta samat periaatteet ovat yleistettävissä muihinkin kohteisiin.*
+
+## Setup Environment
+
+Jotta pohjaa voisi käyttää eri aineistoilla, talletetaan laskennassa käytettävät sarakenimet muuttujiin. Tällöin (ainakin teoriassa) eri aineistoja pääsee pienellä vaivalla käyttämään
+vaihtamalla muuttujien sisällöt vastaamaan käytettävää aineistoa.
+
+Recommendee is the target of recommendations.
+
+Asetetaan muuttujien arvot.
+
+```{r}
+on_kaggle <- 0
+
+# Column that is used to identify persons
+personIdCol <- "Person"
+# Column that is used to identify items
+itemIdCol <- "Movie"
+# Column that stores the grades
+valueIdCol <- "Grade"
+# Column that stores calculated similarity value
+similarityCol <- "Similarity"
+
+
+# Path of the directory where data is stored
+if (on_kaggle == 0){
+  path <- "./"
+} else {
+  path <- "../input/tmdb-movie-metadata/"
+}
+```
+
+Ladataan tarvittavat paketit: 
+
+```{r message=FALSE}
+library(tidyverse)
+```
+
+Luetaan käytettävä aineisto:
+
+```{r message=FALSE}
+reviews <- read_csv(str_c(path, "recommendations.csv"), na="NA")
+```
+
+## Score Functions 
+
+The original tutorial shows two alternatives to calculate a similarity score between to users.
+
+- Euclidean distance score
+- Pearson correlation score
+
+Funktioita voi määrittää tarvittaessa lisää. Riittää kun funktio ottaa parametrinä kahden käyttäjän arvosanat ja palauttaa numeerisen vastauksen.
+
+```{r}
+# Calculate Euclidean Distance Score
+# euclidean <- function(a,b) 1 / (1 + sqrt(sum((a-b)^2)))
+euclidean <- function(a,b) 1 / (1 + sum((a-b)^2))
+
+# Calculate Pearson Correlation Score
+pearson <- function(a,b) cor(a, b, method = 'pearson')
+```
+
+## Kahden käyttäjän välinen samankaltaisuus
+
+Käyttäjät ovat arvostelleet vaihtelevan määrän elokuvia. 
+
+Korrelaatiota mittaavien funktioiden käyttö edellyttää, että erotetaan elokuvat, jotka molemmat ovat arvostelleet.
+
+Tehdään funktio, joka:
+
+- poimii kohteen, jotka molemmat henkilöt ovat arvioineet
+- palauttaa käyttäjien mieltymysten korrelaatiota mittaavan arvon
+
+
+```{r}
+
+calculateSimilarityScore <- function(prefs, person1, person2, similarityFunction){
+
+  # Extract items that persons have reviewed and make sure items are in the same order
+  p1Reviews <- prefs[which(prefs[[personIdCol]] == person1),] %>% arrange(.[[itemIdCol]])
+  p2Reviews <- prefs[which(prefs[[personIdCol]] == person2),] %>% arrange(.[[itemIdCol]])
+  
+  # Items that both have reviews
+  sharedItems <- intersect(p1Reviews[,itemIdCol], p2Reviews[,itemIdCol]) %>%
+      unlist(use.names = FALSE)
+  
+  if(length(sharedItems) == 0) 
+    return(0)
+  
+  # Extract the grades of items both have graded
+  p1Grades <- p1Reviews[which(p1Reviews[[itemIdCol]] %in% sharedItems), valueIdCol] %>%
+      unlist(use.names = FALSE)
+  
+  p2Grades <- p2Reviews[which(p2Reviews[[itemIdCol]] %in% sharedItems), valueIdCol] %>%
+      unlist(use.names = FALSE)
+  
+  return(similarityFunction(p1Grades, p2Grades))
+  
+}
+```
+
+Testataan toimiiko koodi laskemalla kahden käyttäjän väliset korrelaatiot niin euklidisen kuin pearsonin korrelaatiofunktion avulla:
+
+```{r}
+p1 = 'Lisa Rose'
+p2 = 'Gene Seymour'
+
+calculateSimilarityScore(reviews, p1, p2, euclidean)
+calculateSimilarityScore(reviews, p1, p2, pearson)
+```
+## Ranking the Critics
+
+Valitaan yksi arvostelija ja selvitetään materiaalin avulla parhaiten hänen mieltymyksiää edustava joukko.
+
+Tehdään tätä varten kaksi funktiota:
+
+- getSimilarityScores vertaa suositusten saajaa kaikkiin muihin aineiston **käyttäjiin**
+
+```{r}
+
+# calculate similarity scores using the selected similarity function
+getSimilarityScores <- function(prefs, person, similarity) {
+  
+  # get the data.frame of other users
+  others <- prefs[which(prefs[[personIdCol]] != person), personIdCol] %>% 
+    distinct() 
+  
+  # calculate similarity scores
+  similarity <- apply(
+    others[,1], 
+    1, 
+    function(x) calculateSimilarityScore(prefs, person, x, similarity)
+  )
+  
+  # add similarity scores to user data.frame
+  others[similarityCol] = similarity
+  
+  # sort results
+  others %>%
+    arrange(desc(.[[similarityCol]]))
+
+}
+```
+
+- topMatches poimii listalta kärkijoukon
+
+Huom! Parametrin *includeOriginal* käyttötarkoitus selviää myöhemmin. 
+
+```{r}
+# Returns the best matches for person from the prefs table
+topMatches <- function(prefs, person, n = 5, similarity = pearson, includeOriginal = FALSE) {
+  
+  # sort other users based on their similarity
+  others <- getSimilarityScores(prefs, person , similarity)
+  
+  # pick top "n"
+  others <- others %>% 
+    top_n(n, wt = .[[similarityCol]])
+  
+  # in case needed store also the recommendee name 
+  if(includeOriginal == TRUE) {
+    others <- others %>% mutate(Target = person)
+  }
+  
+  others
+  
+}
+```
+
+Haetaan **käyttäjälle** **Toby** kolme parasta osumaa.
+
+```{r}
+topMatches(reviews, 'Toby', n=3)
+```
+
+## Recommending Items
+
+Suositusten antamiseen voisi tietenkin valita muutaman parhaan osuman ja valita *paremmuusjärjestyksessä* listalta sellaiset elokuvat, joita suositusten saaja ei ole viellä nähnyt.
+
+Tällöin kuitenkin saattaa jäädä pimentoon sellaisia, elokuvia jotka juuri tältä *kärkijoukolta* ovat jääneet näkemättä. Ja toisaalta joku yksittäinen elokuva voi nousta liian korkeaan arvoon, tilanteessa jossa yksi on sattunut pitämään, mutta juuri kukaan muu ei.
+
+Parempi vaihtoehto on käyttää aineistoa laajasti ja laskea elokuville painotetut ennusteet siitä kuinka suositusten saaja arvioisi ne.
+
+<table>
+<tr>
+<td>Eggs</td>
+<td>Ham</td>
+</tr>
+<tr>
+<td>Basil</td>
+<td>Tomato</td>
+</tr>
+</table>
