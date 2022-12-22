@@ -360,64 +360,60 @@ display: none;
 <ul>
 <li><a href="#making-recommendations" id="toc-making-recommendations">Making Recommendations</a>
 <ul>
-<li><a href="#preface" id="toc-preface">Preface</a></li>
-<li><a href="#setup-environment" id="toc-setup-environment">Setup
-Environment</a></li>
-<li><a href="#score-functions" id="toc-score-functions">Score
-Functions</a></li>
+<li><a href="#esipuhe" id="toc-esipuhe">Esipuhe</a></li>
+<li><a href="#alkutoimet" id="toc-alkutoimet">Alkutoimet</a></li>
+<li><a href="#samankaltaisuutta-mittaavat-funktiot" id="toc-samankaltaisuutta-mittaavat-funktiot">Samankaltaisuutta
+mittaavat funktiot</a></li>
 <li><a href="#kahden-käyttäjän-välinen-samankaltaisuus" id="toc-kahden-käyttäjän-välinen-samankaltaisuus">Kahden käyttäjän
 välinen samankaltaisuus</a></li>
 <li><a href="#ranking-the-critics" id="toc-ranking-the-critics">Ranking
 the Critics</a></li>
-<li><a href="#recommending-items" id="toc-recommending-items">Recommending Items</a></li>
-<li><a href="#matching-products" id="toc-matching-products">Matching
-Products</a></li>
-<li><a href="#item-based-filtering" id="toc-item-based-filtering">Item-Based Filtering</a></li>
+<li><a href="#tuotteiden-suosittelu" id="toc-tuotteiden-suosittelu">Tuotteiden suosittelu</a></li>
+<li><a href="#tuotteiden-vastaavuuden-arvioiminen" id="toc-tuotteiden-vastaavuuden-arvioiminen">Tuotteiden vastaavuuden
+arvioiminen</a></li>
+<li><a href="#tuoteperusteinen-suodatus" id="toc-tuoteperusteinen-suodatus">Tuoteperusteinen suodatus</a></li>
 </ul></li>
 </ul>
 </div>
 
 <div id="making-recommendations" class="section level1">
 <h1>Making Recommendations</h1>
-<div id="preface" class="section level2">
-<h2>Preface</h2>
+<div id="esipuhe" class="section level2">
+<h2>Esipuhe</h2>
 <p>Kauan aikaa sitten ostin Toby Segaranin kirjoittaman kirjan
 Programming Collective Intelligence.</p>
-<p>Kirjassa esittellään kollektiivisen älykkyyden käyttökohteita ja
+<p>Kirjassa esitellään kollektiivisen älykkyyden käyttökohteita ja
 -menetelmiä.</p>
 <p>Aiheissa ei mennä kovin syvälle, vaan tarkoitus on antaa lukijalle
-yleiskuva, jonka avulla aihealueisiin voi syvällisemmin paneutua -
-mikäli kiinnostusta riittää.</p>
+yleiskuva. Mikäli kiinnostus herää, kirjan avulla on luotu pohja, jonka
+päälle tietämystä voi alkaa kerryttämään.</p>
 <p>Kirjassa käydään läpi kymmenkunta sovellusaluetta, esimerkkeinä
-voidaan mainita luokkittelu, optimointi, päätöspuut.</p>
-<p>Joka alueesta rakennetaan malli python kielellä</p>
-<p>Tämä opas pohjautuu suositteluja (Making Recommendations) koskevaan
-kappaleeseen.</p>
-<p>Nyt ei kuitenkaan operoidan pythonilla, vaan parhaani mukaan olen
-toteuttanut toiminnallisuuden R-kielellä.</p>
-<p>Muutamaan vuoteen en ole ollut tekemissä R:n kanssa, joten koodini ei
-edusta tyylikkäintä saati tehokkainta tapaa kirjoittaa R:ää. Juurikin
-tästä syystä, tämä projekti on tarjonnut mukavan tavan virkistää muistia
-niin R:n kuin suosittelujärjestelmien kannalta.</p>
+voidaan mainita luokittelu, optimointi, päätöspuut.</p>
+<p>Joka alueesta rakennetaan malli Python kielellä</p>
+<p>Tämä opas pohjautuu suositteluja suosittelujärjestelmiä (Making
+Recommendations) koskevaan kappaleeseen.</p>
+<p>Nyt ei kuitenkaan operoida Pythonilla, vaan olen toteuttanut
+toiminnallisuuden R-kielellä.</p>
+<p>En ole muutamaan vuoteen ollut tekemissä R:n kanssa, joten koodini ei
+edusta tyylikkäintä saati tehokkainta tapaa kirjoittaa R:ää. Projekti on
+tarjonnut mukavan tavan palauttaa muistiin aiemmin opittua niin R:n kuin
+suosittelujärjestelmien kannalta.</p>
 <p>Varoituksen sana!</p>
-<p>Koodit ovat joiltain osin turhankin mutkikkaita, koska työn edetessä
-olen pyrkinyt hyödyntämään aiemmin tuotettua koodia pienten muokkausten
-avulla. Tämä sinänsä on järkevää, mutta hankalaa hahmottamisen kannalta,
-kun lukija saa nähtäväkseen lopullisen tuloksen - ja koodin
-muodostumisen evoluutio jää pimentoon.</p>
-<p>Onneksi tämä on aika pieni opas, joten yleiskuvan muodostaminen
-pitäisi kuitenkin olla kohtuullisen saavutettavissa.</p>
-<p><em>Maininta siitä, että tässä oppaassa käsitellään elokuvia, joten
-käytettävät termit heijastelevat aihealuetta. Mutta samat periaatteet
-ovat yleistettävissä muihinkin kohteisiin.</em></p>
+<p>Työkirjassa toteutettavat funktiot ovat joiltain osin turhankin
+mutkikkaita. Työn edetessä olen pyrkinyt hyödyntämään aiemmin tuotettua
+koodia pienten muokkausten avulla. Tämä sinänsä on järkevää, mutta
+hankalaa koodin hahmottamisen kannalta, kun lukija saa nähtäväkseen
+lopullisen tuloksen - ja koodin muodostumisen välivaiheet jäävät
+pimentoon.</p>
+<p>Onneksi tämä on pieni opas, joten yleiskuvan muodostaminen pitäisi
+kuitenkin olla kohtuullisen saavutettavissa.</p>
 </div>
-<div id="setup-environment" class="section level2">
-<h2>Setup Environment</h2>
+<div id="alkutoimet" class="section level2">
+<h2>Alkutoimet</h2>
 <p>Jotta pohjaa voisi käyttää eri aineistoilla, talletetaan laskennassa
 käytettävät sarakenimet muuttujiin. Tällöin (ainakin teoriassa) eri
 aineistoja pääsee pienellä vaivalla käyttämään vaihtamalla muuttujien
 sisällöt vastaamaan käytettävää aineistoa.</p>
-<p>Recommendee is the target of recommendations.</p>
 <p>Asetetaan muuttujien arvot.</p>
 <pre class="r"><code>on_kaggle &lt;- 0
 
@@ -442,17 +438,20 @@ if (on_kaggle == 0){
 <p>Luetaan käytettävä aineisto:</p>
 <pre class="r"><code>reviews &lt;- read_csv(str_c(path, &quot;recommendations.csv&quot;), na=&quot;NA&quot;)</code></pre>
 </div>
-<div id="score-functions" class="section level2">
-<h2>Score Functions</h2>
-<p>The original tutorial shows two alternatives to calculate a
-similarity score between to users.</p>
+<div id="samankaltaisuutta-mittaavat-funktiot" class="section level2">
+<h2>Samankaltaisuutta mittaavat funktiot</h2>
+<p>Käyttäjien mieltymysten samankaltaisuutta mitataan laskemalla heidän
+antamien arvosanojen välinen korrelaatio.</p>
+<p>Alkuperäinen opas esittää kaksi tapaa samankaltaisuuden
+laskemiseen:</p>
 <ul>
-<li>Euclidean distance score</li>
-<li>Pearson correlation score</li>
+<li>Euklidinen etäisyys</li>
+<li>Pearsonin korrelaatiokerroin.</li>
 </ul>
-<p>Funktioita voi määrittää tarvittaessa lisää. Riittää kun funktio
-ottaa parametrinä kahden käyttäjän arvosanat ja palauttaa numeerisen
-vastauksen.</p>
+<p>Kirjoitetaan molempia menetelmiä varten omat funktionsa.</p>
+<p>Funktioita voi tarvittaessa määrittää helposti lisää. Riittää kun
+funktio ottaa parametrina kahden käyttäjän arvosanat ja palauttaa
+numeerisen vastauksen.</p>
 <pre class="r"><code># Calculate Euclidean Distance Score
 # euclidean &lt;- function(a,b) 1 / (1 + sqrt(sum((a-b)^2)))
 euclidean &lt;- function(a,b) 1 / (1 + sum((a-b)^2))
@@ -467,8 +466,9 @@ pearson &lt;- function(a,b) cor(a, b, method = &#39;pearson&#39;)</code></pre>
 erotetaan elokuvat, jotka molemmat ovat arvostelleet.</p>
 <p>Tehdään funktio, joka:</p>
 <ul>
-<li>poimii kohteen, jotka molemmat henkilöt ovat arvioineet</li>
-<li>palauttaa käyttäjien mieltymysten korrelaatiota mittaavan arvon</li>
+<li>poimii elokuvat, jotka molemmat henkilöt ovat arvioineet</li>
+<li>palauttaa käyttäjien mieltymysten samankaltaisuutta mittaavan
+arvon.</li>
 </ul>
 <pre class="r"><code>calculateSimilarityScore &lt;- function(prefs, person1, person2, similarityFunction){
 
@@ -493,9 +493,8 @@ erotetaan elokuvat, jotka molemmat ovat arvostelleet.</p>
   return(similarityFunction(p1Grades, p2Grades))
   
 }</code></pre>
-<p>Testataan toimiiko koodi laskemalla kahden käyttäjän väliset
-korrelaatiot niin euklidisen kuin pearsonin korrelaatiofunktion
-avulla:</p>
+<p>Testataan toimiiko koodi, laskemalla kahden käyttäjän väliset
+korrelaatiot niin euklidisen kuin pearsonin menetelmä avulla:</p>
 <pre class="r"><code>p1 = &#39;Lisa Rose&#39;
 p2 = &#39;Gene Seymour&#39;
 
@@ -506,12 +505,11 @@ calculateSimilarityScore(reviews, p1, p2, euclidean)</code></pre>
 </div>
 <div id="ranking-the-critics" class="section level2">
 <h2>Ranking the Critics</h2>
-<p>Valitaan yksi arvostelija ja selvitetään materiaalin avulla parhaiten
-hänen mieltymyksiää edustava joukko.</p>
+<p>Valitaan yksi arvostelija ja selvitetään hänen mieltymyksiään
+parhaiten vastaava ryhmä.</p>
 <p>Tehdään tätä varten kaksi funktiota:</p>
 <ul>
-<li>getSimilarityScores vertaa suositusten saajaa kaikkiin muihin
-aineiston <strong>käyttäjiin</strong></li>
+<li>getSimilarityScores vertaa suositusten saajaa muihin</li>
 </ul>
 <pre class="r"><code># calculate similarity scores using the selected similarity function
 getSimilarityScores &lt;- function(prefs, person, similarity) {
@@ -558,8 +556,7 @@ topMatches &lt;- function(prefs, person, n = 5, similarity = pearson, includeOri
   others
   
 }</code></pre>
-<p>Haetaan <strong>käyttäjälle</strong> <strong>Toby</strong> kolme
-parasta osumaa.</p>
+<p>Haetaan <strong>käyttäjälle Toby</strong> kolme parasta osumaa.</p>
 <pre class="r"><code>topMatches(reviews, &#39;Toby&#39;, n=3)</code></pre>
 <pre><code>## # A tibble: 3 × 2
 ##   Person       Similarity
@@ -568,51 +565,57 @@ parasta osumaa.</p>
 ## 2 Mick LaSalle      0.924
 ## 3 Claudia Puig      0.893</code></pre>
 </div>
-<div id="recommending-items" class="section level2">
-<h2>Recommending Items</h2>
-<p>Suositusten antamiseen voisi tietenkin valita muutaman parhaan osuman
-ja valita <em>paremmuusjärjestyksessä</em> listalta sellaiset elokuvat,
-joita suositusten saaja ei ole viellä nähnyt.</p>
-<p>Tällöin kuitenkin saattaa jäädä pimentoon sellaisia, elokuvia jotka
-juuri tältä <em>kärkijoukolta</em> ovat jääneet näkemättä. Ja toisaalta
-joku yksittäinen elokuva voi nousta liian korkeaan arvoon, tilanteessa
-jossa yksi on sattunut pitämään, mutta juuri kukaan muu ei.</p>
+<div id="tuotteiden-suosittelu" class="section level2">
+<h2>Tuotteiden suosittelu</h2>
+<p>Suositusten antamiseen voisi valita muutaman parhaan osuman ja
+valikoida paremmuusjärjestyksessä sellaiset elokuvat, joita suositusten
+saaja ei ole vielä nähnyt.</p>
+<p>Tällöin kuitenkin saattaa jäädä pimentoon elokuvia, jotka
+“kärkijoukolta” ovat jääneet näkemättä. Tai joku yksittäinen elokuva voi
+nousta liian korkeaan arvoon tilanteessa, jossa yksi on sattunut
+pitämään, mutta juuri kukaan muu ei.</p>
 <p>Parempi vaihtoehto on käyttää aineistoa laajasti ja laskea elokuville
-painotetut ennusteet siitä kuinka suositusten saaja arvioisi ne.</p>
-<p>Huomioidaan kaikki elokuvaan kohdistuneet arvostelut arvostelijan
-<em>similarity-arvon</em> mukaisella painotuksena.</p>
-<p>Käytetään apuna Toby Segaranin kirjassa käyttämää esimerkkiä.</p>
-<p>Aineistossa on laskettu kuudelle käyttäjälle
-<em>similarity-arvot</em>. Näiden perusteella lasketaan arviot kolmelle
-elokuvalle:</p>
+ennusteet siitä kuinka suositusten saaja arvioisi ne.</p>
+<p>Tämä saadaan aikaan, kun:</p>
+<ul>
+<li>selvitetään elokuvat, joita suositusten saaja ei ole vielä
+nähnyt</li>
+<li>muiden käyttäjien näille elokuville antamat arviot huomioidaan
+samankaltaisuutta mittaavan arvon suhteessa.</li>
+</ul>
+<p>Kuinka edellinen toteutetaan on helpointa hahmottaa oheisen kuvan
+avulla.</p>
+<div class="figure">
+<img src="data:image/svg+xml;base64,PCEtLSBDcmVhdGVkIHdpdGggSW5rc2NhcGUgKGh0dHA6Ly93d3cuaW5rc2NhcGUub3JnLykgLS0+Cjxzdmcgd2lkdGg9IjE3Ni4yMm1tIiBoZWlnaHQ9IjYwLjYxNm1tIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNzYuMjIgNjAuNjE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIuNzY4OCAtNS42MDMxKSI+CiAgPHJlY3QgeD0iMi43Njg4IiB5PSI1LjYwMzEiIHdpZHRoPSIxNzYuMjIiIGhlaWdodD0iNjAuNjE2IiBmaWxsPSIjZmZmIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMS42Ii8+CiAgPGcgZm9udC1mYW1pbHk9IidCb2RvbmkgTVQnIiBmb250LXNpemU9IjQuOTM4OXB4IiBsZXR0ZXItc3BhY2luZz0iLjAxMDU4M3B4IiBzdHJva2Utd2lkdGg9Ii4yNjQ1OCIgd29yZC1zcGFjaW5nPSIwcHgiPgogICA8dGV4dCB4PSI1LjY4OTY1MzkiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjEyLjgzMzY3MSI+Q3JpdGljPC90c3Bhbj48dHNwYW4geD0iNS42ODk2NTM5IiB5PSIxOS4wMDcyODIiPlJvc2U8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjI1LjE4MDg5NSI+U2V5bW91cjwvdHNwYW4+PHRzcGFuIHg9IjUuNjg5NjUzOSIgeT0iMzEuMzU0NTA3Ij5QdWlnPC90c3Bhbj48dHNwYW4geD0iNS42ODk2NTM5IiB5PSIzNy41MjgxMjIiPkxhU2FsbGU8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjQzLjcwMTczMyI+TWF0dGhld3M8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjQ5Ljg3NTM0NyI+VG90YWw8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjU2LjA0ODk1OCI+U2ltLlN1bTwvdHNwYW4+PHRzcGFuIHg9IjUuNjg5NjUzOSIgeT0iNjIuMjIyNTcyIj5Ub3RhbC9TaW0uU3VtPC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjM1LjY3ODY1OCIgeT0iMTIuODMzNjcxIiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjM1LjY3ODY1OCIgeT0iMTIuODMzNjcxIj5TaW1pbGFyaXR5PC90c3Bhbj48dHNwYW4geD0iMzUuNjc4NjU4IiB5PSIxOS4wMDcyODIiPjAuOTk8L3RzcGFuPjx0c3BhbiB4PSIzNS42Nzg2NTgiIHk9IjI1LjE4MDg5NSI+MC4zODwvdHNwYW4+PHRzcGFuIHg9IjM1LjY3ODY1OCIgeT0iMzEuMzU0NTA3Ij4wLjg5PC90c3Bhbj48dHNwYW4geD0iMzUuNjc4NjU4IiB5PSIzNy41MjgxMjIiPjAuOTI8L3RzcGFuPjx0c3BhbiB4PSIzNS42Nzg2NTgiIHk9IjQzLjcwMTczMyI+MC42NjwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSI1OS43ODY0MTkiIHk9IjEyLjc5NTA4NyIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSI1OS43ODY0MTkiIHk9IjEyLjc5NTA4NyI+TmlnaHQuLi48L3RzcGFuPjx0c3BhbiB4PSI1OS43ODY0MTkiIHk9IjE4Ljk2ODY5OSI+My4wPC90c3Bhbj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSIyNS4xNDIzMTEiPjMuMDwvdHNwYW4+PHRzcGFuIHg9IjU5Ljc4NjQxOSIgeT0iMzEuMzE1OTI0Ij40LjU8L3RzcGFuPjx0c3BhbiB4PSI1OS43ODY0MTkiIHk9IjM3LjQ4OTUzNiI+My4wPC90c3Bhbj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSI0My42NjMxNTEiPjMuMDwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSI3OS45MDA4MSIgeT0iMTIuODMzNjcxIiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSIxMi44MzM2NzEiPlMueE5pZ2h0PC90c3Bhbj48dHNwYW4geD0iNzkuOTAwODEiIHk9IjE5LjAwNzI4MiI+Mi45NzwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSIyNS4xODA4OTUiPjEuMTQ8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iMzEuMzU0NTA3Ij40LjAyPC90c3Bhbj48dHNwYW4geD0iNzkuOTAwODEiIHk9IjM3LjUyODEyMiI+Mi43NzwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSI0My43MDE3MzMiPjEuOTk8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iNDkuODc1MzQ3Ij4xMi44OTwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSI1Ni4wNDg5NTgiPjMuODQ8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iNjIuMjIyNTcyIj4zLjM1PC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjEwMi42ODAwMiIgeT0iMTIuNzk1MDg3IiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjEwMi42ODAwMiIgeT0iMTIuNzk1MDg3Ij5MYWR5Li4uPC90c3Bhbj48dHNwYW4geD0iMTAyLjY4MDAyIiB5PSIxOC45Njg2OTkiPjIuNTwvdHNwYW4+PHRzcGFuIHg9IjEwMi42ODAwMiIgeT0iMjUuMTQyMzExIj4zLjA8L3RzcGFuPjx0c3BhbiB4PSIxMDIuNjgwMDIiIHk9IjMxLjMxNTkyNCIvPjx0c3BhbiB4PSIxMDIuNjgwMDIiIHk9IjM3LjQ4OTUzNiI+My4wPC90c3Bhbj48dHNwYW4geD0iMTAyLjY4MDAyIiB5PSI0My42NjMxNTEiPjMuMDwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSIxMjAuMTcxMTEiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjEyLjgzMzY3MSI+Uy54TGFkeTwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iMTkuMDA3MjgyIj4yLjQ4PC90c3Bhbj48dHNwYW4geD0iMTIwLjE3MTExIiB5PSIyNS4xODA4OTUiPjEuMTQ8L3RzcGFuPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjMxLjM1NDUwNyIvPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjM3LjUyODEyMiI+Mi43NzwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iNDMuNzAxNzMzIj4xLjk5PC90c3Bhbj48dHNwYW4geD0iMTIwLjE3MTExIiB5PSI0OS44NzUzNDciPjguMzg8L3RzcGFuPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjU2LjA0ODk1OCI+Mi45NTwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iNjIuMjIyNTcyIj4yLjgzPC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjE0MC4xMTc2MSIgeT0iMTIuNzk1MDg3IiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjE0MC4xMTc2MSIgeT0iMTIuNzk1MDg3Ij5MdWNrLi4uPC90c3Bhbj48dHNwYW4geD0iMTQwLjExNzYxIiB5PSIxOC45Njg2OTkiPjMuMDwvdHNwYW4+PHRzcGFuIHg9IjE0MC4xMTc2MSIgeT0iMjUuMTQyMzExIj4xLjU8L3RzcGFuPjx0c3BhbiB4PSIxNDAuMTE3NjEiIHk9IjMxLjMxNTkyNCI+My4wPC90c3Bhbj48dHNwYW4geD0iMTQwLjExNzYxIiB5PSIzNy40ODk1MzYiPjIuMDwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSIxNTguNzAyMTUiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjEyLjgzMzY3MSI+Uy54THVjazwvdHNwYW4+PHRzcGFuIHg9IjE1OC43MDIxNSIgeT0iMTkuMDA3MjgyIj4yLjk3PC90c3Bhbj48dHNwYW4geD0iMTU4LjcwMjE1IiB5PSIyNS4xODA4OTUiPjAuNTc8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjMxLjM1NDUwNyI+Mi42ODwvdHNwYW4+PHRzcGFuIHg9IjE1OC43MDIxNSIgeT0iMzcuNTI4MTIyIj4xLjg1PC90c3Bhbj48dHNwYW4geD0iMTU4LjcwMjE1IiB5PSI0My43MDE3MzMiLz48dHNwYW4geD0iMTU4LjcwMjE1IiB5PSI0OS44NzUzNDciPjguMDc8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjU2LjA0ODk1OCI+My4xODwvdHNwYW4+PHRzcGFuIHg9IjE1OC43MDIxNSIgeT0iNjIuMjIyNTcyIj4yLjUzPC90c3Bhbj48L3RleHQ+CiAgPC9nPgogIDxyZWN0IHg9IjMuODkyNCIgeT0iNy43MTk4IiB3aWR0aD0iMTczLjk3IiBoZWlnaHQ9IjciIGZpbGw9IiNiM2IzYjMiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTptdWx0aXBseSIvPgogIDxyZWN0IHg9IjMuODkyNCIgeT0iNTcuNDYxIiB3aWR0aD0iMTczLjk3IiBoZWlnaHQ9Ii41IiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMS42IiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6bXVsdGlwbHkiLz4KIDwvZz4KPC9zdmc+Cg==" alt />
+<p class="caption">Creating recommendations for Toby</p>
+</div>
+<p>Esimerkissä annetaan Toby:lle suosituksia.</p>
+<p>Hän ei ole vielä nähnyt kolmea elokuvaa:</p>
 <ul>
 <li>The Night Listener</li>
 <li>Lady in the Water</li>
 <li>Just My Luck</li>
 </ul>
+<p>Tiedossa on kuinka muut käyttäjät ovat kyseiset elokuvat arvioineen
+ja kuinka hyvin muiden heidön makumieltymykset vastaavat Tobyn
+kanssa.</p>
 <p>Laskenta etenee siten, että:</p>
 <ol style="list-style-type: decimal">
-<li>Kunkin arvostelijan antama arvosana kerrotaan arvostelijan
-<em>Similarity-arvolla</em></li>
-<li>Lasketaan yhteen kunkin elokuvan <em>Similarity-arvolla</em>
-kerrotut arvosanat</li>
-<li>Lasketaan yhteen kunkin elokuvan laskuissa mukana olleet
-<em>Similarity-arvot</em></li>
-<li>Jaetaan arvosanojen summa painokertoiminen summalla.</li>
+<li>elokuva kerrallaan muiden antamat arvosanat kerrotaan heidän
+painoarvollaan</li>
+<li>lasketaan kunkin elokuvan arvioiden summa</li>
+<li>lasketaan yhteen myös kunkin elokuvan laskuissa mukana olleet
+painoarvot</li>
+<li>jaetaan arvosanojen summa painokertoimien summalla.</li>
 </ol>
 <p>Esim. Rose oli arvioinut The Night Listener elokuvan kolmosen
 arvoiseksi. Rosen ja Tobyn <em>Similarity-arvo</em> on 0.99, joten
 Roselta kertyy elokuvalle 2.97 pistettä. Yhteensä elokuva sai 12.89
-pistettä. Kun kaikkien osallistunteiden kriitikkojen
-<em>Similarity-arvot</em> lasketaan yhteen, saadaan Sim.Sum arvoksi
-3.84. Ja kun arvosanojen summa jaetaan painojen summalla, saadaan
-tulokseksi 3.35</p>
-<div class="figure">
-<img src="data:image/svg+xml;base64,PCEtLSBDcmVhdGVkIHdpdGggSW5rc2NhcGUgKGh0dHA6Ly93d3cuaW5rc2NhcGUub3JnLykgLS0+Cjxzdmcgd2lkdGg9IjE3Ni4yMm1tIiBoZWlnaHQ9IjYwLjYxNm1tIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNzYuMjIgNjAuNjE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIuNzY4OCAtNS42MDMxKSI+CiAgPHJlY3QgeD0iMi43Njg4IiB5PSI1LjYwMzEiIHdpZHRoPSIxNzYuMjIiIGhlaWdodD0iNjAuNjE2IiBmaWxsPSIjZmZmIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMS42Ii8+CiAgPGcgZm9udC1mYW1pbHk9IidCb2RvbmkgTVQnIiBmb250LXNpemU9IjQuOTM4OXB4IiBsZXR0ZXItc3BhY2luZz0iLjAxMDU4M3B4IiBzdHJva2Utd2lkdGg9Ii4yNjQ1OCIgd29yZC1zcGFjaW5nPSIwcHgiPgogICA8dGV4dCB4PSI1LjY4OTY1MzkiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjEyLjgzMzY3MSI+Q3JpdGljPC90c3Bhbj48dHNwYW4geD0iNS42ODk2NTM5IiB5PSIxOS4wMDcyODIiPlJvc2U8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjI1LjE4MDg5NSI+U2V5bW91cjwvdHNwYW4+PHRzcGFuIHg9IjUuNjg5NjUzOSIgeT0iMzEuMzU0NTA3Ij5QdWlnPC90c3Bhbj48dHNwYW4geD0iNS42ODk2NTM5IiB5PSIzNy41MjgxMjIiPkxhU2FsbGU8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjQzLjcwMTczMyI+TWF0dGhld3M8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjQ5Ljg3NTM0NyI+VG90YWw8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjU2LjA0ODk1OCI+U2ltLlN1bTwvdHNwYW4+PHRzcGFuIHg9IjUuNjg5NjUzOSIgeT0iNjIuMjIyNTcyIj5Ub3RhbC9TaW0uU3VtPC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjM1LjY3ODY1OCIgeT0iMTIuODMzNjcxIiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjM1LjY3ODY1OCIgeT0iMTIuODMzNjcxIj5TaW1pbGFyaXR5PC90c3Bhbj48dHNwYW4geD0iMzUuNjc4NjU4IiB5PSIxOS4wMDcyODIiPjAuOTk8L3RzcGFuPjx0c3BhbiB4PSIzNS42Nzg2NTgiIHk9IjI1LjE4MDg5NSI+MC4zODwvdHNwYW4+PHRzcGFuIHg9IjM1LjY3ODY1OCIgeT0iMzEuMzU0NTA3Ij4wLjg5PC90c3Bhbj48dHNwYW4geD0iMzUuNjc4NjU4IiB5PSIzNy41MjgxMjIiPjAuOTI8L3RzcGFuPjx0c3BhbiB4PSIzNS42Nzg2NTgiIHk9IjQzLjcwMTczMyI+MC42NjwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSI1OS43ODY0MTkiIHk9IjEyLjc5NTA4NyIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSI1OS43ODY0MTkiIHk9IjEyLjc5NTA4NyI+TmlnaHQuLi48L3RzcGFuPjx0c3BhbiB4PSI1OS43ODY0MTkiIHk9IjE4Ljk2ODY5OSI+My4wPC90c3Bhbj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSIyNS4xNDIzMTEiPjMuMDwvdHNwYW4+PHRzcGFuIHg9IjU5Ljc4NjQxOSIgeT0iMzEuMzE1OTI0Ij40LjU8L3RzcGFuPjx0c3BhbiB4PSI1OS43ODY0MTkiIHk9IjM3LjQ4OTUzNiI+My4wPC90c3Bhbj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSI0My42NjMxNTEiPjMuMDwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSI3OS45MDA4MSIgeT0iMTIuODMzNjcxIiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSIxMi44MzM2NzEiPlMueE5pZ2h0PC90c3Bhbj48dHNwYW4geD0iNzkuOTAwODEiIHk9IjE5LjAwNzI4MiI+Mi45NzwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSIyNS4xODA4OTUiPjEuMTQ8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iMzEuMzU0NTA3Ij40LjAyPC90c3Bhbj48dHNwYW4geD0iNzkuOTAwODEiIHk9IjM3LjUyODEyMiI+Mi43NzwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSI0My43MDE3MzMiPjEuOTk8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iNDkuODc1MzQ3Ij4xMi44OTwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSI1Ni4wNDg5NTgiPjMuODQ8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iNjIuMjIyNTcyIj4zLjM1PC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjEwMi42ODAwMiIgeT0iMTIuNzk1MDg3IiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjEwMi42ODAwMiIgeT0iMTIuNzk1MDg3Ij5MYWR5Li4uPC90c3Bhbj48dHNwYW4geD0iMTAyLjY4MDAyIiB5PSIxOC45Njg2OTkiPjIuNTwvdHNwYW4+PHRzcGFuIHg9IjEwMi42ODAwMiIgeT0iMjUuMTQyMzExIj4zLjA8L3RzcGFuPjx0c3BhbiB4PSIxMDIuNjgwMDIiIHk9IjMxLjMxNTkyNCIvPjx0c3BhbiB4PSIxMDIuNjgwMDIiIHk9IjM3LjQ4OTUzNiI+My4wPC90c3Bhbj48dHNwYW4geD0iMTAyLjY4MDAyIiB5PSI0My42NjMxNTEiPjMuMDwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSIxMjAuMTcxMTEiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjEyLjgzMzY3MSI+Uy54TGFkeTwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iMTkuMDA3MjgyIj4yLjQ4PC90c3Bhbj48dHNwYW4geD0iMTIwLjE3MTExIiB5PSIyNS4xODA4OTUiPjEuMTQ8L3RzcGFuPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjMxLjM1NDUwNyIvPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjM3LjUyODEyMiI+Mi43NzwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iNDMuNzAxNzMzIj4xLjk5PC90c3Bhbj48dHNwYW4geD0iMTIwLjE3MTExIiB5PSI0OS44NzUzNDciPjguMzg8L3RzcGFuPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjU2LjA0ODk1OCI+Mi45NTwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iNjIuMjIyNTcyIj4yLjgzPC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjE0MC4xMTc2MSIgeT0iMTIuNzk1MDg3IiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjE0MC4xMTc2MSIgeT0iMTIuNzk1MDg3Ij5MdWNrLi4uPC90c3Bhbj48dHNwYW4geD0iMTQwLjExNzYxIiB5PSIxOC45Njg2OTkiPjMuMDwvdHNwYW4+PHRzcGFuIHg9IjE0MC4xMTc2MSIgeT0iMjUuMTQyMzExIj4xLjU8L3RzcGFuPjx0c3BhbiB4PSIxNDAuMTE3NjEiIHk9IjMxLjMxNTkyNCI+My4wPC90c3Bhbj48dHNwYW4geD0iMTQwLjExNzYxIiB5PSIzNy40ODk1MzYiPjIuMDwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSIxNTguNzAyMTUiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjEyLjgzMzY3MSI+Uy54THVjazwvdHNwYW4+PHRzcGFuIHg9IjE1OC43MDIxNSIgeT0iMTkuMDA3MjgyIj4yLjk3PC90c3Bhbj48dHNwYW4geD0iMTU4LjcwMjE1IiB5PSIyNS4xODA4OTUiPjAuNTc8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjMxLjM1NDUwNyI+Mi42ODwvdHNwYW4+PHRzcGFuIHg9IjE1OC43MDIxNSIgeT0iMzcuNTI4MTIyIj4xLjg1PC90c3Bhbj48dHNwYW4geD0iMTU4LjcwMjE1IiB5PSI0My43MDE3MzMiLz48dHNwYW4geD0iMTU4LjcwMjE1IiB5PSI0OS44NzUzNDciPjguMDc8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjU2LjA0ODk1OCI+My4xODwvdHNwYW4+PHRzcGFuIHg9IjE1OC43MDIxNSIgeT0iNjIuMjIyNTcyIj4yLjUzPC90c3Bhbj48L3RleHQ+CiAgPC9nPgogIDxyZWN0IHg9IjMuODkyNCIgeT0iNy43MTk4IiB3aWR0aD0iMTczLjk3IiBoZWlnaHQ9IjciIGZpbGw9IiNiM2IzYjMiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTptdWx0aXBseSIvPgogIDxyZWN0IHg9IjMuODkyNCIgeT0iNTcuNDYxIiB3aWR0aD0iMTczLjk3IiBoZWlnaHQ9Ii41IiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMS42IiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6bXVsdGlwbHkiLz4KIDwvZz4KPC9zdmc+Cg==" alt />
-<p class="caption">Creating recommendations for Toby</p>
-</div>
-<p>Kun saatiin tämä alta. Voidaan keskittyä toimenpiteen suorittavan
-funktion kirjoittamiseen.</p>
+pistettä. Kun elokuvan nähneiden käyttäjien painoarvot lasketaan yhteen,
+saadaan Sim.Sum arvoksi 3.84. Kun arvosanojen summa jaetaan painojen
+summalla, saadaan tulokseksi 3.35.</p>
+<p>Kun saatiin tämä alta. Voidaankin jo siirtyä toimenpiteen suorittavan
+funktion pariin:</p>
 <pre class="r"><code>getRecommendations &lt;- function(prefs, person, similarity) {
   
   # extract the items recommendee has already reviewed
@@ -643,7 +646,7 @@ funktion kirjoittamiseen.</p>
     arrange(desc(.[[itemIdCol]]))
 
 }</code></pre>
-<p>Nyt voidaan kokeilla mitä algoritmit suosittelevat käyttäjälle:</p>
+<p>Nyt voidaan kokeilla mitä algoritmit suosittelevat Toby:lle:</p>
 <pre class="r"><code>getRecommendations(reviews, &#39;Toby&#39;, euclidean)</code></pre>
 <pre><code>## # A tibble: 3 × 2
 ##   Movie              Estimate
@@ -652,12 +655,11 @@ funktion kirjoittamiseen.</p>
 ## 2 Lady in the Water      2.76
 ## 3 Just My Luck           2.46</code></pre>
 </div>
-<div id="matching-products" class="section level2">
-<h2>Matching Products</h2>
-<p>Tähän saakka olemme etsineet samalaisia käyttäjiä.</p>
-<p>Mutta yhtä lailla voidaan tutkia elokuvien välistä
-samankaltaisuutta.</p>
-<p>Eikä tämä ole edes vaikeaa, kun kaukaa viisaina olemme tallettaneet
+<div id="tuotteiden-vastaavuuden-arvioiminen" class="section level2">
+<h2>Tuotteiden vastaavuuden arvioiminen</h2>
+<p>Tähän saakka olemme etsineet samanlaisia käyttäjiä. Mutta yhtä lailla
+voidaan tutkia elokuvien välistä samankaltaisuutta.</p>
+<p>Eikä tämä ole edes vaikeaa, kun kaukaa viisaina olemme tallentaneet
 käyttämämme sarakenimet muuttujiin.</p>
 <p>Riittää kun vaihdamme henkilöihin ja tuotteisiin viitanneiden
 muuttujien arvot keskenään.</p>
@@ -678,27 +680,33 @@ topMatches(reviews, &#39;Superman Returns&#39;,5, pearson)</code></pre>
 ## 4 The Night Listener     -0.180
 ## 5 Just My Luck           -0.423</code></pre>
 </div>
-<div id="item-based-filtering" class="section level2">
-<h2>Item-Based Filtering</h2>
-<p>Aineiston kasvaessa on tapana käyttää menetelmää, jossa lasketaan
-käytettävissä olevan materiaalin avulla valmiiksi tuotteiden väliset
-samankaltaisuus arviot.</p>
-<p>Kun sitten käyttäjälle halutaan antaa suosituksia:</p>
+<div id="tuoteperusteinen-suodatus" class="section level2">
+<h2>Tuoteperusteinen suodatus</h2>
+<p>Aineiston kasvaessa on tapana käyttää menetelmää, jossa aineiston
+sisältämät samankaltaisuudet lasketaan valmiiksi etukäteen.</p>
+<p>Kun myöhemmin halutaan antaa suosituksia:</p>
 <ul>
-<li>katsotaan mistä hän oli pitänyt</li>
-<li>selvitetään valmiiksi lasketun aineiston perusteella mitkä elokuvat
-puolestaan muistuttavat näitä</li>
-<li>lasketaan näiden elokuvien <em>painotetut arviot</em></li>
+<li>katsotaan mistä elokuvista suositusten saaja oli pitänyt</li>
+<li>haetaan esikäsitellystä materiaalista näiden elokuvien kanssa
+vuorovaikutuksessa olleet elokuvat</li>
+<li>lasketaan elokuvien keskinäisten painokertoimien avulla uusille
+elokuville ennustetut arvosanat</li>
+<li>palautetaan parhaan odotusarvon saaneet elokuvat.</li>
 </ul>
-<div id="building-the-item-comparison-set" class="section level3">
-<h3>Building the Item Comparison set</h3>
-<p>Kirjoitetaan funktio, joka laskee elokuvien väliset <em>Similarity
-arvot</em>.</p>
+<p>Menetelmä nopeuttaa laskentaa, kun suurin iso osa työstä on tehty jo
+etukäteen.</p>
+<p>Tuotteiden keskinäiset suhteet muuttuvat hitaasti, jos ollenkaan.
+Näin ollen samankaltaisuuksien uudelleen laskennat voidaan suorittaa
+isompia kokonaisuuksina sopivaksi katsotun aikataulun puitteissa.</p>
+<div id="tuotetaulukon-laskenta" class="section level3">
+<h3>Tuotetaulukon laskenta</h3>
+<p>On taas aika kääriä hihat ja toteuttaa funktio, joka laskee elokuvien
+väliset samankaltaisuudet.</p>
 <p>Huom! Koska ollaan laskemassa elokuvien välisiä korrelaatioita,
-muuttujan intuition vastaisesti personIdCol sisältö viittaa
+intuition vastaisesti muuttujan personIdCol sisältö viittaa
 suoritushetkellä sarakkeeseen, johon on talletettu tuotteiden nimet.
-Lähemmin tarkasteltuna, emme siis olleetkaan aivan niin viisaita kuin
-luulimme olevamme muuttujia nimetessämme.</p>
+Lähemmin tarkasteltuna, emme muuttujia nimetessämme olleet aivan niin
+viisaita kuin luulimme.</p>
 <p>Toinen huomioinarvoinen seikka on, että nyt haluamme tallettaa myös
 suositusten saajan nimen topMatches -funktion palauttamaan
 data.frameen!</p>
@@ -712,12 +720,16 @@ data.frameen!</p>
   itemSimList &lt;-  apply(
     as.data.frame(items), 
     1, 
-    function(x) topMatches(prefs, x[1],similarity = euclidean, 
-    includeOriginal = TRUE)
+    function(x) topMatches(
+      prefs, 
+      x[1],
+      similarity = euclidean, 
+      includeOriginal = TRUE
+    )
   )
 
   # Previous phase results list of data.frames
-  # convert that data srructure to single Data.Frame
+  # convert that data structure to single Data.Frame
   do.call(&quot;rbind&quot;, itemSimList)
 
 }</code></pre>
@@ -739,11 +751,43 @@ itemIdCol &lt;- &quot;Person&quot;
 
 itemsim &lt;- calculateSimilarItems(reviews)</code></pre>
 </div>
-<div id="getting-recommendations" class="section level3">
-<h3>Getting Recommendations</h3>
-<p>Kun objektien keskinäinen samankaltaisuus on määritetty, voidaan sitä
-käyttää yksittäiselle käyttäjälle tarjotuissa suosituksissa.</p>
-<p>Viimeisenä funktiona</p>
+<div id="suositusten-laskeminen" class="section level3">
+<h3>Suositusten laskeminen</h3>
+<p>Kun elokuvien keskinäinen samankaltaisuus on määritetty, voidaan
+tietoa hyödyntää käyttäjille tarjottavissa suosituksissa.</p>
+<p>Käytetään jälleen apuna Tobyn kirjassaan esittämää mallitapausta.</p>
+<p>Toby on arvioinut elokuvat:</p>
+<ul>
+<li>Snakes on a Plane</li>
+<li>Superman Returns</li>
+<li>You, Me and Dupree</li>
+</ul>
+<p>Sen sijaan hän ei ole vielä nähnyt elokuvia: The Night Listener, Lady
+in the Water ja Just My Luck.</p>
+<p>Kun elokuvien keskinäisiä samankaltaisuuksia on arvioitu, niin Snakes
+on Plane sai edellä lueteltujen elokuvien kanssa seuraavat arvot:</p>
+<ul>
+<li>The Night Listener 0.182</li>
+<li>Lady in the Water 0.222</li>
+<li>Just My Luck 0.105</li>
+</ul>
+<p>Kunkin elokuvan ennuste saadaan kertomalla Tobyn näkemillensä
+elokuville antamat arvosanat elokuvien samanlaisuutta mittaavalla
+arvolla.</p>
+<p>Nämä lasketaan yhteen ja tulos jaetaan samankaltaisuutta mitanneiden
+arvojen summalla.</p>
+<p>Elokuvan The Night Listener tapauksessa laskutoimitukset ovat:</p>
+<ol style="list-style-type: decimal">
+<li>4.5 * 0.182 + 4.0 * 0.103 + 1.0 * 0.148 = 1.378</li>
+<li>0.182 + 0.103 + 0.148 = 0.433</li>
+<li>1.378 / 0.433 = 3.183</li>
+</ol>
+<div class="figure">
+<img src="data:image/svg+xml;base64,PCEtLSBDcmVhdGVkIHdpdGggSW5rc2NhcGUgKGh0dHA6Ly93d3cuaW5rc2NhcGUub3JnLykgLS0+Cjxzdmcgd2lkdGg9IjE3Ni4yMm1tIiBoZWlnaHQ9IjQyLjAyNW1tIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNzYuMjIgNDIuMDI1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIuNzY4OCAtNS42MDMxKSI+CiAgPHJlY3QgeD0iMi43Njg4IiB5PSI1LjYwMzEiIHdpZHRoPSIxNzYuMjIiIGhlaWdodD0iNDIuMDI1IiBmaWxsPSIjZmZmIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMS42Ii8+CiAgPGcgZm9udC1mYW1pbHk9IidCb2RvbmkgTVQnIiBmb250LXNpemU9IjQuOTM4OXB4IiBsZXR0ZXItc3BhY2luZz0iLjAxMDU4M3B4IiBzdHJva2Utd2lkdGg9Ii4yNjQ1OCIgd29yZC1zcGFjaW5nPSIwcHgiPgogICA8dGV4dCB4PSI1LjY4OTY1MzkiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjEyLjgzMzY3MSI+TW92aWU8L3RzcGFuPjx0c3BhbiB4PSI1LjY4OTY1MzkiIHk9IjE5LjAwNzI4MiI+U25ha2VzPC90c3Bhbj48dHNwYW4geD0iNS42ODk2NTM5IiB5PSIyNS4xODA4OTUiPlN1cGVybWFuPC90c3Bhbj48dHNwYW4geD0iNS42ODk2NTM5IiB5PSIzMS4zNTQ1MDciPkR1cHJlZTwvdHNwYW4+PHRzcGFuIHg9IjUuNjg5NjUzOSIgeT0iMzcuNTI4MTIyIj5Ub3RhbDwvdHNwYW4+PHRzcGFuIHg9IjUuNjg5NjUzOSIgeT0iNDMuNzAxNzMzIj5Ob3JtYWxpemVkPC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjM1LjY3ODY1OCIgeT0iMTIuODMzNjcxIiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjM1LjY3ODY1OCIgeT0iMTIuODMzNjcxIj5SYXRpbmc8L3RzcGFuPjx0c3BhbiB4PSIzNS42Nzg2NTgiIHk9IjE5LjAwNzI4MiI+NC41PC90c3Bhbj48dHNwYW4geD0iMzUuNjc4NjU4IiB5PSIyNS4xODA4OTUiPjQuMDwvdHNwYW4+PHRzcGFuIHg9IjM1LjY3ODY1OCIgeT0iMzEuMzU0NTA3Ij4xLjA8L3RzcGFuPjwvdGV4dD4KICAgPHRleHQgeD0iNTkuNzg2NDE5IiB5PSIxMi43OTUwODciIHN0eWxlPSJmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtsaW5lLWhlaWdodDoxLjI1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSIxMi43OTUwODciPk5pZ2h0Li4uPC90c3Bhbj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSIxOC45Njg2OTkiPjAuMTgyPC90c3Bhbj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSIyNS4xNDIzMTEiPjAuMTgyPC90c3Bhbj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSIzMS4zMTU5MjQiPjAuMTQ4PC90c3Bhbj48dHNwYW4geD0iNTkuNzg2NDE5IiB5PSIzNy40ODk1MzYiPjAuNDMzPC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9Ijc5LjkwMDgxIiB5PSIxMi44MzM2NzEiIHN0eWxlPSJmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtsaW5lLWhlaWdodDoxLjI1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48dHNwYW4geD0iNzkuOTAwODEiIHk9IjEyLjgzMzY3MSI+Ui54TmlnaHQ8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iMTkuMDA3MjgyIj4wLjgxODwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSIyNS4xODA4OTUiPjAuNDEyPC90c3Bhbj48dHNwYW4geD0iNzkuOTAwODEiIHk9IjMxLjM1NDUwNyI+MC4xNDg8L3RzcGFuPjx0c3BhbiB4PSI3OS45MDA4MSIgeT0iMzcuNTI4MTIyIj4xLjM3ODwvdHNwYW4+PHRzcGFuIHg9Ijc5LjkwMDgxIiB5PSI0My43MDE3MzMiPjMuMTgzPC90c3Bhbj48L3RleHQ+CiAgIDx0ZXh0IHg9IjEwMi42ODAwMiIgeT0iMTIuNzk1MDg3IiBzdHlsZT0iZm9udC12YXJpYW50LWNhcHM6bm9ybWFsO2ZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOm5vcm1hbDtmb250LXZhcmlhbnQtbGlnYXR1cmVzOm5vcm1hbDtmb250LXZhcmlhbnQtbnVtZXJpYzpub3JtYWw7bGluZS1oZWlnaHQ6MS4yNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHRzcGFuIHg9IjEwMi42ODAwMiIgeT0iMTIuNzk1MDg3Ij5MYWR5Li4uPC90c3Bhbj48dHNwYW4geD0iMTAyLjY4MDAyIiB5PSIxOC45Njg2OTkiPjAuMjIyPC90c3Bhbj48dHNwYW4geD0iMTAyLjY4MDAyIiB5PSIyNS4xNDIzMTEiPjAuMDkxPC90c3Bhbj48dHNwYW4geD0iMTAyLjY4MDAyIiB5PSIzMS4zMTU5MjQiPjAuNDwvdHNwYW4+PHRzcGFuIHg9IjEwMi42ODAwMiIgeT0iMzcuNDg5NTM2Ij4wLjcxMzwvdHNwYW4+PC90ZXh0PgogICA8dGV4dCB4PSIxMjAuMTcxMTEiIHk9IjEyLjgzMzY3MSIgc3R5bGU9ImZvbnQtdmFyaWFudC1jYXBzOm5vcm1hbDtmb250LXZhcmlhbnQtZWFzdC1hc2lhbjpub3JtYWw7Zm9udC12YXJpYW50LWxpZ2F0dXJlczpub3JtYWw7Zm9udC12YXJpYW50LW51bWVyaWM6bm9ybWFsO2xpbmUtaGVpZ2h0OjEuMjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjEyLjgzMzY3MSI+Ui54TGFkeTwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iMTkuMDA3MjgyIj4wLjk5OTwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iMjUuMTgwODk1Ij4wLjM2MzwvdHNwYW4+PHRzcGFuIHg9IjEyMC4xNzExMSIgeT0iMzEuMzU0NTA3Ij4wLjQ8L3RzcGFuPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjM3LjUyODEyMiI+MS43NjQ8L3RzcGFuPjx0c3BhbiB4PSIxMjAuMTcxMTEiIHk9IjQzLjcwMTczMyI+Mi40NzM8L3RzcGFuPjwvdGV4dD4KICAgPHRleHQgeD0iMTQwLjExNzYxIiB5PSIxMi43OTUwODciIHN0eWxlPSJmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtsaW5lLWhlaWdodDoxLjI1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48dHNwYW4geD0iMTQwLjExNzYxIiB5PSIxMi43OTUwODciPkx1Y2suLi48L3RzcGFuPjx0c3BhbiB4PSIxNDAuMTE3NjEiIHk9IjE4Ljk2ODY5OSI+MC4xMDU8L3RzcGFuPjx0c3BhbiB4PSIxNDAuMTE3NjEiIHk9IjI1LjE0MjMxMSI+MC4wNjU8L3RzcGFuPjx0c3BhbiB4PSIxNDAuMTE3NjEiIHk9IjMxLjMxNTkyNCI+MC4xODI8L3RzcGFuPjx0c3BhbiB4PSIxNDAuMTE3NjEiIHk9IjM3LjQ4OTUzNiI+MC4zNTI8L3RzcGFuPjwvdGV4dD4KICAgPHRleHQgeD0iMTU4LjcwMjE1IiB5PSIxMi44MzM2NzEiIHN0eWxlPSJmb250LXZhcmlhbnQtY2Fwczpub3JtYWw7Zm9udC12YXJpYW50LWVhc3QtYXNpYW46bm9ybWFsO2ZvbnQtdmFyaWFudC1saWdhdHVyZXM6bm9ybWFsO2ZvbnQtdmFyaWFudC1udW1lcmljOm5vcm1hbDtsaW5lLWhlaWdodDoxLjI1IiB4bWw6c3BhY2U9InByZXNlcnZlIj48dHNwYW4geD0iMTU4LjcwMjE1IiB5PSIxMi44MzM2NzEiPlIueEx1Y2s8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjE5LjAwNzI4MiI+MC40NzQ8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjI1LjE4MDg5NSI+MC4yNTg8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjMxLjM1NDUwNyI+MC4xODI8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjM3LjUyODEyMiI+MC45MTQ8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjQzLjcwMTczMyI+Mi41OTg8L3RzcGFuPjx0c3BhbiB4PSIxNTguNzAyMTUiIHk9IjQ5Ljg3NTM0NyIvPjwvdGV4dD4KICA8L2c+CiAgPHJlY3QgeD0iMy44OTI0IiB5PSI3LjcxOTgiIHdpZHRoPSIxNzMuOTciIGhlaWdodD0iNyIgZmlsbD0iI2IzYjNiMyIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjEuNiIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOm11bHRpcGx5Ii8+CiAgPHJlY3QgeD0iMy44OTI0IiB5PSIzOC45NDEiIHdpZHRoPSIxNzMuOTciIGhlaWdodD0iLjUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0eWxlPSJtaXgtYmxlbmQtbW9kZTptdWx0aXBseSIvPgogPC9nPgo8L3N2Zz4K" alt />
+<p class="caption">Tuoteperusteinen suosittelu</p>
+</div>
+<p>Viimeisenä esiteltävä funktio getRecommendedItems suorittaa em.
+toimenpiteet.</p>
 <pre class="r"><code>getRecommendedItems &lt;- function(prefs, itemMatch, user) {
   
   # Extract the movies user has seen, keep movie and grade
@@ -764,12 +808,16 @@ käyttää yksittäiselle käyttäjälle tarjotuissa suosituksissa.</p>
   # combine user ratings with similarity data
   userRatings &lt;- userRatings %&gt;% left_join(scores, by = &quot;Movie&quot;) 
 
+  # multiply ratings with similarity values
   userRatings$Score &lt;- userRatings[[valueIdCol]] * userRatings$Similarity
   
+  # calculate sums of similarity multiplied grades and similarities
+  # calculate final by normalizing sums of multiplied grades
   userRatings %&gt;%
     group_by(Target) %&gt;%
     summarise(Estimate = sum(Score) / sum(Similarity)) %&gt;%
     arrange(desc(Estimate))
+
 }</code></pre>
 <p>Palautetaan sarakeasetukset tilaan, jossa:</p>
 <ul>
@@ -777,14 +825,38 @@ käyttää yksittäiselle käyttäjälle tarjotuissa suosituksissa.</p>
 <li>itemIdCol viittaa arvosteltavat objektit sisältävään
 sarakkeeseen</li>
 </ul>
-<p>Ja haetaan valmiiksi lasketun, elokuvien samankaltaisuutta arvioivan
-aineiston avulla suositukset käyttäjälle <em>Toby</em></p>
+<p>Haetaan valmiiksi lasketun aineiston avulla suositukset Toby:lle</p>
 <pre class="r"><code># Column that is used to identify persons
 personIdCol &lt;- &quot;Person&quot;
 # Column that is used to identify items
 itemIdCol &lt;- &quot;Movie&quot;
 
-fooBar &lt;- getRecommendedItems(reviews, itemsim, &#39;Toby&#39;)</code></pre>
+getRecommendedItems(reviews, itemsim, &#39;Toby&#39;)</code></pre>
+<pre><code>## # A tibble: 3 × 2
+##   Target             Estimate
+##   &lt;chr&gt;                 &lt;dbl&gt;
+## 1 The Night Listener     3.18
+## 2 Just My Luck           2.60
+## 3 Lady in the Water      2.47</code></pre>
+</div>
+<div id="loppusanat" class="section level3">
+<h3>Loppusanat</h3>
+<p>Mukavaa kun jaksoit loppuun asti. Toivottavasti oppaasta on sinulle
+hyötyä.</p>
+<p>Kuten jo alussa totesin, opas esittelee yksinkertaisen menetelmän
+suositusten laskemiseen.</p>
+<p>Suositusten antamiseen liittyy monenlaisia haasteita. Eräs näistä on
+aineiston hajanaisuus. Elokuvien tapauksessa tämä tarkoittaa sitä,
+että:</p>
+<ul>
+<li>elokuvia on paljon</li>
+<li>näistä sellaisia, joita monet ovat arvioineen, on vain vähän.</li>
+</ul>
+<p>Tähän ja muihin haasteisiin pyritään vastaamaan kehittämällä entistä
+hienostuneempia suosittelujärjestelmiä.</p>
+<p>Aihe kiinnostaa, sillä kuluttajakäyttäytymisen tarkemman ennustamisen
+avulla voidaan kehittää asiakaskokemusta ja sitä myöten kasvattaa
+tuottoja.</p>
 </div>
 </div>
 </div>

@@ -108,6 +108,7 @@ movies <- movies %>% mutate(nOfReviews = numOfRevs)
 Lisätään arvostelut sisältävään taulukkoon elokuvan nimi.
 
 Tehdään samalla myös aputaulukko, johon on elokuvittain kerätty:
+
 - arvostelujen lukumäärä
 - arvosanojen keskiarvo
 - arvosanojen mediaani
@@ -174,5 +175,26 @@ reviewsSummary %>%
   ylim(c(0,yMax)) +
   stat_bin(binwidth=0.5, geom="text", aes(label=after_stat(count)), vjust=-1) +
   labs(x="Tähtiä keskimäärin", y="Elokuvien määrä")
+```
+
+Tulostetaan lista kriitikkoja eniten miellyttäneistä elokuvista.
+
+Valitaan mukaan ne elokuvat, jotka ovat keränneet vähintään 10 arvostelua.
+
+Lisätään kuvioon myös tiedossa olevien arvostelujen määrä.
+
+        
+```{r}
+reviewsSummary %>%
+  filter(n > 5) %>%
+  top_n(10, wt= ka) %>%
+  left_join(movies, c("googleID" = "id")) %>%
+  ggplot(aes(x=reorder(nimi, ka), y=ka)) +
+  geom_bar(stat='identity', fill="blue") +
+  coord_flip() +
+  labs(x="", y="Arvostelujen keskiarvo") +
+  geom_text(aes(label=format(round(ka, 2), nsmall = 2)), hjust=1.2, size=3, col="yellow") +
+  scale_y_continuous(breaks=seq(0, 5, by=0.5)) + 
+  geom_text(aes(label=n), y=0.4, size=3, col="yellow")
 ```
 

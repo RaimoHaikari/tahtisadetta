@@ -14,39 +14,34 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Making Recommendations
 
-## Preface
+## Esipuhe
 
 Kauan aikaa sitten ostin Toby Segaranin kirjoittaman kirjan Programming Collective Intelligence.
 
-Kirjassa esittellään kollektiivisen älykkyyden käyttökohteita ja -menetelmiä.
+Kirjassa esitellään kollektiivisen älykkyyden käyttökohteita ja -menetelmiä.
 
-Aiheissa ei mennä kovin syvälle, vaan tarkoitus on antaa lukijalle yleiskuva, jonka avulla aihealueisiin voi syvällisemmin paneutua - mikäli kiinnostusta riittää.
+Aiheissa ei mennä kovin syvälle, vaan tarkoitus on antaa lukijalle yleiskuva. Mikäli kiinnostus herää, kirjan avulla on luotu pohja, jonka päälle tietämystä voi alkaa kerryttämään.
 
-Kirjassa käydään läpi kymmenkunta sovellusaluetta, esimerkkeinä voidaan mainita luokkittelu, optimointi, päätöspuut.
+Kirjassa käydään läpi kymmenkunta sovellusaluetta, esimerkkeinä voidaan mainita luokittelu, optimointi, päätöspuut.
 
-Joka alueesta rakennetaan malli python kielellä 
+Joka alueesta rakennetaan malli Python kielellä 
 
-Tämä opas pohjautuu suositteluja (Making Recommendations) koskevaan kappaleeseen.
+Tämä opas pohjautuu suositteluja suosittelujärjestelmiä (Making Recommendations) koskevaan kappaleeseen.
 
-Nyt ei kuitenkaan operoidan pythonilla, vaan parhaani mukaan olen toteuttanut toiminnallisuuden R-kielellä.
+Nyt ei kuitenkaan operoida Pythonilla, vaan olen toteuttanut toiminnallisuuden R-kielellä.
 
-Muutamaan vuoteen en ole ollut tekemissä R:n kanssa, joten koodini ei edusta tyylikkäintä saati tehokkainta tapaa kirjoittaa R:ää. Juurikin tästä syystä, tämä projekti on tarjonnut mukavan tavan virkistää muistia niin R:n kuin suosittelujärjestelmien kannalta.
+En ole muutamaan vuoteen ollut tekemissä R:n kanssa, joten koodini ei edusta tyylikkäintä saati tehokkainta tapaa kirjoittaa R:ää. Projekti on tarjonnut mukavan tavan palauttaa muistiin aiemmin opittua niin R:n kuin suosittelujärjestelmien kannalta.
 
 Varoituksen sana! 
 
-Koodit ovat joiltain osin turhankin mutkikkaita, koska työn edetessä olen pyrkinyt hyödyntämään 
-aiemmin tuotettua koodia pienten muokkausten avulla. Tämä sinänsä on järkevää, mutta hankalaa hahmottamisen kannalta, kun lukija saa nähtäväkseen lopullisen tuloksen - ja koodin muodostumisen evoluutio jää pimentoon. 
+Työkirjassa toteutettavat funktiot ovat joiltain osin turhankin mutkikkaita. Työn edetessä olen pyrkinyt hyödyntämään aiemmin tuotettua koodia pienten muokkausten avulla. Tämä sinänsä on järkevää, mutta hankalaa koodin hahmottamisen kannalta, kun lukija saa nähtäväkseen lopullisen tuloksen - ja koodin muodostumisen välivaiheet jäävät pimentoon. 
 
-Onneksi tämä on aika pieni opas, joten yleiskuvan muodostaminen pitäisi kuitenkin olla kohtuullisen saavutettavissa.
+Onneksi tämä on pieni opas, joten yleiskuvan muodostaminen pitäisi kuitenkin olla kohtuullisen saavutettavissa.
 
-*Maininta siitä, että tässä oppaassa käsitellään elokuvia, joten käytettävät termit heijastelevat aihealuetta. Mutta samat periaatteet ovat yleistettävissä muihinkin kohteisiin.*
-
-## Setup Environment
+## Alkutoimet
 
 Jotta pohjaa voisi käyttää eri aineistoilla, talletetaan laskennassa käytettävät sarakenimet muuttujiin. Tällöin (ainakin teoriassa) eri aineistoja pääsee pienellä vaivalla käyttämään
 vaihtamalla muuttujien sisällöt vastaamaan käytettävää aineistoa.
-
-Recommendee is the target of recommendations.
 
 Asetetaan muuttujien arvot.
 
@@ -83,14 +78,18 @@ Luetaan käytettävä aineisto:
 reviews <- read_csv(str_c(path, "recommendations.csv"), na="NA")
 ```
 
-## Score Functions 
+## Samankaltaisuutta mittaavat funktiot 
 
-The original tutorial shows two alternatives to calculate a similarity score between to users.
+Käyttäjien mieltymysten samankaltaisuutta mitataan laskemalla heidän antamien arvosanojen välinen korrelaatio. 
 
-- Euclidean distance score
-- Pearson correlation score
+Alkuperäinen opas esittää kaksi tapaa samankaltaisuuden laskemiseen:
 
-Funktioita voi määrittää tarvittaessa lisää. Riittää kun funktio ottaa parametrinä kahden käyttäjän arvosanat ja palauttaa numeerisen vastauksen.
+- Euklidinen etäisyys
+- Pearsonin korrelaatiokerroin.
+
+Kirjoitetaan molempia menetelmiä varten omat funktionsa. 
+
+Funktioita voi tarvittaessa määrittää helposti lisää. Riittää kun funktio ottaa parametrina kahden käyttäjän arvosanat ja palauttaa numeerisen vastauksen.
 
 ```{r}
 # Calculate Euclidean Distance Score
@@ -109,9 +108,8 @@ Korrelaatiota mittaavien funktioiden käyttö edellyttää, että erotetaan elok
 
 Tehdään funktio, joka:
 
-- poimii kohteen, jotka molemmat henkilöt ovat arvioineet
-- palauttaa käyttäjien mieltymysten korrelaatiota mittaavan arvon
-
+- poimii elokuvat, jotka molemmat henkilöt ovat arvioineet
+- palauttaa käyttäjien mieltymysten samankaltaisuutta mittaavan arvon.
 
 ```{r}
 
@@ -140,7 +138,7 @@ calculateSimilarityScore <- function(prefs, person1, person2, similarityFunction
 }
 ```
 
-Testataan toimiiko koodi laskemalla kahden käyttäjän väliset korrelaatiot niin euklidisen kuin pearsonin korrelaatiofunktion avulla:
+Testataan toimiiko koodi, laskemalla kahden käyttäjän väliset korrelaatiot niin euklidisen kuin pearsonin menetelmä avulla:
 
 ```{r}
 p1 = 'Lisa Rose'
@@ -151,11 +149,11 @@ calculateSimilarityScore(reviews, p1, p2, pearson)
 ```
 ## Ranking the Critics
 
-Valitaan yksi arvostelija ja selvitetään materiaalin avulla parhaiten hänen mieltymyksiää edustava joukko.
+Valitaan yksi arvostelija ja selvitetään hänen mieltymyksiään parhaiten vastaava ryhmä.
 
 Tehdään tätä varten kaksi funktiota:
 
-- getSimilarityScores vertaa suositusten saajaa kaikkiin muihin aineiston **käyttäjiin**
+- getSimilarityScores vertaa suositusten saajaa muihin
 
 ```{r}
 
@@ -208,44 +206,49 @@ topMatches <- function(prefs, person, n = 5, similarity = pearson, includeOrigin
 }
 ```
 
-Haetaan **käyttäjälle** **Toby** kolme parasta osumaa.
+Haetaan **käyttäjälle Toby** kolme parasta osumaa.
 
 ```{r}
 topMatches(reviews, 'Toby', n=3)
 ```
 
-## Recommending Items
+## Tuotteiden suosittelu
 
-Suositusten antamiseen voisi tietenkin valita muutaman parhaan osuman ja valita *paremmuusjärjestyksessä* listalta sellaiset elokuvat, joita suositusten saaja ei ole viellä nähnyt.
+Suositusten antamiseen voisi valita muutaman parhaan osuman ja valikoida paremmuusjärjestyksessä sellaiset elokuvat, joita suositusten saaja ei ole vielä nähnyt.
 
-Tällöin kuitenkin saattaa jäädä pimentoon sellaisia, elokuvia jotka juuri tältä *kärkijoukolta* ovat jääneet näkemättä. Ja toisaalta joku yksittäinen elokuva voi nousta liian korkeaan arvoon, tilanteessa jossa yksi on sattunut pitämään, mutta juuri kukaan muu ei.
+Tällöin kuitenkin saattaa jäädä pimentoon elokuvia, jotka "kärkijoukolta" ovat jääneet näkemättä. Tai joku yksittäinen elokuva voi nousta liian korkeaan arvoon tilanteessa, jossa yksi on sattunut pitämään, mutta juuri kukaan muu ei.
 
-Parempi vaihtoehto on käyttää aineistoa laajasti ja laskea elokuville painotetut ennusteet siitä kuinka suositusten saaja arvioisi ne.
+Parempi vaihtoehto on käyttää aineistoa laajasti ja laskea elokuville ennusteet siitä kuinka suositusten saaja arvioisi ne.
 
-Huomioidaan kaikki elokuvaan kohdistuneet arvostelut arvostelijan *similarity-arvon* mukaisella painotuksena. 
+Tämä saadaan aikaan, kun:
 
-Käytetään apuna Toby Segaranin kirjassa käyttämää esimerkkiä.
+- selvitetään elokuvat, joita suositusten saaja ei ole vielä nähnyt
+- muiden käyttäjien näille elokuville antamat arviot huomioidaan samankaltaisuutta mittaavan arvon suhteessa.
 
-Aineistossa on laskettu kuudelle käyttäjälle *similarity-arvot*. Näiden perusteella lasketaan arviot kolmelle elokuvalle:
+Kuinka edellinen toteutetaan on helpointa hahmottaa oheisen kuvan avulla.
+
+![Creating recommendations for Toby](https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/Misc/creatingRecommendationsForToby-opti.svg)
+
+Esimerkissä annetaan Toby:lle suosituksia. 
+
+Hän ei ole vielä nähnyt kolmea elokuvaa:
 
 - The Night Listener
 - Lady in the Water
 - Just My Luck
 
+Tiedossa on kuinka muut käyttäjät ovat kyseiset elokuvat arvioineen ja kuinka hyvin muiden heidön makumieltymykset vastaavat Tobyn kanssa.
+
 Laskenta etenee siten, että:
 
-1. Kunkin arvostelijan antama arvosana kerrotaan arvostelijan *Similarity-arvolla*
-2. Lasketaan yhteen kunkin elokuvan *Similarity-arvolla* kerrotut arvosanat
-3. Lasketaan yhteen kunkin elokuvan laskuissa mukana olleet *Similarity-arvot*
-4. Jaetaan arvosanojen summa painokertoiminen summalla.
+1. elokuva kerrallaan muiden antamat arvosanat kerrotaan heidän painoarvollaan
+2. lasketaan kunkin elokuvan arvioiden summa
+3. lasketaan yhteen myös kunkin elokuvan laskuissa mukana olleet painoarvot
+4. jaetaan arvosanojen summa painokertoimien summalla.
 
-Esim. Rose oli arvioinut The Night Listener elokuvan kolmosen arvoiseksi. Rosen ja Tobyn *Similarity-arvo* on 0.99, joten Roselta kertyy elokuvalle 2.97 pistettä. Yhteensä elokuva sai 12.89 pistettä. Kun kaikkien osallistunteiden kriitikkojen *Similarity-arvot* lasketaan yhteen, saadaan Sim.Sum arvoksi 3.84. Ja kun arvosanojen summa jaetaan painojen summalla, saadaan tulokseksi 3.35
+Esim. Rose oli arvioinut The Night Listener elokuvan kolmosen arvoiseksi. Rosen ja Tobyn *Similarity-arvo* on 0.99, joten Roselta kertyy elokuvalle 2.97 pistettä. Yhteensä elokuva sai 12.89 pistettä. Kun elokuvan nähneiden käyttäjien painoarvot lasketaan yhteen, saadaan Sim.Sum arvoksi 3.84. Kun arvosanojen summa jaetaan painojen summalla, saadaan tulokseksi 3.35.
 
-
-
-![Creating recommendations for Toby](https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/Misc/creatingRecommendationsForToby-opti.svg)
-
-Kun saatiin tämä alta. Voidaan keskittyä toimenpiteen suorittavan funktion kirjoittamiseen.
+Kun saatiin tämä alta. Voidaankin jo siirtyä toimenpiteen suorittavan funktion pariin:
 
 ```{r}
 
@@ -282,19 +285,17 @@ getRecommendations <- function(prefs, person, similarity) {
 
 ```
 
-Nyt voidaan kokeilla mitä algoritmit suosittelevat käyttäjälle:
+Nyt voidaan kokeilla mitä algoritmit suosittelevat Toby:lle:
 
 ```{r}
 getRecommendations(reviews, 'Toby', euclidean)
 ```
 
-## Matching Products
+## Tuotteiden vastaavuuden arvioiminen
 
-Tähän saakka olemme etsineet samalaisia käyttäjiä. 
+Tähän saakka olemme etsineet samanlaisia käyttäjiä. Mutta yhtä lailla voidaan tutkia elokuvien välistä samankaltaisuutta.
 
-Mutta yhtä lailla voidaan tutkia elokuvien välistä samankaltaisuutta.
-
-Eikä tämä ole edes vaikeaa, kun kaukaa viisaina olemme tallettaneet käyttämämme sarakenimet muuttujiin.
+Eikä tämä ole edes vaikeaa, kun kaukaa viisaina olemme tallentaneet käyttämämme sarakenimet muuttujiin.
 
 Riittää kun vaihdamme henkilöihin ja tuotteisiin viitanneiden muuttujien arvot keskenään.
 
@@ -312,21 +313,27 @@ Nyt voimme tutkia mitkä elokuva aineiston mukaan muistuttavat esim. elokuvaa *S
 topMatches(reviews, 'Superman Returns',5, pearson)
 ```
 
-## Item-Based Filtering
+## Tuoteperusteinen suodatus
 
-Aineiston kasvaessa on tapana käyttää menetelmää, jossa lasketaan käytettävissä olevan materiaalin avulla valmiiksi tuotteiden väliset samankaltaisuus arviot.
+Aineiston kasvaessa on tapana käyttää menetelmää, jossa aineiston sisältämät samankaltaisuudet lasketaan valmiiksi etukäteen.
 
-Kun sitten käyttäjälle halutaan antaa suosituksia:
+Kun myöhemmin halutaan antaa suosituksia:
 
-- katsotaan mistä hän oli pitänyt
-- selvitetään valmiiksi lasketun aineiston perusteella mitkä elokuvat puolestaan muistuttavat näitä
-- lasketaan näiden elokuvien *painotetut arviot*
+- katsotaan mistä elokuvista suositusten saaja oli pitänyt 
+- haetaan esikäsitellystä materiaalista näiden elokuvien kanssa vuorovaikutuksessa olleet elokuvat
+- lasketaan elokuvien keskinäisten painokertoimien avulla uusille elokuville ennustetut arvosanat
+- palautetaan parhaan odotusarvon saaneet elokuvat.
 
-### Building the Item Comparison set
+Menetelmä nopeuttaa laskentaa, kun suurin iso osa työstä on tehty jo etukäteen.
 
-Kirjoitetaan funktio, joka laskee elokuvien väliset *Similarity arvot*.
+Tuotteiden keskinäiset suhteet muuttuvat hitaasti, jos ollenkaan. Näin ollen samankaltaisuuksien uudelleen laskennat voidaan suorittaa isompia kokonaisuuksina sopivaksi katsotun aikataulun puitteissa.
 
-Huom! Koska ollaan laskemassa elokuvien välisiä korrelaatioita, muuttujan intuition vastaisesti personIdCol sisältö viittaa suoritushetkellä sarakkeeseen, johon on talletettu tuotteiden nimet. Lähemmin tarkasteltuna, emme siis olleetkaan aivan niin viisaita kuin luulimme olevamme muuttujia nimetessämme.
+
+### Tuotetaulukon laskenta
+
+On taas aika kääriä hihat ja toteuttaa funktio, joka laskee elokuvien väliset samankaltaisuudet.
+
+Huom! Koska ollaan laskemassa elokuvien välisiä korrelaatioita, intuition vastaisesti muuttujan personIdCol sisältö viittaa suoritushetkellä sarakkeeseen, johon on talletettu tuotteiden nimet. Lähemmin tarkasteltuna, emme muuttujia nimetessämme olleet aivan niin viisaita kuin luulimme.
 
 Toinen huomioinarvoinen seikka on, että nyt haluamme tallettaa myös suositusten saajan nimen topMatches -funktion palauttamaan data.frameen!
 
@@ -341,12 +348,16 @@ calculateSimilarItems <- function(prefs, n = 10, similarity = pearson) {
   itemSimList <-  apply(
     as.data.frame(items), 
     1, 
-    function(x) topMatches(prefs, x[1],similarity = euclidean, 
-    includeOriginal = TRUE)
+    function(x) topMatches(
+      prefs, 
+      x[1],
+      similarity = euclidean, 
+      includeOriginal = TRUE
+    )
   )
 
   # Previous phase results list of data.frames
-  # convert that data srructure to single Data.Frame
+  # convert that data structure to single Data.Frame
   do.call("rbind", itemSimList)
 
 }
@@ -369,12 +380,40 @@ itemIdCol <- "Person"
 itemsim <- calculateSimilarItems(reviews)
 ```
 
-### Getting Recommendations
+### Suositusten laskeminen
 
-Kun objektien keskinäinen samankaltaisuus on määritetty, voidaan sitä käyttää yksittäiselle käyttäjälle tarjotuissa suosituksissa.
+Kun elokuvien keskinäinen samankaltaisuus on määritetty, voidaan tietoa hyödyntää käyttäjille tarjottavissa suosituksissa.
 
-Viimeisenä funktiona
+Käytetään jälleen apuna Tobyn kirjassaan esittämää mallitapausta.
 
+Toby on arvioinut elokuvat:
+
+- Snakes on a Plane
+- Superman Returns
+- You, Me and Dupree
+
+Sen sijaan hän ei ole vielä nähnyt elokuvia: The Night Listener, Lady in the Water ja Just My Luck.
+
+Kun elokuvien keskinäisiä samankaltaisuuksia on arvioitu, niin Snakes on Plane sai edellä lueteltujen elokuvien kanssa seuraavat arvot:
+
+- The Night Listener 0.182
+- Lady in the Water 0.222
+- Just My Luck 0.105
+
+Kunkin elokuvan ennuste saadaan kertomalla Tobyn näkemillensä elokuville antamat arvosanat elokuvien samanlaisuutta mittaavalla arvolla.  
+
+Nämä lasketaan yhteen ja tulos jaetaan samankaltaisuutta mitanneiden arvojen summalla.
+
+Elokuvan The Night Listener tapauksessa laskutoimitukset ovat:
+
+1. 4.5 * 0.182 + 4.0 * 0.103 + 1.0 * 0.148 = 1.378
+2. 0.182 + 0.103 + 0.148 = 0.433
+3. 1.378 / 0.433 = 3.183
+
+
+![Tuoteperusteinen suosittelu](https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/Misc/itemBasedRecommendationsForToby-opti.svg)
+
+Viimeisenä esiteltävä funktio getRecommendedItems suorittaa em. toimenpiteet.
 
 ```{r}
 
@@ -398,12 +437,16 @@ getRecommendedItems <- function(prefs, itemMatch, user) {
   # combine user ratings with similarity data
   userRatings <- userRatings %>% left_join(scores, by = "Movie") 
 
+  # multiply ratings with similarity values
   userRatings$Score <- userRatings[[valueIdCol]] * userRatings$Similarity
   
+  # calculate sums of similarity multiplied grades and similarities
+  # calculate final by normalizing sums of multiplied grades
   userRatings %>%
     group_by(Target) %>%
     summarise(Estimate = sum(Score) / sum(Similarity)) %>%
     arrange(desc(Estimate))
+
 }
 ```
 
@@ -412,7 +455,7 @@ Palautetaan sarakeasetukset tilaan, jossa:
 - personIdCol viittaa henkilötiedot sisältävään sarakkeeseen
 - itemIdCol viittaa arvosteltavat objektit sisältävään sarakkeeseen
 
-Ja haetaan valmiiksi lasketun, elokuvien samankaltaisuutta arvioivan aineiston avulla suositukset käyttäjälle *Toby*
+Haetaan valmiiksi lasketun aineiston avulla suositukset Toby:lle
 
 ```{r}
 # Column that is used to identify persons
@@ -420,7 +463,20 @@ personIdCol <- "Person"
 # Column that is used to identify items
 itemIdCol <- "Movie"
 
-fooBar <- getRecommendedItems(reviews, itemsim, 'Toby')
+getRecommendedItems(reviews, itemsim, 'Toby')
 ```
 
+### Loppusanat
 
+Mukavaa kun jaksoit loppuun asti. Toivottavasti oppaasta on sinulle hyötyä.
+
+Kuten jo alussa totesin, opas esittelee yksinkertaisen menetelmän suositusten laskemiseen.
+
+Suositusten antamiseen liittyy monenlaisia haasteita. Eräs näistä on aineiston hajanaisuus. Elokuvien tapauksessa tämä tarkoittaa sitä, että:
+
+- elokuvia on paljon
+- näistä sellaisia, joita monet ovat arvioineen, on vain vähän.
+
+Tähän ja muihin haasteisiin pyritään vastaamaan kehittämällä entistä hienostuneempia suosittelujärjestelmiä.
+
+Aihe kiinnostaa, sillä kuluttajakäyttäytymisen tarkemman ennustamisen avulla voidaan kehittää asiakaskokemusta ja sitä myöten kasvattaa tuottoja.
