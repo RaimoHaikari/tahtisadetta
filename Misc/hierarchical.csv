@@ -1,10 +1,213 @@
-child,parent
-a,
-b,a
-c,a
-d,a
-e,b
-f,c
-g,c
-h,d
-i,h
+ID,Manner,Maa,Sarja,Nimi,Pelaajia
+1,Eurooppa,Italia,Serie A,Lazio,4
+2,Eurooppa,Albania,Kategoria superiore,Skënderbeu Korçë,1
+3,Eurooppa,Albania,Kategoria superiore,Partizani Tirana,1
+4,Eurooppa,Ranska,Ligue 1,FC Nantes,3
+5,Eurooppa,Azerbaidžan,Azerbaidžanin Valioliiga,Qarabağ FK,1
+6,Eurooppa,Kreikka,Kreikan Superliiga,PAS Giannina,1
+7,Eurooppa,Saksa,Saksan Bundesliiga,FC Köln,3
+8,Eurooppa,Italia,Serie A,Napoli,6
+9,Eurooppa,Italia,Serie A,Frosinone fc,1
+11,Eurooppa,Sveitsi,Swiss Super League,Lugano,1
+12,Eurooppa,Kroatia,Kroatian ykkösliiga,Rijeka,3
+13,Eurooppa,Italia,Serie B,Calcio Como,1
+14,Eurooppa,Saksa,2. Bundesliiga,SC Freiburg,1
+15,Eurooppa,Sveitsi,Swiss Challenge League,FC Zürich,1
+16,Eurooppa,Kreikka,Kreikan Superliiga,PAOK,2
+17,Eurooppa,Italia,Serie B,Deldino Pescara 1936,1
+18,Pohjois-Amerikka,Yhdysvallat,Major League Soccer,Colorado Rapids,1
+19,Eurooppa,Liechtenstein,Swiss Super League,FC Vaduz,1
+20,Eurooppa,Turkki,Turkin Superliiga,Medipol Başakşehir Futbol Kulübü,2
+21,Eurooppa,Englanti,Englannin Valioliiga,Chelsea,6
+22,Eurooppa,Belgia,Jupiler Pro League,KV Mechelen,1
+23,Eurooppa,Englanti,Englannin Valioliiga,Liverpool FC,12
+24,Eurooppa,Englanti,Englannin Valioliiga,Tottenham Hotspur FC,11
+25,Eurooppa,Turkki,Turkin Superliiga,Galatasaray SK,5
+26,Pohjois-Amerikka,Kanada,Major League Soccer,Montreal Impact,1
+27,Eurooppa,Belgia,Jupiler Pro League,KRC Genk,1
+28,Eurooppa,Belgia,Jupiler Pro League,KV Oostende,1
+29,Eurooppa,Belgia,Jupiler Pro League,Club Brügge,1
+30,Eurooppa,Espanja,Primera División,FC Barcelona,9
+31,Eurooppa,Englanti,Englannin Valioliiga,Manchester United,10
+32,Eurooppa,Italia,Serie A,AS Roma,8
+33,Eurooppa,Venäjä,Premier League Russia,FK Zenit,7
+34,Eurooppa,Ranska,Ligue 1,Olympique Marseille,2
+35,Eurooppa,Espanja,Primera División,Club Atlético de Madrid,4
+36,Eurooppa,Englanti,Englannin Valioliiga,Everton FC,6
+37,Eurooppa,Englanti,Englannin Valioliiga,Southampton,7
+38,Eurooppa,Englanti,Englannin Valioliiga,Manchester City,6
+39,Eurooppa,Englanti,Mestaruussarja,Burnley FC,3
+40,Eurooppa,Englanti,Englannin Valioliiga,Arsenal FC,9
+41,Eurooppa,Englanti,Englannin Valioliiga,Leicester City,5
+42,Eurooppa,Portugali,Primeira Liga,FC Porto,2
+43,Eurooppa,Espanja,Primera División,Sevilla,4
+44,Eurooppa,Espanja,Primera División,Real Madrid C.F.,8
+45,Eurooppa,Espanja,Primera División,Villarreal CF,1
+46,Eurooppa,Saksa,Saksan Bundesliiga,FC Bayern München,10
+47,Eurooppa,Espanja,Primera División,Celta Vigo,2
+48,Eurooppa,Italia,Serie A,Juventus,12
+49,Eurooppa,Espanja,Primera División,Athletic Club Bilbao,2
+50,Eurooppa,Englanti,Englannin Valioliiga,Stoke City,5
+51,Eurooppa,Englanti,Championship,Sheffield Wednesday,3
+52,Eurooppa,Englanti,Englannin Valioliiga,West Ham United,4
+53,Eurooppa,Englanti,Englannin Valioliiga,Sunderland AFC,2
+54,Eurooppa,Englanti,Englannin Valioliiga,Aston Villa,1
+55,Eurooppa,Englanti,Championship,Derby County,4
+56,Eurooppa,Englanti,Championship,Blackburn Rovers,2
+57,Eurooppa,Englanti,Championship,Norwich City FC,4
+58,Eurooppa,Englanti,Englannin Valioliiga,West Bromwich Albion,4
+59,Eurooppa,Englanti,Englannin Valioliiga,Hull City,1
+60,Eurooppa,Englanti,Championship,Reading,4
+61,Pohjois-Amerikka,Yhdysvallat,MLS,LA Galaxy,1
+62,Eurooppa,Englanti,Championship,Ipswich Town,1
+63,Eurooppa,Ranska,Ligue 1,Paris Saint-Germain FC,4
+64,Eurooppa,Italia,Serie A,Fiorentina,5
+65,Eurooppa,Italia,Serie A,AC Milan,2
+66,Eurooppa,Italia,Serie A,Bologna,1
+67,Eurooppa,Italia,Serie A,Inter Milano,3
+68,Eurooppa,Italia,Serie A,Torino,3
+69,Eurooppa,Itävalta,Itävallan Bundesliiga,Austria Wien,1
+70,Eurooppa,Saksa,Saksan Bundesliiga,Eintracht Frankfurt,2
+71,Eurooppa,Saksa,Saksan Bundesliiga,Ingolstadt,3
+72,Eurooppa,Ukraina,Ukrainian Premier League,FK Dynamo Kiova,7
+73,Eurooppa,Saksa,Saksan Bundesliiga,Darmstadt,1
+74,Eurooppa,Saksa,Saksan Bundesliiga,Borussia Mönchengladbach,3
+75,Eurooppa,Saksa,Saksan Bundesliiga,Stuttgart,2
+76,Eurooppa,Englanti,Englannin Valioliiga,Watford,4
+77,Eurooppa,Saksa,Saksan Bundesliiga,Mainz,3
+78,Eurooppa,Saksa,Saksan Bundesliiga 2,RB Leipzig,4
+79,Eurooppa,Sveitsi,Sveitsin Superliiga,Luzern,1
+80,Eurooppa,Saksa,Saksan Bundesliiga,Werder Bremen,3
+81,Eurooppa,Saksa,Saksan Bundesliiga,Schalke 04,4
+82,Eurooppa,Saksa,Saksan Bundesliiga 2,1860 München,1
+83,Eurooppa,Sveitsi,Sveitsin Superliiga,FC Basel,8
+84,Eurooppa,Ranska,Ligue 1,Monaco,3
+85,Eurooppa,Kroatia,Kroatian ykkösliiga,Hajduk Split,1
+86,Eurooppa,Venäjä,Premier League Russia,Lokomotiv Moskva,5
+87,Eurooppa,Ukraina,Ukrainian Premier League,Shakhtar Donetsk,8
+88,Eurooppa,Italia,Serie A,Unione Sportiva Sassuolo Calcio,1
+89,Eurooppa,Kroatia,Kroatian ykkösliiga,Dinamo Zagreb,7
+90,Eurooppa,Saksa,Saksan Bundesliiga,Bayer Leverkusen,4
+91,Eurooppa,Skotlanti,Skotlannin valioliiga,St Johnstone,1
+92,Eurooppa,Skotlanti,Skotlannin valioliiga,Hamilton Academical FC,1
+93,Eurooppa,Pohjois-Irlanti,Pohjois-Irlannin Valioliiga,Linfield FC,1
+94,Eurooppa,Englanti,Leaque One,Doncaster Rovers,1
+95,Eurooppa,Englanti,Leaque One,Fleetwood Town,1
+96,Eurooppa,Englanti,Championship,MK Dons,2
+97,Eurooppa,Englanti,Leaque One,Millwall,1
+98,Eurooppa,Englanti,Championship,Leeds United,1
+99,Eurooppa,Skotlanti,Skotlannin valioliiga,Aberdeen,1
+100,Eurooppa,Englanti,Championship,Nottingham Forest,2
+101,Eurooppa,Englanti,Championship,Queens Park Rangers,1
+102,Eurooppa,Skotlanti,Skotlannin valioliiga,Kilmarnock,1
+103,Eurooppa,Englanti,Championship,Wigan Athletic,1
+104,Eurooppa,Portugali,Primeira Liga,Sporting Clube de Portugal,4
+105,Eurooppa,Ranska,Ligue 1,Olympique Lyonnais,3
+106,Eurooppa,Saksa,Saksan Bundesliiga,VfL Wolfsburg,4
+107,Eurooppa,Ranska,Ligue 1,Lorient,1
+108,Eurooppa,Turkki,Turkin Superliiga,Fenerbahçe S.K.,7
+109,Eurooppa,Espanja,Primera División,Valencia Club de Fútbol,2
+110,Eurooppa,Portugali,Primeira Liga,Benfica,2
+111,Eurooppa,Ranska,Ligue 1,Lille,1
+112,Eurooppa,Turkki,Turkin Superliiga,Beşiktaş JK,7
+113,Eurooppa,Portugali,Primeira Liga,Braga,1
+114,Eurooppa,Wales,Englannin Valioliiga,Swansea City AFC,4
+115,Eurooppa,Englanti,Englannin Valioliiga,AFC Bournemouth,1
+116,Eurooppa,Italia,Serie A,US Città di Palermo,2
+117,Eurooppa,Puola,Ekstraklasa,Legia Warsaw,5
+118,Eurooppa,Saksa,Saksan Bundesliiga,Borussia Dortmund,5
+119,Eurooppa,Italia,Serie B,Cagliari,1
+120,Eurooppa,Puola,Ekstraklasa,Lechia Gdańsk,2
+121,Eurooppa,Ranska,Ligue 1,Stade Rennais FC,3
+122,Eurooppa,Puola,Ekstraklasa,KS Cracovia,1
+123,Eurooppa,Puola,Ekstraklasa,KKS Lech Poznań S.A,3
+124,Eurooppa,Puola,Ekstraklasa,Wisła Kraków,2
+125,Eurooppa,Puola,Ekstraklasa,Zaglebie Lubin,1
+126,Eurooppa,Italia,Serie A,Empoli,1
+127,Eurooppa,Hollanti,Eredivisie,Ajax,1
+128,Eurooppa,Puola,Ekstraklasa,Ruch Chorzów,1
+129,Eurooppa,Englanti,Englannin Valioliiga,Crystal Palace,4
+130,Eurooppa,Englanti,Englannin Valioliiga,Newcastle,1
+131,Etelä-Amerikka,Meksiko,Meksikon Primera División,Tigres de la UANL,1
+132,Eurooppa,Romania,Liga 1,Astra Giurgiu,3
+133,Eurooppa,Romania,Liga 1,CS Pandurii Târgu Jiu,1
+134,Aasia,Qatar,Qatar Stars League,Al Sailiya,1
+135,Eurooppa,Bulgaria,A PFG,PFK Ludogorets Razgrad,3
+136,Eurooppa,Espanja,Primera División,Rayo Vallecano,1
+137,Eurooppa,Romania,Liga 1,Dinamo Bukarest,1
+138,Eurooppa,Romania,Liga 1,Steaua Bukarest,4
+139,Eurooppa,Israel,Israeli Premier League,Hapoel Be'er Sheva,1
+140,Eurooppa,Turkki,Turkin Superliiga,Osmanlispor,1
+141,Aasia,Saudi-Arabia,Saudi-Arabian Valioliiga,Al Ittihad,1
+142,Eurooppa,Turkki,Turkin Superliiga,Gençlerbirliği S.K.,2
+143,Eurooppa,Espanja,Segunda División,Córdoba CF,1
+144,Eurooppa,Turkki,Turkin Superliiga,Kasimpasa,3
+145,Eurooppa,Tanska,Tanskan Superliiga,F.C. København,3
+146,Eurooppa,Ruotsi,Allsvenskan,AIK,2
+147,Eurooppa,Venäjä,Premier League Russia,FK Krasnodar,5
+148,Eurooppa,Skotlanti,Skotlannin valioliiga,Celtic FC,1
+149,Eurooppa,Kreikka,Kreikan Superliiga,Olympiakos CFP,1
+150,Eurooppa,Saksa,Saksan Bundesliiga,Hamburger SV,2
+151,Eurooppa,Venäjä,Premier League Russia,PFK CSKA Moskva,8
+152,Eurooppa,Turkki,Turkin Superliiga,Trabzonspor,2
+153,Eurooppa,Ruotsi,Allsvenskan,Malmö FF,2
+154,Eurooppa,Sveitsi,Sveitsin Superliiga,Grasshopper Club Zürich,1
+155,Eurooppa,Kreikka,Kreikan Superliiga,Panathinaikos,1
+156,Eurooppa,Ruotsi,Allsvenskan,IFK Norrköping,2
+157,Eurooppa,Tsekki,Czech Liga,FC Viktoria Plzeň,6
+158,Eurooppa,Slovakkia,Slovakkian Super Liiga,Slovan Bratislava,3
+159,Eurooppa,Itävalta,Itävallan Bundesliiga,SK Rapid Wien,1
+160,Eurooppa,Saksa,Saksan Bundesliiga,Hertha Berlin,2
+161,Eurooppa,Italia,Serie A,U.C. Sampdoria,1
+162,Eurooppa,Venäjä,Premier League Russia,FK Dinamo Moskva,1
+163,Eurooppa,Turkki,Turkin Superliiga,Bursaspor,6
+164,Aasia,Qatar,Qatar Stars League,Al-Gharafa,2
+165,Eurooppa,Tsekki,Czech Liga,Jablonec,1
+166,Eurooppa,Slovakkia,Slovakkian Super Liiga,Zilina,1
+167,Eurooppa,Unkari,OTP Bank Liga,Ferencvárosi Torna Club,6
+168,Eurooppa,Hollanti,Eredivisie,Willem II,1
+169,Eurooppa,Saksa,Saksan Bundesliiga,FC Augsburg,2
+170,Eurooppa,Sveitsi,Sveitsin Superliiga,Young Boys,2
+171,Eurooppa,Saksa,Saksan Bundesliiga,Hoffenheim,2
+172,Eurooppa,Ranska,Ligue 1,Toulouse,1
+173,Eurooppa,Italia,Serie A,Genova,1
+174,Eurooppa,Tsekki,Czech Liga,Slovan Liberec,1
+175,Eurooppa,Tsekki,Czech Liga,AC Sparta Prague,5
+176,Eurooppa,Ranska,Ligue 1,Bordeaux,1
+177,Eurooppa,Englanti,Championship,Brighton & Hove Albion F.C.,1
+178,Eurooppa,Tsekki,Czech Liga,Slavia Praha,1
+179,Eurooppa,Tanska,Danish Superliga,FC Nordsjælland,1
+180,Aasia,Kiina,Chinese Super League,Beijing Guoan F.C.,1
+181,Eurooppa,Ukraina,Ukrainian Premier League,FK Zorja Luhansk,3
+182,Eurooppa,Venäjä,Premier League Russia,FK Amkar Perm,1
+183,Eurooppa,Ukraina,Ukrainian Premier League,FC Dnipro Dnipropetrovsk,3
+184,Eurooppa,Kazastan,Kazakhstan Premier League,FC Kairat,1
+185,Eurooppa,Venäjä,Premier League Russia,FC Ufa,1
+186,Eurooppa,Unkari,OTP Bank Liga,Szombathelyi Haladás FC,1
+187,Eurooppa,Unkari,Nemzeti Bajnokság II,Puskás Akadémia FC,1
+188,Eurooppa,Unkari,OTP Bank Liga,MTK Budapest,1
+189,Eurooppa,Unkari,OTP Bank Liga,Videoton FC Fehérvár,2
+190,Eurooppa,Unkari,OTP Bank Liga,Debreceni VSC,1
+191,Eurooppa,Unkari,OTP Bank Liga,Diósgyőri VTK,1
+192,Eurooppa,Saksa,Saksan Bundesliiga 2,1. FC Nürnberg,1
+193,Eurooppa,Saksa,Saksan Bundesliiga,Hannoverscher Sportverein von 1896,1
+194,Eurooppa,Venäjä,Premier League Russia,FK Spartak Moskva,2
+195,Eurooppa,Venäjä,Premier League Russia,FC Terek Grozny,1
+196,Eurooppa,Skotlanti,Skotlannin valioliiga,Inverness Caledonian Thistle F.C.,1
+197,Eurooppa,Englanti,Championship,Fulham,2
+198,Eurooppa,Englanti,Championship,Wolverhampton Wanderers,1
+199,Eurooppa,Englanti,Championship,Birmingham City,1
+200,Eurooppa,Norja,	Tippeligaen,FK Bodø/Glimt,1
+201,Eurooppa,Ruotsi,Allsvenskan,Hammarby,2
+202,Eurooppa,Norja,1. Division,Sandefjord,1
+203,Eurooppa,Tanska,Danish Superliga,Odense BK,1
+204,Eurooppa,Italia,Serie B,A.C. Cesena,1
+205,Eurooppa,Hollanti,Eredivisie,PSV Eindhoven,1
+206,Eurooppa,Belgia,Jupiler Pro League,Lokeren,1
+207,Eurooppa,Italia,Serie A,Udinese Calcio,1
+208,Eurooppa,Wales,Championship,Cardiff City FC,1
+209,Eurooppa,Tanska,Danish Superliga,AGF Aarhus,1
+210,Eurooppa,Englanti,Leaque One,Charlton,1
+211,Eurooppa,Norja,	Tippeligaen,Molde FK,1
+212,Eurooppa,Ruotsi,Allsvenskan,GIF Sundsvall,1
+213,Eurooppa,Saksa,Saksan Bundesliiga 2,Kaiserslautern,1
